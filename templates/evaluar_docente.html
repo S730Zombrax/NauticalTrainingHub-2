@@ -1,0 +1,565 @@
+{% extends "layout.html" %}
+
+{% block title %}Evaluar {{ profesor.nombre }} - Universidad Marítima del Caribe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/docentes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header de Evaluación -->
+    <section class="evaluation-header bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-3">
+                        <a href="{{ url_for('docentes') }}" class="btn btn-outline-light me-3">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <div>
+                            <h1 class="h2 mb-0">Evaluación Docente</h1>
+                            <p class="mb-0 opacity-75">Sistema de retroalimentación académica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="professor-summary bg-white bg-opacity-10 rounded p-4">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <div class="professor-avatar-large">
+                                    <i class="fas fa-user-tie fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3 class="mb-1">{{ profesor.nombre }}</h3>
+                                <p class="mb-0 fs-5">{{ profesor.materia }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="evaluation-icon">
+                        <i class="fas fa-star-half-alt fa-8x opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Evaluación -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-clipboard-list me-2"></i>
+                                Formulario de Evaluación Docente
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="POST" id="evaluation-form" class="needs-validation" novalidate>
+                                <!-- Información del Estudiante -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-user me-2"></i>
+                                        Información del Estudiante
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="estudiante_nombre" class="form-label">Nombre Completo *</label>
+                                        <input type="text" class="form-control" id="estudiante_nombre" 
+                                               name="estudiante_nombre" required>
+                                        <div class="invalid-feedback">
+                                            Por favor, ingresa tu nombre completo.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="estudiante_cedula" class="form-label">Cédula de Identidad *</label>
+                                        <input type="text" class="form-control" id="estudiante_cedula" 
+                                               name="estudiante_cedula" placeholder="V-12345678" 
+                                               data-type="cedula" required>
+                                        <div class="invalid-feedback">
+                                            Ingresa tu cédula en formato V-12345678 o E-12345678.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="semestre" class="form-label">Semestre Actual *</label>
+                                        <select class="form-select" id="semestre" name="semestre" required>
+                                            <option value="">Selecciona tu semestre</option>
+                                            <option value="1">1er Semestre</option>
+                                            <option value="2">2do Semestre</option>
+                                            <option value="3">3er Semestre</option>
+                                            <option value="4">4to Semestre</option>
+                                            <option value="5">5to Semestre</option>
+                                            <option value="6">6to Semestre</option>
+                                            <option value="7">7mo Semestre</option>
+                                            <option value="8">8vo Semestre</option>
+                                            <option value="9">9no Semestre</option>
+                                            <option value="10">10mo Semestre</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Selecciona tu semestre actual.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="periodo" class="form-label">Período Académico *</label>
+                                        <select class="form-select" id="periodo" name="periodo" required>
+                                            <option value="">Selecciona el período</option>
+                                            <option value="2025-1">2025-1</option>
+                                            <option value="2025-2">2025-2</option>
+                                            <option value="2024-2">2024-2</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Selecciona el período académico.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Evaluación del Docente -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-star me-2"></i>
+                                        Evaluación del Desempeño Docente
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <!-- Criterios de Evaluación -->
+                                <div class="evaluation-criteria mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Dominio de la Materia *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="dominio_materia" 
+                                                           id="dominio_5" value="5" required>
+                                                    <label class="form-check-label" for="dominio_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="dominio_materia" 
+                                                           id="dominio_4" value="4">
+                                                    <label class="form-check-label" for="dominio_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="dominio_materia" 
+                                                           id="dominio_3" value="3">
+                                                    <label class="form-check-label" for="dominio_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="dominio_materia" 
+                                                           id="dominio_2" value="2">
+                                                    <label class="form-check-label" for="dominio_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="dominio_materia" 
+                                                           id="dominio_1" value="1">
+                                                    <label class="form-check-label" for="dominio_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Claridad en la Explicación *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="claridad_explicacion" 
+                                                           id="claridad_5" value="5" required>
+                                                    <label class="form-check-label" for="claridad_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="claridad_explicacion" 
+                                                           id="claridad_4" value="4">
+                                                    <label class="form-check-label" for="claridad_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="claridad_explicacion" 
+                                                           id="claridad_3" value="3">
+                                                    <label class="form-check-label" for="claridad_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="claridad_explicacion" 
+                                                           id="claridad_2" value="2">
+                                                    <label class="form-check-label" for="claridad_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="claridad_explicacion" 
+                                                           id="claridad_1" value="1">
+                                                    <label class="form-check-label" for="claridad_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="evaluation-criteria mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Puntualidad *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="puntualidad" 
+                                                           id="puntualidad_5" value="5" required>
+                                                    <label class="form-check-label" for="puntualidad_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="puntualidad" 
+                                                           id="puntualidad_4" value="4">
+                                                    <label class="form-check-label" for="puntualidad_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="puntualidad" 
+                                                           id="puntualidad_3" value="3">
+                                                    <label class="form-check-label" for="puntualidad_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="puntualidad" 
+                                                           id="puntualidad_2" value="2">
+                                                    <label class="form-check-label" for="puntualidad_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="puntualidad" 
+                                                           id="puntualidad_1" value="1">
+                                                    <label class="form-check-label" for="puntualidad_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Disponibilidad para Consultas *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="disponibilidad" 
+                                                           id="disponibilidad_5" value="5" required>
+                                                    <label class="form-check-label" for="disponibilidad_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="disponibilidad" 
+                                                           id="disponibilidad_4" value="4">
+                                                    <label class="form-check-label" for="disponibilidad_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="disponibilidad" 
+                                                           id="disponibilidad_3" value="3">
+                                                    <label class="form-check-label" for="disponibilidad_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="disponibilidad" 
+                                                           id="disponibilidad_2" value="2">
+                                                    <label class="form-check-label" for="disponibilidad_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="disponibilidad" 
+                                                           id="disponibilidad_1" value="1">
+                                                    <label class="form-check-label" for="disponibilidad_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="evaluation-criteria mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Metodología de Enseñanza *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="metodologia" 
+                                                           id="metodologia_5" value="5" required>
+                                                    <label class="form-check-label" for="metodologia_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="metodologia" 
+                                                           id="metodologia_4" value="4">
+                                                    <label class="form-check-label" for="metodologia_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="metodologia" 
+                                                           id="metodologia_3" value="3">
+                                                    <label class="form-check-label" for="metodologia_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="metodologia" 
+                                                           id="metodologia_2" value="2">
+                                                    <label class="form-check-label" for="metodologia_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="metodologia" 
+                                                           id="metodologia_1" value="1">
+                                                    <label class="form-check-label" for="metodologia_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Evaluación General *</label>
+                                            <div class="rating-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="evaluacion_general" 
+                                                           id="general_5" value="5" required>
+                                                    <label class="form-check-label" for="general_5">
+                                                        Excelente <i class="fas fa-star text-warning"></i>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="evaluacion_general" 
+                                                           id="general_4" value="4">
+                                                    <label class="form-check-label" for="general_4">Muy Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="evaluacion_general" 
+                                                           id="general_3" value="3">
+                                                    <label class="form-check-label" for="general_3">Bueno</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="evaluacion_general" 
+                                                           id="general_2" value="2">
+                                                    <label class="form-check-label" for="general_2">Regular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="evaluacion_general" 
+                                                           id="general_1" value="1">
+                                                    <label class="form-check-label" for="general_1">Deficiente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Comentarios Adicionales -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-comments me-2"></i>
+                                        Comentarios y Sugerencias
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="aspectos_positivos" class="form-label">Aspectos Positivos</label>
+                                    <textarea class="form-control" id="aspectos_positivos" name="aspectos_positivos" 
+                                              rows="3" maxlength="500" 
+                                              placeholder="Menciona qué aspectos del profesor te han parecido más positivos..."></textarea>
+                                    <div class="form-text">Máximo 500 caracteres</div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="aspectos_mejorar" class="form-label">Aspectos a Mejorar</label>
+                                    <textarea class="form-control" id="aspectos_mejorar" name="aspectos_mejorar" 
+                                              rows="3" maxlength="500"
+                                              placeholder="Sugiere constructivamente qué aspectos podrían mejorarse..."></textarea>
+                                    <div class="form-text">Máximo 500 caracteres</div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="comentarios_generales" class="form-label">Comentarios Generales</label>
+                                    <textarea class="form-control" id="comentarios_generales" name="comentarios_generales" 
+                                              rows="4" maxlength="1000"
+                                              placeholder="Comparte cualquier otro comentario que consideres relevante..."></textarea>
+                                    <div class="form-text">Máximo 1000 caracteres</div>
+                                </div>
+
+                                <!-- Recomendación -->
+                                <div class="mb-4">
+                                    <label class="form-label">¿Recomendarías este profesor a otros estudiantes? *</label>
+                                    <div class="recommendation-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recomendacion" 
+                                                   id="recomendacion_si" value="si" required>
+                                            <label class="form-check-label" for="recomendacion_si">
+                                                <i class="fas fa-thumbs-up text-success me-2"></i>
+                                                Sí, definitivamente lo recomiendo
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recomendacion" 
+                                                   id="recomendacion_tal_vez" value="tal_vez">
+                                            <label class="form-check-label" for="recomendacion_tal_vez">
+                                                <i class="fas fa-hand-point-right text-warning me-2"></i>
+                                                Tal vez, depende del estudiante
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="recomendacion" 
+                                                   id="recomendacion_no" value="no">
+                                            <label class="form-check-label" for="recomendacion_no">
+                                                <i class="fas fa-thumbs-down text-danger me-2"></i>
+                                                No, no lo recomiendo
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Términos y Condiciones -->
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="acepto_terminos" 
+                                               name="acepto_terminos" required>
+                                        <label class="form-check-label" for="acepto_terminos">
+                                            Acepto que esta evaluación es anónima y será utilizada únicamente para fines académicos y de mejora de la calidad educativa. *
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            Debes aceptar los términos para continuar.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Botones de Acción -->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="{{ url_for('docentes') }}" class="btn btn-outline-secondary me-md-2">
+                                        <i class="fas fa-times me-2"></i>
+                                        Cancelar
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        Enviar Evaluación
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.evaluation-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.professor-avatar-large {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.section-header h5 {
+    margin-bottom: 0;
+}
+
+.rating-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.rating-group .form-check {
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+
+.rating-group .form-check-label {
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.rating-group .form-check-input:checked + .form-check-label {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.recommendation-group .form-check {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.recommendation-group .form-check:hover {
+    background-color: #f8f9fa;
+}
+
+.recommendation-group .form-check-input:checked + .form-check-label {
+    font-weight: bold;
+}
+
+.evaluation-criteria {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .rating-group {
+        flex-direction: column;
+    }
+    
+    .rating-group .form-check-label {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 5px;
+    }
+}
+</style>
+
+<!-- JavaScript específico para docentes -->
+<script src="{{ url_for('static', filename='js/docentes.js') }}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Contadores de caracteres para los textareas
+    const textareas = document.querySelectorAll('textarea[maxlength]');
+    
+    textareas.forEach(textarea => {
+        const maxLength = parseInt(textarea.getAttribute('maxlength'));
+        const formText = textarea.nextElementSibling;
+        
+        textarea.addEventListener('input', function() {
+            const remaining = maxLength - this.value.length;
+            formText.textContent = `${remaining} caracteres restantes`;
+            
+            if (remaining < 50) {
+                formText.classList.add('text-warning');
+            } else {
+                formText.classList.remove('text-warning');
+            }
+            
+            if (remaining < 10) {
+                formText.classList.add('text-danger');
+            } else {
+                formText.classList.remove('text-danger');
+            }
+        });
+    });
+
+    // Validación del formulario
+    const form = document.getElementById('evaluation-form');
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}

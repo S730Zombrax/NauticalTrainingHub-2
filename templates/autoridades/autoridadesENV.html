@@ -1,0 +1,436 @@
+{% extends "layout.html" %}
+
+{% block title %}Escuela Nautica - Ingeniería Marina{% endblock %}
+
+{% block content %}
+
+
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container hero-content text-center">
+        <h2 class="hero-title">Autoridades</h2>
+        <p class="hero-subtitle">Conoce a las autoridades de la Escuela Náutica de Venezuela</p>
+    </div>
+</section>
+
+<section class="section_autoridades">
+    <div class="contenedor_autoridades">
+        <div class= "bloque_rector">
+            <img src="static\recursos de plantillas\autoridades\images\img.27.jpg" alt="imagen del rector">          
+            <div class="text_rector">
+                <h3>Rector</h3>
+                <p>CAP./ALT. (ENV) Guillermo Antonio Riut Hernández</p>
+            </div>                      
+        </div>
+
+        <div class="contenedor_vicerrector">
+            <div class= "bloque_vicerrector borde-amarillo">
+                <img src="static\recursos de plantillas\autoridades\images\img_29.jpg" alt="imagen del rector">          
+                <div class="text_rector">
+                    <h3>Vicerrector Administrativo</h3>
+                    <p>CAP./ALT. (ENV) Luis Ramón Brito Blanco</p>
+                </div>                      
+            </div>
+
+            <div class= "bloque_vicerrector borde-azul">
+                <img src="static\recursos de plantillas\autoridades\images\img_28.jpg" alt="imagen del rector">          
+                <div class="text_rector">
+                    <h3>Vicerrector Académico</h3>
+                    <p>DR. Noel Iván Cedeño Ortega</p>
+                </div>                      
+            </div>
+
+            <div class= "bloque_vicerrector borde-rojo">
+                <img src="static\recursos de plantillas\autoridades\images\img_30.jpg" alt="imagen del rector">          
+                <div class="text_rector">
+                    <h3>Secretaria General</h3>
+                    <p>CAP./ALT. (ENV) Rossy Bell Tussen Bermúdez</p>
+                </div>                      
+            </div>
+        </div>
+
+        <div class= "bloque_director">
+            <img src="static\recursos de plantillas\autoridades\images\img.31.jpg" alt="imagen del rector">          
+            <div class="text_rector">
+                <h3>Director de la Escuela Náutica</h3>
+                <p>1ER./OF. (ENV) Roberto Gonzales Rosquette</p>
+            </div>                      
+        </div>
+
+        <div class="titulo_carrusel"> 
+            <h3>Capitanes de Altura, Jefes de Máquinas y Oficiales Adscritos a la Escuela Náutica de Venezuela</h3>
+        </div>
+
+        <div class="personalENV">      
+                <div class="carrusel_2"style="
+                    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    padding: 30px 0;
+                    text-align: center;
+                    color: white;">
+                    <div class="itemscarrusel" id="itemscarrusel-1">
+                        <div class="tarjetacarrusel" id="targetacarrusel-1">
+                            <div class="items_docentes">
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_32.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>J./M. (ENV) Rodríguez Edgar</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_33.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>J./M. (ENV) Rodríguez William</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_34.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Hernández Juan</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_35.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Barona Ever</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div> 
+                    
+                    
+                    <div class="itemscarrusel" id="itemscarrusel-2">
+                        <div class="tarjetacarrusel" id="targetacarrusel-2">
+                            <div class="items_docentes">
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_36.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Jiménez Harry</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_37.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Bustamante Gustavo</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_38.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Palacios Hector</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_49.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Quilarquez Richard</h3>
+                                        <p>COORD. De Pasantías</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div>   
+
+
+                    
+                    <div class="itemscarrusel" id="itemscarrusel-3">
+                        <div class="tarjetacarrusel" id="targetacarrusel-3">
+                            <div class="items_docentes">
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_40.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Ilayali Mena</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_41.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Trujillano Maleisy</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Liendo José</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP./ALT. (ENV) Larrañaga</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div>  
+
+                    <div class="itemscarrusel" id="itemscarrusel-4">
+                        <div class="tarjetacarrusel" id="targetacarrusel-4">
+                            <div class="items_docentes">
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_59.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP. (ENV) Ramírez Rene</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_60.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>CAP. (ENV) Lara José</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_45.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>1ER./OF. (ENV) Gonzalez Elizabeth</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_46.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Rangel Cruz</h3>
+                                        <p>COORD. De Servicios Generales</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div>  
+                    
+                    
+                    <div class="itemscarrusel" id="itemscarrusel-5">
+                        <div class="tarjetacarrusel" id="targetacarrusel-5">
+                            <div class="items_docentes">
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_47.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Batman Evelyn</h3>
+                                        <p>COORD. De ING. Marítima</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_48.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h4>2DO./OF. (ENV) Mijares Joel</h4>
+                                        <p>COORD. De LAB. Talleres Y Simuladores Auxiliar de Escula Náutica</p>
+                                    </div> 
+                                </div>
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_49.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Romero José</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_50.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Rivas Yazmín</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div> 
+
+                    <div class="itemscarrusel" id="itemscarrusel-6">
+                        <div class="tarjetacarrusel" id="targetacarrusel-6">
+                            <div class="items_docentes">
+                                    <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_51.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Camaro Harry</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Pérez Dayny</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_53.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>2DO./OF. (ENV) Blanco César</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_54.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>3ER./OF. (ENV) Amaricua Carlos</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div> 
+
+                    <div class="itemscarrusel" id="itemscarrusel-7">
+                        <div class="tarjetacarrusel" id="targetacarrusel-7">
+                            <div class="items_docentes">                                 
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_55.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>3ER./OF. (ENV) Argüello Winder</h3>
+                                        <p>COORD. Ciencias Nauticas</p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_56.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>3ER./OF. (ENV) Rodríguez Yaneidris</h3>
+                                        <p>COORD. Transporte Acuatico</p>
+                                    </div> 
+                                </div>
+                                <diV class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_57.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>3ER./OF. (ENV) Idalgo Andrés</h3>
+                                        <p>Docente Instructor</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static\recursos de plantillas\autoridades\images\img_58.png" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>OF.COST. (ENV) Lesmes Guerra</h3>
+                                        <p>Auxiliar de Escuela Náutica</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div> 
+
+
+                        <div class="itemscarrusel" id="itemscarrusel-8">
+                        <div class="tarjetacarrusel" id="targetacarrusel-8">
+                            <div class="items_docentes">
+                                <diV class="item_img_text">
+                                    <img src="static/recursos de plantillas/autoridades/images/img_61.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3>3ER./OF. (ENV) Ramirez Rubén</h3>
+                                        <p>Oficial Representante de la Empresa Spring Marine</p>
+                                    </div> 
+                                </diV>
+
+                                <div class="item_img_text">
+                                    <img src="static/recursos de plantillas/autoridades/images/img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3></h3>
+                                        <p></p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static/recursos de plantillas/autoridades/images/img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3></h3>
+                                        <p></p>
+                                    </div> 
+                                </div>
+
+                                <div class="item_img_text">
+                                    <img src="static/recursos de plantillas/autoridades/images/img_00.jpg" class="items_img">
+                                    <div class="itemstext">
+                                        <h3></h3>
+                                        <p></p>
+                                    </div> 
+                                </div>
+                            </div>
+                            </div>                           
+                    </div> 
+    
+                    
+                </div>
+                <div class="contePuntos">
+                    <button class="boton_uniforme" data-slide="1"><h4>1</h4></button>
+                    <button class="boton_uniforme" data-slide="2"><h4>2</h4></button>
+                    <button class="boton_uniforme" data-slide="3"><h4>3</h4></button>
+                    <button class="boton_uniforme" data-slide="4"><h4>4</h4></button>
+                    <button class="boton_uniforme" data-slide="5"><h4>5</h4></button>
+                    <button class="boton_uniforme" data-slide="6"><h4>6</h4></button>
+                    <button class="boton_uniforme" data-slide="7"><h4>7</h4></button>
+                    <button class="boton_uniforme" data-slide="8"><h4>8</h4></button>             
+                    </div>
+            <script>
+            // filepath: c:\Users\ortiz\Documents\NauticalTrainignHub copy\templates\autoridades\autoridadesENV.html
+            document.addEventListener('DOMContentLoaded', function() {
+                const slides = document.querySelectorAll('.itemscarrusel');
+                const buttons = document.querySelectorAll('.contePuntos .boton_uniforme');
+
+                function showSlide(n) {
+                    slides.forEach((slide, i) => {
+                        slide.style.display = (i === n - 1) ? 'block' : 'none';
+                    });
+                    buttons.forEach((btn, i) => {
+                        btn.classList.toggle('activo', i === n - 1);
+                    });
+                }
+
+                // Inicializa mostrando el primero
+                showSlide(1);
+
+                buttons.forEach((btn, idx) => {
+                    btn.addEventListener('click', function() {
+                        showSlide(idx + 1);
+                    });
+                });
+            });
+            </script>
+            <style>
+            .itemscarrusel { display: none; }
+            .itemscarrusel:first-child { display: block; }
+            .boton_uniforme.activo {
+                background: #005fa3;
+            }
+            </style>
+        </div>
+
+
+    </div>
+</section> 
+
+
+{% endblock %}

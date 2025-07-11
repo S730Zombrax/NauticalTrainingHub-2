@@ -1,0 +1,594 @@
+{% extends "layout.html" %}
+
+{% block title %}Idiomas - Escuela Nautica{% endblock %}
+
+{% block content %}
+<!-- Seccion de la parte Inicial del Idioma -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Formación en Idiomas para Ingenieros Marinos</h1>
+            <p class="hero-description fade-in">Desarrolla las habilidades lingüísticas necesarias para una carrera internacional en la marina mercante.</p>
+        </div>
+    </div>
+</section>
+<!-- Contenido principal de la seccion de idiomas -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Importancia de los Idiomas en la Ingeniería Marina</h2>
+                
+                <p class="lead mb-4">La industria marítima es inherentemente internacional. Los buques modernos operan con tripulaciones multinacionales, lo que hace del dominio de idiomas extranjeros una competencia fundamental para todo ingeniero marino.</p>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="text-center">
+                                    <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                                    <h3>Comunicación Global</h3>
+                                    <p>Interactúa con tripulaciones y autoridades portuarias de diferentes nacionalidades.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="text-center">
+                                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                                    <h3>Documentación Técnica</h3>
+                                    <p>Comprende manuales y procedimientos técnicos en idiomas extranjeros.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
+                                    <h3>Oportunidades Laborales</h3>
+                                    <p>Accede a posiciones en navieras internacionales con mejores condiciones.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="mb-4">Programa de Idiomas de la UMC</h2>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title m-0">Inglés Marítimo</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>El inglés es considerado el idioma universal en el ámbito marítimo. La Organización Marítima Internacional (OMI) ha establecido el inglés como idioma oficial para las comunicaciones marítimas internacionales.</p>
+                        
+                        <h3 class="mt-4">Niveles y Contenidos</h3>
+                        <div class="table-responsive mt-3">
+                            <table class="table table-bordered">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Nivel</th>
+                                        <th>Duración</th>
+                                        <th>Contenidos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Básico</td>
+                                        <td>2 semestres</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Vocabulario náutico básico</li>
+                                                <li>Comprensión de instrucciones simples</li>
+                                                <li>Comunicaciones de rutina</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Intermedio</td>
+                                        <td>2 semestres</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Fraseología marítima estándar</li>
+                                                <li>Comunicaciones de emergencia</li>
+                                                <li>Lectura de manuales técnicos</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Avanzado</td>
+                                        <td>2 semestres</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Redacción de informes técnicos</li>
+                                                <li>Terminología especializada de ingeniería</li>
+                                                <li>Comunicación profesional con autoridades</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Técnico Especializado</td>
+                                        <td>1 semestre</td>
+                                        <td>
+                                            <ul class="mb-0">
+                                                <li>Inglés para la sala de máquinas</li>
+                                                <li>Documentación técnica avanzada</li>
+                                                <li>Preparación para certificaciones internacionales</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-info mt-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Certificación:</strong> Al finalizar el programa completo, los estudiantes pueden presentar el examen MarTEL (Maritime Test of English Language) reconocido internacionalmente.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title m-0">Otros Idiomas Opcionales</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Además del inglés obligatorio, ofrecemos cursos opcionales en otros idiomas relevantes para la industria marítima global:</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h4 class="m-0">Chino Mandarín</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>China es una potencia marítima en constante crecimiento, con numerosas oportunidades laborales para ingenieros marinos.</p>
+                                        <p><strong>Programa:</strong> 4 niveles de 3 meses cada uno.</p>
+                                        <p><strong>Enfoque:</strong> Vocabulario técnico marítimo y habilidades básicas de comunicación.</p>
+                                        <p class="mb-0"><strong>Colaboración:</strong> En alianza con el Instituto Confucio.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h4 class="m-0">Griego</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Grecia posee una de las flotas mercantes más grandes del mundo, ofreciendo excelentes oportunidades laborales.</p>
+                                        <p><strong>Programa:</strong> 3 niveles de 4 meses cada uno.</p>
+                                        <p><strong>Enfoque:</strong> Terminología náutica y comunicación básica en ambiente laboral griego.</p>
+                                        <p class="mb-0"><strong>Colaboración:</strong> Convenio con la Asociación de Armadores Helénicos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h4 class="m-0">Alemán</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Alemania es líder en tecnología naval y construcción de buques especializados.</p>
+                                        <p><strong>Programa:</strong> 4 niveles de 3 meses cada uno.</p>
+                                        <p><strong>Enfoque:</strong> Vocabulario técnico de ingeniería y navegación.</p>
+                                        <p class="mb-0"><strong>Colaboración:</strong> Convenio con el Goethe-Institut.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h4 class="m-0">Ruso</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Rusia cuenta con importante tráfico marítimo en el Ártico y el mar Báltico.</p>
+                                        <p><strong>Programa:</strong> 3 niveles de 4 meses cada uno.</p>
+                                        <p><strong>Enfoque:</strong> Comunicación básica y terminología técnica.</p>
+                                        <p class="mb-0"><strong>Colaboración:</strong> En desarrollo con la Academia Marítima de San Petersburgo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="mb-4">Recursos y Cursos en Línea Recomendados</h2>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-body">
+                        <p class="mb-4">Complementa tu formación con estos recursos y plataformas de aprendizaje en línea recomendados por nuestro departamento de idiomas:</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><i class="fas fa-graduation-cap text-primary me-2"></i> MarEng Learning Tool</h3>
+                                        <p>Plataforma especializada en inglés marítimo con módulos específicos para ingeniería naval.</p>
+                                        <div class="d-grid">
+                                            <a href="https://mareng.utu.fi/" target="_blank" class="btn btn-outline-primary">Visitar sitio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><i class="fas fa-language text-primary me-2"></i> Instituto Confucio Online</h3>
+                                        <p>Cursos básicos e intermedios de chino mandarín con secciones especializadas en comercio y transportes.</p>
+                                        <div class="d-grid">
+                                            <a href="https://www.chinesetest.cn/" target="_blank" class="btn btn-outline-primary">Visitar sitio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><i class="fas fa-headphones text-primary me-2"></i> Duolingo</h3>
+                                        <p>Plataforma gratuita para aprendizaje básico e intermedio de múltiples idiomas.</p>
+                                        <div class="d-grid">
+                                            <a href="https://www.duolingo.com/" target="_blank" class="btn btn-outline-primary">Visitar sitio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><i class="fas fa-book-open text-primary me-2"></i> SeaTalk</h3>
+                                        <p>Herramienta de la OMI para el aprendizaje de fraseología marítima estándar en inglés.</p>
+                                        <div class="d-grid">
+                                            <a href="https://www.seatalk.pro/" target="_blank" class="btn btn-outline-primary">Visitar sitio</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Sidebar content -->
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Registration Form -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Próximos Cursos</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Inscripciones abiertas para el siguiente período académico:</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Inglés Marítimo Básico
+                                    <span class="badge bg-primary rounded-pill">15 Sep</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Inglés Marítimo Intermedio
+                                    <span class="badge bg-primary rounded-pill">15 Sep</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Inglés Marítimo Avanzado
+                                    <span class="badge bg-primary rounded-pill">15 Sep</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Chino Mandarín Básico
+                                    <span class="badge bg-secondary rounded-pill">20 Sep</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Alemán Técnico Básico
+                                    <span class="badge bg-secondary rounded-pill">22 Sep</span>
+                                </li>
+                            </ul>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" disabled>
+                                    <i class="fas fa-edit me-2"></i> Solicitar Inscripción
+                                </button>
+                                <div class="text-center mt-2">
+                                    <small class="text-muted">* Para estudiantes activos de la UMC</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Language Requirements -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h4 class="m-0">Requisitos Lingüísticos de la OMI</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>La Organización Marítima Internacional establece requisitos lingüísticos específicos para oficiales de marina mercante:</p>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Convenio STCW</strong>
+                                <p class="mb-0">Exige conocimientos de inglés suficientes para comunicaciones de seguridad y operacionales.</p>
+                            </div>
+                            <ul>
+                                <li>Capacidad para usar y entender las Frases Normalizadas de la OMI para las Comunicaciones Marítimas.</li>
+                                <li>Comprender y utilizar manuales técnicos en inglés.</li>
+                                <li>Comunicarse eficazmente con otros buques y estaciones costeras.</li>
+                                <li>Desempeñar las funciones del oficial con una tripulación multilingüe.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Success Stories -->
+                    <div class="card shadow">
+                        <div class="card-header bg-accent text-dark">
+                            <h4 class="m-0">Experiencias de Egresados</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="p-3 border-bottom">
+                                <div class="img-placeholder mb-3" style="height: 100px;">
+                                    <i class="fas fa-user-circle fa-3x"></i>
+                                </div>
+                                <blockquote class="blockquote">
+                                    <p>"Dominar el inglés técnico marítimo me permitió conseguir trabajo en una naviera noruega. La formación en idiomas de la UMC fue fundamental para mi carrera internacional."</p>
+                                    <footer class="blockquote-footer">Ing. José Martínez, <cite>Jefe de Máquinas, Wallenius Wilhelmsen</cite></footer>
+                                </blockquote>
+                            </div>
+                            <div class="p-3">
+                                <div class="img-placeholder mb-3" style="height: 100px;">
+                                    <i class="fas fa-user-circle fa-3x"></i>
+                                </div>
+                                <blockquote class="blockquote">
+                                    <p>"Los cursos de chino mandarín me abrieron puertas en el mercado asiático. Actualmente trabajo en un buque LNG con una naviera china, con excelentes condiciones laborales."</p>
+                                    <footer class="blockquote-footer">Ing. Ana Vargas, <cite>1er Oficial de Máquinas, COSCO Shipping</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Panel Acordeón de Fraseología Marítima Básica -->
+<section class="section bg-light py-5">
+    <div class="container">
+        <h2 class="section-title mb-3">Fraseología Marítima Básica</h2>
+        <p class="section-description mb-4">Familiarízate con algunas frases técnicas esenciales en diferentes idiomas usadas en el ambiente marítimo.</p>
+        <div class="accordion" id="accordionLanguages">
+            <!-- Inglés -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEnglish">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEnglish" aria-expanded="true" aria-controls="collapseEnglish">
+                        Inglés
+                    </button>
+                </h2>
+                <div id="collapseEnglish" class="accordion-collapse collapse show" aria-labelledby="headingEnglish" data-bs-parent="#accordionLanguages">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Español</th>
+                                        <th>Inglés</th>
+                                        <th>Pronunciación</th>
+                                        <th>Contexto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sala de máquinas</td>
+                                        <td>Engine Room</td>
+                                        <td>/ˈendʒɪn ruːm/</td>
+                                        <td>Ubicación principal de trabajo del ingeniero marino</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor principal</td>
+                                        <td>Main Engine</td>
+                                        <td>/meɪn ˈendʒɪn/</td>
+                                        <td>Sistema de propulsión principal del buque</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hay una fuga de combustible</td>
+                                        <td>There is a fuel leak</td>
+                                        <td>/ðɛər ɪz ə fjuːl liːk/</td>
+                                        <td>Reporte de emergencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Necesitamos repuestos</td>
+                                        <td>We need spare parts</td>
+                                        <td>/wi niːd spɛər pɑːrts/</td>
+                                        <td>Solicitud de mantenimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Presión de aceite baja</td>
+                                        <td>Low oil pressure</td>
+                                        <td>/loʊ ɔɪl ˈprɛʃər/</td>
+                                        <td>Alerta de sistema</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chino -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingChinese">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChinese" aria-expanded="false" aria-controls="collapseChinese">
+                        Chino
+                    </button>
+                </h2>
+                <div id="collapseChinese" class="accordion-collapse collapse" aria-labelledby="headingChinese" data-bs-parent="#accordionLanguages">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Español</th>
+                                        <th>Chino</th>
+                                        <th>Pinyin</th>
+                                        <th>Contexto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sala de máquinas</td>
+                                        <td>机舱</td>
+                                        <td>Jī cāng</td>
+                                        <td>Ubicación principal de trabajo del ingeniero marino</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor principal</td>
+                                        <td>主机</td>
+                                        <td>Zhǔ jī</td>
+                                        <td>Sistema de propulsión principal del buque</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hay una fuga de combustible</td>
+                                        <td>有燃油泄漏</td>
+                                        <td>Yǒu rán yóu xiè lòu</td>
+                                        <td>Reporte de emergencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Necesitamos repuestos</td>
+                                        <td>我们需要备件</td>
+                                        <td>Wǒmen xūyào bèi jiàn</td>
+                                        <td>Solicitud de mantenimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Presión de aceite baja</td>
+                                        <td>油压低</td>
+                                        <td>Yóu yā dī</td>
+                                        <td>Alerta de sistema</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Griego -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGreek">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGreek" aria-expanded="false" aria-controls="collapseGreek">
+                        Griego
+                    </button>
+                </h2>
+                <div id="collapseGreek" class="accordion-collapse collapse" aria-labelledby="headingGreek" data-bs-parent="#accordionLanguages">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Español</th>
+                                        <th>Griego</th>
+                                        <th>Pronunciación</th>
+                                        <th>Contexto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sala de máquinas</td>
+                                        <td>Μηχανοστάσιο</td>
+                                        <td>Mihanostásio</td>
+                                        <td>Ubicación principal de trabajo del ingeniero marino</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor principal</td>
+                                        <td>Κύρια μηχανή</td>
+                                        <td>Kýria mihaní</td>
+                                        <td>Sistema de propulsión principal del buque</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hay una fuga de combustible</td>
+                                        <td>Υπάρχει διαρροή καυσίμου</td>
+                                        <td>Ypárchei diarroí kafsímou</td>
+                                        <td>Reporte de emergencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Necesitamos repuestos</td>
+                                        <td>Χρειαζόμαστε ανταλλακτικά</td>
+                                        <td>Chreiazómaste antallaktiká</td>
+                                        <td>Solicitud de mantenimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Presión de aceite baja</td>
+                                        <td>Χαμηλή πίεση λαδιού</td>
+                                        <td>Chamili píesi ladiú</td>
+                                        <td>Alerta de sistema</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Alemán -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGerman">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGerman" aria-expanded="false" aria-controls="collapseGerman">
+                        Alemán
+                    </button>
+                </h2>
+                <div id="collapseGerman" class="accordion-collapse collapse" aria-labelledby="headingGerman" data-bs-parent="#accordionLanguages">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Español</th>
+                                        <th>Alemán</th>
+                                        <th>Pronunciación</th>
+                                        <th>Contexto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sala de máquinas</td>
+                                        <td>Maschinenraum</td>
+                                        <td>/maˈʃiːnənraʊm/</td>
+                                        <td>Ubicación principal de trabajo del ingeniero marino</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Motor principal</td>
+                                        <td>Hauptmotor</td>
+                                        <td>/haʊptmoˈtoːɐ̯/</td>
+                                        <td>Sistema de propulsión principal del buque</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hay una fuga de combustible</td>
+                                        <td>Es gibt ein Kraftstoffleck</td>
+                                        <td>/ɛs ɡiːpt aɪn ˈkʁaftʃtɔflɛk/</td>
+                                        <td>Reporte de emergencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Necesitamos repuestos</td>
+                                        <td>Wir brauchen Ersatzteile</td>
+                                        <td>/viːɐ̯ ˈbʁaʊxən ɛɐ̯ˈzatsˌtaɪlə/</td>
+                                        <td>Solicitud de mantenimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Presión de aceite baja</td>
+                                        <td>Niedriger Öldruck</td>
+                                        <td>/ˈniːdʁɪɡɐ ˈøːldʁʊk/</td>
+                                        <td>Alerta de sistema</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Llamada de la acción -->
+ <section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Amplía tus horizontes profesionales</h1>
+            <p class="hero-description fade-in">Dominar idiomas extranjeros multiplica tus oportunidades en la marina mercante internacional.</p>
+            <a href="{{ url_for('registro') }}" class="btn btn-accent btn-lg">
+            <i class="fas fa-language me-2"></i> Comienza tu preparación lingüística
+            </a>
+        </div>
+    </div>
+{% endblock %}

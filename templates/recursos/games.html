@@ -1,0 +1,375 @@
+{% extends "layout.html" %}
+
+{% block title %}Simuladores Marítimos - Universidad Marítima del Caribe{% endblock %}
+
+{% block extra_css %}
+<style>
+.simulator-card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.simulator-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.simulator-body {
+    padding: 25px;
+}
+
+.canvas-container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.control-panel {
+    background: #f1f3f4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.gauge-display {
+    background: #2c3e50;
+    color: #00ff00;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.simulator-nav {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.nav-pills .nav-link {
+    border-radius: 25px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <p class="display-4 fw-bold mb-3">Simuladores Marítimos Interactivos</p>
+        <p class="lead">Experimenta con simulaciones realistas de navegación, ingeniería naval y operaciones marítimas</p>
+        <div class="mt-4">
+            <i class="fas fa-ship fa-3x me-3"></i>
+            <i class="fas fa-anchor fa-3x me-3"></i>
+            <i class="fas fa-compass fa-3x"></i>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Navigation Pills -->
+    <div class="simulator-nav" style="background: linear-gradient(135deg, #002c5c 0%, #011337 100%);">
+        <ul class="nav nav-pills justify-content-center" id="simulator-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#stability" data-bs-toggle="pill">
+                    <i class="fas fa-balance-scale me-2"></i>
+                    Estabilidad
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#navigation" data-bs-toggle="pill">
+                    <i class="fas fa-compass me-2"></i>
+                    Navegación
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#knots" data-bs-toggle="pill">
+                    <i class="fas fa-link me-2"></i>
+                    Nudos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#weather" data-bs-toggle="pill">
+                    <i class="fas fa-cloud me-2"></i>
+                    Meteorología
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#engine" data-bs-toggle="pill">
+                    <i class="fas fa-cogs me-2"></i>
+                    Máquinas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#quiz" data-bs-toggle="pill">
+                    <i class="fas fa-question-circle me-2"></i>
+                    Cuestionario
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Simulator Content -->
+    <div class="tab-content" id="simulator-content">
+        
+        <!-- Stability Simulator -->
+        <div class="tab-pane fade show active" id="stability">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-balance-scale me-2"></i>Simulador de Estabilidad del Buque</h2>
+                    <p class="mb-0">Experimenta con la distribución de carga y observa su efecto en la estabilidad</p>
+                </div>
+                <div class="simulator-body">
+                    <div class="canvas-container">
+                        <div id="stability-simulator"></div>
+                    </div>
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-info-circle me-2"></i>Instrucciones</h5>
+                        <ul class="mb-0">
+                            <li>Ajusta el peso y posición de la carga usando los controles</li>
+                            <li>Observa cómo cambia el ángulo del buque con las olas</li>
+                            <li>El punto rojo indica el centro de gravedad</li>
+                            <li>Mantén la estabilidad por encima del 70% para navegación segura</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Simulator -->
+        <div class="tab-pane fade" id="navigation">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-compass me-2"></i>Simulador de Navegación Marina</h2>
+                    <p class="mb-0">Practica maniobras de navegación considerando viento y corrientes</p>
+                </div>
+                <div class="simulator-body">
+                    <div class="canvas-container">
+                        <div id="navigation-simulator"></div>
+                    </div>
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-info-circle me-2"></i>Instrucciones</h5>
+                        <ul class="mb-0">
+                            <li>Usa los controles de rumbo para dirigir el buque</li>
+                            <li>Ajusta la velocidad según las condiciones</li>
+                            <li>Navega a través de todos los waypoints (puntos amarillos)</li>
+                            <li>Considera el efecto del viento y las corrientes marinas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knot Simulator -->
+        <div class="tab-pane fade" id="knots">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-link me-2"></i>Simulador de Nudos Marinos</h2>
+                    <p class="mb-0">Aprende a hacer los nudos más importantes en la navegación</p>
+                </div>
+                <div class="simulator-body">
+                    <div id="knot-simulator"></div>
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-info-circle me-2"></i>Conocimiento Esencial</h5>
+                        <p class="mb-0">Los nudos marinos son fundamentales para la seguridad a bordo. Cada nudo tiene un propósito específico y debe ejecutarse correctamente para garantizar la seguridad de la embarcación y la tripulación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Simulator -->
+        <div class="tab-pane fade" id="weather">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-cloud me-2"></i>Simulador de Condiciones Meteorológicas</h2>
+                    <p class="mb-0">Evalúa las condiciones meteorológicas para la navegación segura</p>
+                </div>
+                <div class="simulator-body">
+                    <div id="weather-simulator"></div>
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-info-circle me-2"></i>Factores Meteorológicos</h5>
+                        <ul class="mb-0">
+                            <li><strong>Viento:</strong> Afecta la estabilidad y maniobrabilidad</li>
+                            <li><strong>Visibilidad:</strong> Crucial para la navegación segura</li>
+                            <li><strong>Estado del Mar:</strong> Determina las condiciones de navegación</li>
+                            <li><strong>Presión Barométrica:</strong> Indica cambios meteorológicos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engine Simulator -->
+        <div class="tab-pane fade" id="engine">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-cogs me-2"></i>Simulador de Sala de Máquinas</h2>
+                    <p class="mb-0">Opera los sistemas principales del motor marino</p>
+                </div>
+                <div class="simulator-body">
+                    <div id="engine-simulator"></div>
+                    <div class="alert alert-warning">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Procedimientos de Seguridad</h5>
+                        <ul class="mb-0">
+                            <li>Siempre verifica los parámetros antes de arrancar</li>
+                            <li>Monitorea constantemente temperatura y presión de aceite</li>
+                            <li>Usa la parada de emergencia ante cualquier anomalía</li>
+                            <li>Mantén el combustible por encima del 20%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marine Quiz -->
+        <div class="tab-pane fade" id="quiz">
+            <div class="simulator-card card">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-question-circle me-2"></i>Cuestionario de Conocimientos Marinos</h2>
+                    <p class="mb-0">Evalúa tus conocimientos en navegación y seguridad marítima</p>
+                </div>
+                <div class="simulator-body">
+                    <div id="marine-quiz"></div>
+                    <div class="alert alert-success">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Temas Evaluados</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="mb-0">
+                                    <li>Señalización marítima</li>
+                                    <li>Comunicaciones de emergencia</li>
+                                    <li>Escalas meteorológicas</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="mb-0">
+                                    <li>Navegación y coordenadas</li>
+                                    <li>Maniobras de buques</li>
+                                    <li>Seguridad a bordo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information Section -->
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                    <h4>Aprendizaje Práctico</h4>
+                    <p>Complementa tu formación teórica con experiencias prácticas de simulación marítima.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-anchor fa-3x text-primary mb-3"></i>
+                    <h4>Experiencia Realista</h4>
+                    <p>Simulaciones basadas en situaciones reales que enfrentarás en tu carrera marítima.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                    <h4>Progreso Medible</h4>
+                    <p>Evalúa tu progreso y mejora tus habilidades con retroalimentación instantánea.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<section class="mt-5 py-4" style="background: #f8f9fa;">
+    <div class="container text-center">
+        <h3>¿Listo para poner a prueba tus habilidades?</h3>
+        <p class="lead">Estos simuladores te preparan para situaciones reales en el mundo marítimo</p>
+        <a href="{{ url_for('registro') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-anchor me-2"></i>Únete a la Universidad
+        </a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/games.js') }}"></script>
+<script>
+// Initialize Bootstrap tabs
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab functionality
+    const tabLinks = document.querySelectorAll('#simulator-tabs .nav-link');
+    tabLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tabs and content
+            tabLinks.forEach(l => l.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('show', 'active');
+            });
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const target = this.getAttribute('href').substring(1);
+            const targetPane = document.getElementById(target);
+            if (targetPane) {
+                targetPane.classList.add('show', 'active');
+            }
+        });
+    });
+
+    // Smooth scrolling for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

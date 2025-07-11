@@ -1,0 +1,328 @@
+{% extends "layout.html" %}
+
+{% block title %}Evaluación Docente - Universidad Marítima del Caribe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/docentes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header Principal -->
+    <section class="hero-section bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fas fa-chalkboard-teacher me-3"></i>
+                        Evaluación Docente
+                    </h1>
+                    <p class="lead mb-4">
+                        Sistema de evaluación para mejorar la calidad académica en la Universidad Marítima del Caribe
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="badge bg-light text-primary fs-6 px-3 py-2">
+                            <i class="fas fa-qrcode me-2"></i>
+                            Códigos QR Únicos
+                        </div>
+                        <div class="badge bg-light text-primary fs-6 px-3 py-2">
+                            <i class="fas fa-star me-2"></i>
+                            Evaluación Anónima
+                        </div>
+                        <div class="badge bg-light text-primary fs-6 px-3 py-2">
+                            <i class="fas fa-chart-line me-2"></i>
+                            Mejora Continua
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="hero-icon">
+                        <i class="fas fa-graduation-cap fa-10x opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="h3 text-primary mb-4">¿Cómo Funciona el Sistema?</h2>
+                    <p class="text-muted">
+                        Cada profesor tiene un código QR único que los estudiantes pueden escanear para acceder
+                        al formulario de evaluación. Tu opinión es valiosa para mejorar la calidad educativa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pasos del Sistema -->
+            <div class="row mb-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number bg-primary text-white rounded-circle mx-auto mb-3">1</div>
+                        <h5>Escanea el QR</h5>
+                        <p class="text-muted">Usa tu teléfono para escanear el código QR del profesor</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number bg-primary text-white rounded-circle mx-auto mb-3">2</div>
+                        <h5>Completa la Evaluación</h5>
+                        <p class="text-muted">Llena el formulario con tus comentarios honestos</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number bg-primary text-white rounded-circle mx-auto mb-3">3</div>
+                        <h5>Envía tu Feedback</h5>
+                        <p class="text-muted">Tu evaluación anónima ayuda a mejorar la enseñanza</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listado de Profesores -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-users text-primary me-2"></i>
+                        Profesores Disponibles para Evaluación
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for profesor in profesores %}
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card professor-card h-100 shadow-sm">
+                        <div class="card-header bg-primary text-white text-center">
+                            <div class="professor-avatar mb-2">
+                                <i class="fas fa-user-tie fa-3x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">{{ profesor.nombre }}</h5>
+                            <small class="opacity-75">{{ profesor.materia }}</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="professor-info mb-3">
+                                <p class="mb-2">
+                                    <i class="fas fa-building text-primary me-2"></i>
+                                    <strong>Departamento:</strong> {{ profesor.departamento }}
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fas fa-envelope text-primary me-2"></i>
+                                    <strong>Email:</strong> {{ profesor.email }}
+                                </p>
+                                <p class="mb-0">
+                                    <i class="fas fa-clock text-primary me-2"></i>
+                                    <strong>Experiencia:</strong> {{ profesor.experiencia }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <!-- Código QR -->
+                            <div class="text-center mb-3">
+                                <div class="qr-code-container p-3 bg-light rounded">
+                                    <div id="qr-{{ profesor.id }}" class="qr-placeholder">
+                                        <i class="fas fa-qrcode fa-5x text-primary"></i>
+                                        <p class="mt-2 mb-0 small text-muted">Código QR para {{ profesor.nombre }}</p>
+                                        <p class="small text-primary fw-bold">ID: PROF-{{ profesor.id }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Botón de Evaluación -->
+                            <div class="d-grid">
+                                <a href="{{ url_for('evaluar_docente', profesor_id=profesor.id) }}" 
+                                   class="btn btn-primary">
+                                    <i class="fas fa-star me-2"></i>
+                                    Evaluar Profesor
+                                </a>
+                            </div>
+                            
+                            <!-- Link directo para QR -->
+                            <div class="text-center mt-2">
+                                <small class="text-muted">
+                                    <i class="fas fa-link me-1"></i>
+                                    URL: {{ request.url_root }}evaluar-docente/{{ profesor.id }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Información Importante
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Las evaluaciones son completamente anónimas
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Solo estudiantes activos pueden evaluar
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Los resultados se usan para mejorar la calidad educativa
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Puedes evaluar cada profesor una vez por período académico
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.step-number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.professor-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.professor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.professor-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.qr-code-container {
+    border: 2px dashed #dee2e6;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder {
+    text-align: center;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-section > .container {
+    position: relative;
+    z-index: 1;
+}
+</style>
+
+<!-- JavaScript específico para docentes -->
+<script src="{{ url_for('static', filename='js/docentes.js') }}"></script>
+
+<!-- JavaScript para generar códigos QR (simulación visual) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Simular la generación de códigos QR más realistas
+    const qrContainers = document.querySelectorAll('[id^="qr-"]');
+    
+    qrContainers.forEach(container => {
+        const professorId = container.id.split('-')[1];
+        const professorName = container.closest('.card').querySelector('.card-title').textContent;
+        const evaluationUrl = `${window.location.origin}/evaluar-docente/${professorId}`;
+        
+        // Crear un patrón QR visual más realista
+        setTimeout(() => {
+            container.innerHTML = `
+                <div class="qr-visual-pattern">
+                    ${generateQRPattern()}
+                </div>
+                <p class="mt-2 mb-0 small text-muted">Código QR para ${professorName}</p>
+                <p class="small text-primary fw-bold">ID: PROF-${professorId}</p>
+            `;
+        }, 500 * parseInt(professorId));
+    });
+});
+
+function generateQRPattern() {
+    // Generar un patrón visual que simule un código QR
+    let pattern = '<div class="qr-pattern-grid">';
+    for (let i = 0; i < 144; i++) {
+        const isBlack = Math.random() > 0.5;
+        pattern += `<div class="qr-pixel ${isBlack ? 'black' : 'white'}"></div>`;
+    }
+    pattern += '</div>';
+    return pattern;
+}
+</script>
+
+<style>
+.qr-pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border: 2px solid #333;
+}
+
+.qr-pixel {
+    width: 100%;
+    height: 100%;
+}
+
+.qr-pixel.black {
+    background-color: #000;
+}
+
+.qr-pixel.white {
+    background-color: #fff;
+}
+</style>
+{% endblock %}

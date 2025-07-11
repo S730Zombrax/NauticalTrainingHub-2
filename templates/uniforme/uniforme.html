@@ -1,0 +1,547 @@
+{% extends "layout.html" %}
+
+{% block title %}Escuela Nautica - Ingeniería Marina{% endblock %}
+
+{% block content %}
+
+<body class="cuerpo">
+    <section class="hero" style="
+        background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        text-align: center;
+        color: white;">
+        <div class="container hero-content text-center">
+            <h2 class="hero-title">Uniformes de la Escuela Náutica</h2>
+            <p class="hero-subtitle">Conoce los diferentes uniformes utilizados por los cadetes de Ingeniería Marina y sus normas de uso.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="Contenedor">
+
+             <!-- Bloque de normativas de uniforme-->
+            <div class="contenedor_normativas">
+                <div class="normativa_descripcion">
+                    <div class="descripcion_1">
+                        <h1 class="primer_titulo1">Normativas del Uniforme</h1>
+                        <p class="normativa_parrafo">
+                            El uniforme no es solo una vestimenta, sino un símbolo de la disciplina, tradición 
+                            y profesionalismo que caracteriza a la profesión marítima. Su uso adecuado refleja los valores fundamentales de la Universidad Marítima del Caribe.
+                        </p>
+                    </div>
+                    <div class="img_descripccion">
+                        <img src="{{ url_for('static', filename='recursos de plantillas/uniforme/images/Normativa del Vestuario para los estudiantes de la UMC.jpg') }}" alt="normativa_uniforme">
+                        <a href="{{ url_for('static', filename='recursos de plantillas/uniforme/documents/Normativa del Vestuario para los estudiantes de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                    </div>
+                </div>
+
+                <div class="contenedor_principios">           
+                    <div clase="titulo_principios">
+                        <h1 class="primer_titulo1">Principios del Uso de los Uniformes</h1>
+                    </div>
+                    <div class="cuadrados_principios">      
+                        <div class="cuadros">      
+                            <div class="cuadros_informacion">      
+                                <h3>Identidad</h3>
+                                <img class="imag_unifor" src="{{ url_for('static', filename='recursos de plantillas/uniforme/images/img16.png') }}" alt="cadetes">
+                                <p>Representa a la institución y la profesión marítima ante la sociedad.</p>
+                            </div>
+                        </div>
+                        <div class="cuadros">      
+                            <div class="cuadros_informacion">      
+                                <h3>Disciplina</h3>
+                                <img class="imag_unifor" src="{{ url_for('static', filename='recursos de plantillas/uniforme/images/img14.jpg') }}" alt="cadetes">
+                                <p>Fomenta el orden, respeto y cumplimiento de normas.</p>
+                            </div>
+                        </div> 
+                        <div class="cuadros">             
+                            <div class="cuadros_informacion">       
+                                <h3>Igualdad</h3>
+                                <img class="imag_unifor" src="{{ url_for('static', filename='recursos de plantillas/uniforme/images/img17.png') }}" alt="cadetes">
+                                <p>Promueve el sentido de pertenencia al grupo y elimina distinciones socioeconómicas.</p>
+                            </div>
+                        </div> 
+                    </div>
+             </div> 
+
+                <!-- Bloque de disposiciones del uniforme-->
+                <div class="disposiciones_uniforme">      
+                    <div class="disposicion_unifor">      
+                        <div class="bloque_disposicion">       
+                            <div class="titulo_disposicion">       
+                                <h4>Cadetes Masculinos</h4>
+                            </div>
+                            <div class="elementos_disposicion">      
+                                        <ul>
+                                            <li><strong>Cabello:</strong> Corte tipo militar, sin patillas, no debe tocar el cuello de la camisa.</li>
+                                            <li><strong>Rostro:</strong> Afeitado diariamente, sin barba ni bigote.</li>
+                                            <li><strong>Joyas:</strong> Solo se permite reloj de pulsera discreto y anillo de graduación.</li>
+                                            <li><strong>Tatuajes:</strong> No visibles mientras se porta el uniforme.</li>
+                                            <li><strong>Calzado:</strong> Siempre limpio y lustrado.</li>
+                                            <li><strong>Postura:</strong> Erguida, con porte militar.</li>
+                                        </ul>
+                            </div>
+                        </div>
+
+                        <div class="bloque_disposicion" id="bloque_femeninas">      
+                            <div class="titulo_disposicion">       
+                                <h4>Cadetes Femeninas </h4>
+                            </div>
+                            <div class="elementos_disposicion">      
+                                        <ul>
+                                            <li><strong>Cabello:</strong> Recogido en moño tipo dona, no debe tocar el cuello. Si es corto, peinado discreto.</li>
+                                            <li><strong>Maquillaje:</strong> Discreto y natural.</li>
+                                            <li><strong>Joyas:</strong> Solo se permite reloj de pulsera discreto, aretes pequeños tipo botón y anillo de graduación.</li>
+                                            <li><strong>Uñas:</strong> Cortas, limpias, sin esmalte o con esmalte transparente.</li>
+                                            <li><strong>Calzado:</strong> Siempre limpio y lustrado.</li>
+                                            <li><strong>Postura:</strong> Erguida, con porte militar.</li>
+                                        </ul>
+                             </div>
+                         </div>                     
+                    </div>
+
+                    <div class="alerta">
+                            <strong>Importante:</strong> El incumplimiento de las normas de uniformes puede resultar en sanciones disciplinarias según el reglamento estudiantil.
+                    </div>
+                </div>
+
+                <!-- Bloque del carrusel-->
+
+                <div class="carrusel">      
+                    <div class="contenedor_carrusel">  
+                        <div class="itemscarrusel" id="itemscarrusel-1">
+                            <div class="tarjetacarrusel" id="targetacarrusel-1">
+                                <div class="items_presentacion">
+                                   <video class="video" type="video/mp4" controls>
+                                        <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/presentacion.mp4') }}">
+                                    </video>
+                                </div>
+                             </div>                                  
+                        </div>    
+
+                        <div class="itemscarrusel" id="itemscarrusel-2">
+                            <div class="tarjetacarrusel" id="targetacarrusel-2">
+                                <div class="uniforme">      
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="2">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="2">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="2" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video2.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="2" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video2_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">
+                                        <h3>Uniforme N° 1</h3>
+                                        <h3>Azul Cruzado</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Uniforme de diario en climas fríos.</li>
+                                            <li>Actos Oficiales después de las 18:00 hrs.</li>
+                                            <li>Cenas, bailes, matrimonios u otra actividad similar.</li>
+                                            <li>Conciertos, óperas y otros actos artísticos en climas fríos.</li>
+                                            <li>Velorios o entierros con carácter oficial, ecepto climas cálidos.</li>
+                                            <li>Cualquier otra actividad de carácter particular, que según el criterio del cadete 
+                                            amerite el uso de este uniforme, previa autorización de la Dirección de la Escuela,</li>  
+                                        </ul>
+                                    </div>
+                                </div>  
+                             </div>                                  
+                        </div>
+                        
+                        <div class="itemscarrusel" id="itemscarrusel-3">
+                            <div class="tarjetacarrusel" id="targetacarrusel-3">
+                                <div class="uniforme">      
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="3">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="3">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="3" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video3.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="3" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video3_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">  
+                                        <h3>Uniforme N° 2</h3>
+                                        <h3>Guerrera Blanca</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Franquía días feriados, sábados y dommingos.</li>
+                                            <li>Ceremonias y otros actos oficiales similares hasta las 18:00 hrs. en climas cálidos.</li>
+                                            <li>Recalada o zarpe en puertos extranjeros, cuando es visita oficial.</li>
+                                            <li>Guardia en día de Fiesta Nacional.</li>
+                                            <li>Actos oficiales en lugares de climas cálidos después de las 18:00 hrs.</li>
+                                            <li>Cenas, matrimonios, bailes u otra actividad similar.</li>
+                                            <li>Velorios, entierros con representacion oficial.</li>
+                                            <li>Cualquier otra actividad de carácter oficial a criterio del cadete, en asuntos particulares
+                                                 que ameriten el uniforme, previa autorización de la Escuela.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="itemscarrusel" id="itemscarrusel-4">
+                            <div class="tarjetacarrusel" id="targetacarrusel-4">
+                                <div class="uniforme">       
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="4">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="4">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="4" type="video/mp4" controls style="display:block;">
+                                            <source src="#">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="4" type="video/mp4" controls style="display:none;">
+                                            <source src="#">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">      
+                                        <h3>Uniforme  N° 2-A</h3>
+                                        <h3>Blanco Tropical</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Franquía en zonas costeras o cálidas, hasta cualquier hora.</li>
+                                            <li>De paseo en áreas metropolitanas (ciudades grandes) hasta las 18:00 hrs.</li>
+                                            <li>Viajes al interior de la República.</li>
+                                            <li>Guardias en buques e instalaciones de marina, excepto en Días de Fiesta Nacional o Conmemoraciones.</li> 
+                                            <li>Descanso a bordo, después de la puesta aparente del sol.</li>
+                                            <li>NOTA: No podrá usarse para salida o hacer guardias los Días de Fiesta Nacional o Conmemoraciones.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="itemscarrusel" id="itemscarrusel-6">
+                            <div class="tarjetacarrusel" id="targetacarrusel-6">
+                                <div class="uniforme">       
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="6">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="6">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="6" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video4.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="6" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video4_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">      
+                                        <h3>Uniforme  N° 3-A</h3>
+                                        <h3>De Faena</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>De faena, en prácticas a bordo.</li>
+                                            <li>Descanso a bordo.</li>
+                                            <li>Diligencias dentro de la zona portuaria.</li>
+                                            <li>Comisiones asignadas por la Dirección de la Escuela.</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="itemscarrusel" id="itemscarrusel-7">
+                            <div class="tarjetacarrusel" id="targetacarrusel-7">
+                                <div class="uniforme">      
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="7">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="7">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="7" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video5.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="7" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video5_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">  
+                                        <h3>Uniforme N° 4</h3>
+                                        <h3>De diaro</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Uso diario dentro de la Escuela.</li>
+                                            <li>Para hacer guardias de navegación.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="itemscarrusel" id="itemscarrusel-9">
+                            <div class="tarjetacarrusel" id="targetacarrusel-9">
+                                <div class="uniforme">      
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="9">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="9">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="9" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video7.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="9" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video7_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">  
+                                        <h3>Uniforme N° 5</h3>
+                                        <h3>Deportivo</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Ejercicios y prácticas de cultura física, según la rutina diaria.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="itemscarrusel" id="itemscarrusel-10">
+                            <div class="tarjetacarrusel" id="targetacarrusel-10">
+                                <div class="uniforme">
+                                    <div class="uniforme_img">
+                                        <div class="botones_idioma">
+                                            <button class="btn-idioma" data-idioma="es" data-carrusel="10">Español</button>
+                                            <button class="btn-idioma" data-idioma="en" data-carrusel="10">Inglés</button>
+                                        </div>
+                                        <video class="video video-es" data-carrusel="10" type="video/mp4" controls style="display:block;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video6.mp4') }}">
+                                        </video>
+                                        <video class="video video-en" data-carrusel="10" type="video/mp4" controls style="display:none;">
+                                            <source src="{{ url_for('static', filename='recursos de plantillas/uniforme/videos/video6_en.mp4') }}">
+                                        </video>
+                                    </div>
+                                    <div class="unifor_elementos">  
+                                        <h3>Uniforme N° 6</h3>
+                                        <h3>Braga</h3>
+                                        <h5>Uso:</h5>
+                                        <ul>
+                                            <li>Trabajos en la sala de máquinas.</li>
+                                            <li>Instrucción práctica en los talleres.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="contePuntos">
+                        <button class="boton_uniforme" data-slide="1"><h4></h4></button>
+                        <button class="boton_uniforme" data-slide="2"><h4>1</h4></button>
+                        <button class="boton_uniforme" data-slide="3"><h4>2</h4></button>
+                        <button class="boton_uniforme" data-slide="4"><h4>2-A</h4></button>
+                        <button class="boton_uniforme" data-slide="6"><h4>3-A</h4></button>
+                        <button class="boton_uniforme" data-slide="7"><h4>4</h4></button>
+                        <button class="boton_uniforme" data-slide="9"><h4>5</h4></button>
+                        <button class="boton_uniforme" data-slide="10"><h4>6</h4></button>
+                        <button class="boton_uniforme" data-slide="11"><h4>7</h4></button>
+                    </div>
+
+                    <script>
+                    // Carrusel funcional
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const slides = document.querySelectorAll('.itemscarrusel');
+                        const buttons = document.querySelectorAll('.contePuntos .boton_uniforme');
+
+                        function showSlide(n) {
+                            slides.forEach((slide, i) => {
+                                slide.style.display = (i === n - 1) ? 'block' : 'none';
+                            });
+                        }
+
+                        // Inicializa mostrando el primero
+                        showSlide(1);
+
+                        buttons.forEach((btn, idx) => {
+                            btn.addEventListener('click', function() {
+                                showSlide(idx + 1);
+                    
+                        document.querySelectorAll('.btn-idioma').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                const idioma = btn.getAttribute('data-idioma');
+                                const carrusel = btn.getAttribute('data-carrusel');
+                                // Oculta ambos videos
+                                document.querySelectorAll(`.video[data-carrusel="${carrusel}"]`).forEach(function(vid) {
+                                    vid.style.display = 'none';
+                                    vid.pause && vid.pause();
+                                });
+                                // Muestra el video del idioma seleccionado
+                                document.querySelector(`.video-${idioma}[data-carrusel="${carrusel}"]`).style.display = 'block';
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                    </script>
+                    <style>
+                    .itemscarrusel { display: none; }
+                    .itemscarrusel:first-child { display: block; }
+                    </style>
+
+                </div>
+
+                <!-- Bloque del Acordeon-->
+
+                <div class="acordeon">
+                    <h2 class="titulo_preguntas">Preguntas Frecuentes</h2>
+                    <details class="bloque_pregunta">           
+                        <summary class="titulo_acordeon">¿Dónde puedo adquirir los uniformes?
+                        </summary>
+                        <div>
+                            <p>Los uniformes pueden adquirirse en la tienda oficial de la universidad. 
+                            Los estudiantes admitidos recibirán información detallada sobre el proceso de compra durante la semana de inducción.</p>
+                        </div>
+                    </details>
+
+                    <details class="bloque_pregunta">  
+                        <summary class="titulo_acordeon">¿Qué hago si mi uniforme se daña?
+                        </summary>
+                        <div>
+                            <p> En caso de daño, deberás adquirir una prenda de reemplazo lo antes posible.
+                            La universidad cuenta con un servicio de sastrería para reparaciones menores. No se permite asistir con uniformes dañados o incompletos.</p>
+                        </div>
+                    </details>
+
+                    <details class="bloque_pregunta">  
+                        <summary class="titulo_acordeon">¿Puedo personalizar mi uniforme?
+                        </summary>
+                        <div>
+                            <p> No. Cualquier modificación al
+                                diseño oficial del uniforme está prohibida y puede resultar en sanciones disciplinarias. Todos los cadetes deben lucir exactamente igual, siguiendo la tradición marítima.</p>
+                        </div>
+                    </details>
+
+                    <details class="bloque_pregunta">  
+                        <summary class="titulo_acordeon">¿Cómo puedo cuidar mi uniforme?
+                        </summary>
+                        <div>
+                            <ul>
+                                <li>No usar blanqueadores</li>
+                                <li>Planchar a temperatura media/baja</li>
+                                <li>Lavar según las instrucciones de cada prenda</li>
+                                <li>Lavar con agua fría para preservar los colores</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+           
+            </div>     
+        
+
+        </div>
+    </section>
+    <!-- Modal para video ampliado -->
+<div id="modalVideo" class="modal-video">
+  <span class="cerrar-modal" id="cerrarModal">&times;</span>
+  <video id="videoAmpliado" controls autoplay style="max-width:90vw; max-height:90vh;">
+    <source src="" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+</div>
+
+<style>
+/* Estilos para el modal */
+.modal-video {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.modal-video.active {
+  display: flex;
+}
+.cerrar-modal {
+  position: absolute;
+  top: 30px; right: 50px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+#videoAmpliado {
+  width: 60vw;
+  height: auto;
+  max-width: 1000px;
+}
+.botones_idioma {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.btn-idioma {
+    margin: 0 5px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    background: #005fa3;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-idioma:hover {
+    background: #003d6b;
+}
+</style>
+
+<script>
+// Abrir modal al hacer click en cualquier video del carrusel
+document.addEventListener('DOMContentLoaded', function() {
+  const videosMini = document.querySelectorAll('.contenedor_carrusel .video');
+  const modal = document.getElementById('modalVideo');
+  const cerrar = document.getElementById('cerrarModal');
+  const videoGrande = document.getElementById('videoAmpliado');
+  const videoSource = videoGrande.querySelector('source');
+
+  videosMini.forEach(function(videoMini) {
+    videoMini.style.cursor = 'pointer';
+    videoMini.addEventListener('click', function() {
+      // Cambia la fuente del video ampliado al del video clickeado
+      const source = videoMini.querySelector('source');
+      if (source && source.src) {
+        videoSource.src = source.src;
+        videoGrande.load();
+        videoGrande.currentTime = videoMini.currentTime;
+        modal.classList.add('active');
+        videoGrande.play();
+      }
+    });
+  });
+
+  cerrar.addEventListener('click', function() {
+    modal.classList.remove('active');
+    videoGrande.pause();
+  });
+
+  // Cerrar modal al hacer click fuera del video
+  modal.addEventListener('click', function(e) {
+    if(e.target === modal) {
+      modal.classList.remove('active');
+      videoGrande.pause();
+    }
+  });
+});
+</script>
+</body>
+{% endblock %}

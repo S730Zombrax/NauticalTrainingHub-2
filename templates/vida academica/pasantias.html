@@ -1,0 +1,465 @@
+{% extends "layout.html" %}
+
+{% block title %}Pasantías - Escuela Nautica{% endblock %}
+
+{% block content %}
+<!-- Internship Hero Section -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Programa de Pasantías</h1>
+            <p class="hero-description fade-in">Experiencia práctica a bordo de buques mercantes nacionales e internacionales para complementar tu formación académica.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Información General sobre Pasantías</h2>
+                
+                <p class="lead mb-4">El programa de pasantías es un componente fundamental en la formación de ingenieros marinos, permitiendo a los estudiantes aplicar sus conocimientos teóricos en entornos reales de trabajo.</p>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title m-0">Características del Programa</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <div class="text-center">
+                                    <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                                    <h4>Duración</h4>
+                                    <p>12 meses acumulados<br>divididos en 2-3 períodos</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <div class="text-center">
+                                    <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                                    <h4>Alcance</h4>
+                                    <p>Nacional e internacional<br>en diferentes tipos de buques</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                                    <h4>Requisito</h4>
+                                    <p>Obligatorio para la<br>titulación profesional</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <p>Las pasantías se realizan principalmente en buques mercantes de la flota nacional e internacional con los que la Universidad Marítima del Caribe mantiene convenios de cooperación educativa.</p>
+                        
+                        <p>Durante este período, los cadetes de ingeniería marina:</p>
+                        <ul>
+                            <li>Forman parte de la tripulación del departamento de máquinas</li>
+                            <li>Participan en guardias bajo supervisión de oficiales</li>
+                            <li>Colaboran en tareas de mantenimiento y reparación</li>
+                            <li>Documentan sus actividades en un libro de formación</li>
+                            <li>Reciben evaluaciones periódicas de su desempeño</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h2 class="mb-4">Requisitos para el Pasante</h2>
+                
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="m-0">Requisitos Académicos</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Haber aprobado el 60% de las asignaturas del plan de estudios
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Aprobar todas las asignaturas técnicas básicas
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Certificado de cursos OMI básicos (Seguridad Personal, Primeros Auxilios, etc.)
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Promedio mínimo de 12 puntos (escala 0-20)
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Nivel básico de inglés técnico marítimo
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="m-0">Requisitos Personales</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Certificado médico vigente (no mayor a 3 meses)
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Pasaporte vigente (mínimo 1 año de validez)
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Libreta de embarque actualizada
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Vacunas requeridas según ruta del buque
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-3"></i>
+                                        Evaluación psicológica aprobada (no mayor a 6 meses)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="mb-4">Características Físicas y Perfil del Pasante</h2>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title m-0">Perfil Requerido por las Navieras</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5 class="border-bottom pb-2 mb-3">Condiciones Físicas</h5>
+                                <ul>
+                                    <li><strong>Salud general:</strong> Excelente condición física, capaz de realizar trabajos que requieren esfuerzo físico.</li>
+                                    <li><strong>Resistencia:</strong> Capacidad para trabajar en turnos prolongados y adaptarse a diferentes husos horarios.</li>
+                                    <li><strong>Visión:</strong> Buena agudeza visual, sin daltonismo (capacidad para distinguir colores es esencial).</li>
+                                    <li><strong>Audición:</strong> Capacidad auditiva normal, necesaria para detectar anomalías en equipos.</li>
+                                    <li><strong>Equilibrio:</strong> Buena estabilidad y adaptación al movimiento del buque.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="border-bottom pb-2 mb-3">Habilidades Personales</h5>
+                                <ul>
+                                    <li><strong>Adaptabilidad:</strong> Capacidad de ajustarse a entornos multiculturales y espacios confinados por períodos prolongados.</li>
+                                    <li><strong>Trabajo en equipo:</strong> Habilidad para colaborar eficazmente en grupos reducidos.</li>
+                                    <li><strong>Manejo del estrés:</strong> Capacidad para mantener la calma y tomar decisiones bajo presión.</li>
+                                    <li><strong>Comunicación:</strong> Habilidades de comunicación claras, especialmente en inglés técnico.</li>
+                                    <li><strong>Autodisciplina:</strong> Organización personal y capacidad para seguir procedimientos estrictos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Nota importante:</strong> Las navieras internacionales suelen realizar sus propias evaluaciones adicionales antes de aceptar pasantes. Estas pueden incluir pruebas de conocimientos técnicos, entrevistas en inglés y evaluaciones psicológicas específicas.
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="mb-4">Proceso de Solicitud y Asignación</h2>
+                
+                <div class="card mb-5 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol class="timeline-process">
+                                    <li class="timeline-item p-3 mb-4 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">1</span> Verificación de requisitos</h3>
+                                        <p>El estudiante debe verificar que cumple con todos los requisitos académicos y personales antes de iniciar el proceso.</p>
+                                    </li>
+                                    <li class="timeline-item p-3 mb-4 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">2</span> Solicitud formal</h3>
+                                        <p>Presentar la solicitud de pasantía en la Coordinación de Relaciones con la Industria, adjuntando la documentación requerida.</p>
+                                    </li>
+                                    <li class="timeline-item p-3 mb-4 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">3</span> Entrevista y evaluación</h3>
+                                        <p>Participar en entrevistas con el coordinador académico y, posiblemente, con representantes de las navieras.</p>
+                                    </li>
+                                    <li class="timeline-item p-3 mb-4 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">4</span> Asignación de naviera</h3>
+                                        <p>Según el perfil del estudiante y las plazas disponibles, se asigna una naviera específica.</p>
+                                    </li>
+                                    <li class="timeline-item p-3 mb-4 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">5</span> Preparación pre-embarque</h3>
+                                        <p>Completar trámites migratorios, obtener visados necesarios y asistir al seminario pre-embarque obligatorio.</p>
+                                    </li>
+                                    <li class="timeline-item p-3 bg-light rounded">
+                                        <h3><span class="badge bg-primary me-2">6</span> Embarque y seguimiento</h3>
+                                        <p>Inicio de la pasantía con seguimiento mensual por parte del tutor académico asignado.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Sidebar content -->
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Shipping Companies -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Navieras</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Mantenemos comunicaciones activas con importantes empresas navieras que reciben regularmente a nuestros pasantes:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item align-items-center d-flex justify-content-between">
+                                    <a href="https://seaengineeringsystems.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/SEA engineering systems.jpg') }}" alt="SEA engineering systems" class="imagen_libro" style="max-height: 100px;">
+                                    </a>
+                                    <a href="https://springmarine.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/spring marine.jpg') }}" alt="Spring Marine" class="imagen_libro" style="max-height: 150px;">
+                                    </a>
+                                </li>
+                                <li class="list-group-item align-items-center d-flex justify-content-between">
+                                    <a href="https://columbia-shipmanagement.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/Columbia Shipmanagement.png') }}" alt="Columbia Shipmanagement" class="imagen_libro" style="max-height: 150px;">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Deadlines -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h4 class="m-0">Fechas Importantes</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-secondary text-white rounded p-2 mb-1">
+                                            <span class="d-block">FEB</span>
+                                            <strong class="d-block">15</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Apertura de solicitudes 1er semestre</h5>
+                                        <p class="text-muted mb-0">Período Abril-Septiembre</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-secondary text-white rounded p-2 mb-1">
+                                            <span class="d-block">MAR</span>
+                                            <strong class="d-block">30</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Cierre de solicitudes 1er semestre</h5>
+                                        <p class="text-muted mb-0">Último día para aplicar</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-secondary text-white rounded p-2 mb-1">
+                                            <span class="d-block">AGO</span>
+                                            <strong class="d-block">15</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Apertura de solicitudes 2do semestre</h5>
+                                        <p class="text-muted mb-0">Período Octubre-Marzo</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-secondary text-white rounded p-2 mb-1">
+                                            <span class="d-block">SEP</span>
+                                            <strong class="d-block">30</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Cierre de solicitudes 2do semestre</h5>
+                                        <p class="text-muted mb-0">Último día para aplicar</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-accent text-dark">
+                            <h4 class="m-0">Contacto e Información</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Para cualquier consulta sobre el programa de pasantías:</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-user me-2 text-primary"></i>
+                                    Coord. Isabel Méndez
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-envelope me-2 text-primary"></i>
+                                    pasantias@umc.edu.ve
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-phone me-2 text-primary"></i>
+                                    +58 (212) 555-3698
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-clock me-2 text-primary"></i>
+                                    Atención: Lunes a Viernes, 8:00 AM - 3:00 PM
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+                                    Oficina de Relaciones con la Industria, Edificio Académico, Piso 2
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo Contest -->
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Concurso de Fotografías</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="img-placeholder mb-3">
+                                <i class="fas fa-camera fa-3x"></i>
+                                <p>Galería de fotografías de pasantías</p>
+                            </div>
+                            <h4>¡Comparte tu experiencia!</h4>
+                            <p>Invitamos a todos los pasantes a participar en nuestro concurso anual de fotografías "Vida a Bordo". Las mejores fotos serán premiadas y exhibidas en nuestra galería.</p>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Próxima edición:</strong> El concurso abrirá en noviembre 2023.
+                            </div> 
+                            <button class="btn btn-outline-primary w-100" disabled>
+                                <i class="fas fa-camera me-2"></i> Bases del concurso
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Testimonios de Pasantes</h2>
+        <p class="section-description">Experiencias de nuestros estudiantes durante sus pasantías en buques mercantes.</p>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">
+                            "Mi pasantía en un buque portacontenedores de Maersk fue una experiencia transformadora. Apliqué mis conocimientos teóricos en situaciones reales y aprendí a trabajar bajo presión. Definitivamente, me preparó para mi carrera profesional."
+                        </p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">Carlos Mendoza</h5>
+                                <p class="text-muted mb-0">Pasantía en Maersk Line, 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">
+                            "Durante mis 6 meses en un buque petrolero, pude trabajar con equipos de última generación y aprender de ingenieros con décadas de experiencia. Cada día presentaba un nuevo desafío técnico que me ayudó a crecer profesionalmente."
+                        </p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">María Rodríguez</h5>
+                                <p class="text-muted mb-0">Pasantía en PDV Marina, 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                        </div>
+                        <p class="card-text">
+                            "Lo más valioso de mi pasantía fue la exposición a diferentes culturas. Trabajar con una tripulación internacional me enseñó a adaptarme y comunicarme efectivamente, habilidades tan importantes como los conocimientos técnicos."
+                        </p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h5 class="mb-0">Alejandro Torres</h5>
+                                <p class="text-muted mb-0">Pasantía en CMA CGM, 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LLamada de atencion -->
+ <section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">¿Listo para embarcarte en esta experiencia?</h1>
+            <p class="hero-description fade-in">Las pasantías son tu puerta de entrada al mundo profesional de la marina mercante.</p>
+            <button class="btn btn-accent btn-lg" disabled>
+            <i class="fas fa-clipboard-list me-2"></i> Solicitar Información
+        </button>
+        </div>
+    </div>
+</section>
+{% endblock %}

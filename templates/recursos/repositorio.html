@@ -1,0 +1,471 @@
+{% extends "layout.html" %}
+
+{% block title %}ZARPE - Repositorio Académico UMC - {% endblock %}
+
+{% block extra_css %}
+<style>
+.repositorio-header {
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 0 3rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.repositorio-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.9) 0%, rgba(13, 71, 161, 0.8) 100%);
+    z-index: 1;
+}
+
+.repositorio-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.repositorio-header h1 {
+    color: white !important;
+}
+
+.search-filters {
+    background: var(--bg-gray);
+    padding: 2rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.document-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.document-header {
+    background: linear-gradient(135deg, #ffc107 0%, #1565c0 100%);
+    color: white;
+    padding: 1.5rem;
+}
+
+.document-header h5 {
+    color: white !important;
+}
+
+.document-body {
+    padding: 1.5rem;
+}
+
+.document-type {
+    background: var(--accent);
+    color: var(--text-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.document-category {
+    background: var(--info);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.document-meta {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.document-meta i {
+    margin-right: 0.5rem;
+    color: var(--accent);
+}
+
+.btn-download {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: var(--text-dark);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: linear-gradient(135deg, var(--accent-dark) 0%, #cc7700 100%);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+.stats-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #ffc107;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+}
+
+.stats-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.keywords {
+    margin-top: 1rem;
+}
+
+.keyword-tag {
+    background: var(--bg-light);
+    color: var(--primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    border: 1px solid var(--primary-light);
+}
+
+.no-documents {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6c757d;
+}
+
+.no-documents i {
+    font-size: 4rem;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+}
+
+.upload-prompt {
+    background: linear-gradient(135deg, #ffc107 0%, #1565c0 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.filter-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="repositorio-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <div class="zarpe-logo me-4" style="width: 100px; height: auto;">
+                        <img src="{{ url_for('static', filename='zarpe_logo.png') }}" alt="ZARPE Logo" style="width: 100%; height: auto; filter: brightness(1.2);">
+                    </div>
+                    <div>
+                        <h1 class="display-4 fw-bold mb-3" style="color: white !important;">
+                            ZARPE
+                        </h1>
+                        <h2 class="h4 mb-3" style="color: white !important;">
+                            Repositorio Académico UMC
+                        </h2>
+                    </div>
+                </div>
+                <p class="lead mb-2" style="text-align: center; font-style: italic; color: #ffd54f; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                    "Toda travesía comienza con un ZARPE"
+                </p>
+                <p class="lead mb-0">
+                    Espacio digital para recopilar, organizar y difundir la producción educativa académica, 
+                    científica y técnica de la Universidad Marítima del Caribe
+                </p>
+            </div>
+            {% if current_user.is_authenticated and current_user.__class__.__name__ == 'Profesor' %}
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('subir_documento') }}" class="btn btn-accent btn-lg">
+                    <i class="fas fa-plus me-2"></i>
+                    Subir Documento
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Search and Filters -->
+<section class="search-filters">
+    <div class="container">
+        <form method="GET" class="filter-form">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="buscar" class="form-label">Buscar</label>
+                    <input type="text" class="form-control" id="buscar" name="buscar" 
+                           value="{{ buscar_actual }}" placeholder="Título, descripción o palabras clave...">
+                </div>
+                <div class="col-md-3">
+                    <label for="categoria" class="form-label">Navegar por Contenido</label>
+                    <select class="form-select" id="categoria" name="categoria">
+                        <option value="">Todas las categorías</option>
+                        <optgroup label="Investigación">
+                            <option value="Artículos" {% if 'Artículos' == categoria_actual %}selected{% endif %}>Artículos</option>
+                            <option value="Informes Técnicos" {% if 'Informes Técnicos' == categoria_actual %}selected{% endif %}>Informes Técnicos</option>
+                            <option value="E-Book" {% if 'E-Book' == categoria_actual %}selected{% endif %}>E-Book</option>
+                        </optgroup>
+                        <optgroup label="Revistas">
+                            <option value="Doctum" {% if 'Doctum' == categoria_actual %}selected{% endif %}>Doctum</option>
+                        </optgroup>
+                        <optgroup label="Pregrado">
+                            <option value="Manuales" {% if 'Manuales' == categoria_actual %}selected{% endif %}>Manuales</option>
+                            <option value="Guías Instruccionales" {% if 'Guías Instruccionales' == categoria_actual %}selected{% endif %}>Guías de Procesos Instruccionales</option>
+                        </optgroup>
+                        <optgroup label="Postgrado">
+                            <option value="Postgrado" {% if 'Postgrado' == categoria_actual %}selected{% endif %}>Documentos de Postgrado</option>
+                        </optgroup>
+                        {% for categoria in categorias %}
+                        {% if categoria not in ['Artículos', 'Informes Técnicos', 'E-Book', 'Doctum', 'Manuales', 'Guías Instruccionales', 'Postgrado'] %}
+                        <option value="{{ categoria }}" {% if categoria == categoria_actual %}selected{% endif %}>
+                            {{ categoria }}
+                        </option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="tipo" class="form-label">Tipo de Documento</label>
+                    <select class="form-select" id="tipo" name="tipo">
+                        <option value="">Todos los tipos</option>
+                        {% for tipo in tipos %}
+                        <option value="{{ tipo }}" {% if tipo == tipo_actual %}selected{% endif %}>
+                            {{ tipo.title() }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-search me-1"></i>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="py-5">
+    <div class="container">
+        <!-- Statistics -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <span class="stats-number">{{ documentos|length }}</span>
+                    <span class="stats-label">Documentos</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <span class="stats-number">{{ categorias|length }}</span>
+                    <span class="stats-label">Categorías</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <span class="stats-number">{{ tipos|length }}</span>
+                    <span class="stats-label">Tipos</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <span class="stats-number">{{ documentos|sum(attribute='descargas') }}</span>
+                    <span class="stats-label">Descargas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission and Vision Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="stats-card h-100">
+                    <h4 class="text-primary"><i class="fas fa-bullseye me-2"></i>Misión</h4>
+                    <p class="mb-0">Recopilar, preservar y dar difusión a la producción académica e intelectual del cuerpo docente de la UMC, con el fin de incentivar la investigación científica y obtener reconocimiento y visibilidad a la institución en el entorno educativo.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="stats-card h-100">
+                    <h4 class="text-primary"><i class="fas fa-eye me-2"></i>Visión</h4>
+                    <p class="mb-0">Convertirse en un referente, nacional e internacional, para la comunidad académica, facilitando el acceso a través de la plataforma digital, dando acceso público a la información.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Prompt for Professors -->
+        {% if current_user.is_authenticated and current_user.__class__.__name__ == 'Profesor' and documentos|length == 0 %}
+        <div class="upload-prompt">
+            <h3><i class="fas fa-upload me-2"></i>¡Contribuye a ZARPE!</h3>
+            <p class="mb-3">Como profesor, puedes contribuir al repositorio ZARPE subiendo tus investigaciones, artículos, tesis y documentos académicos.</p>
+            <a href="{{ url_for('subir_documento') }}" class="btn btn-accent btn-lg">
+                <i class="fas fa-plus me-2"></i>
+                Subir Primer Documento
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Documents Grid -->
+        {% if documentos %}
+        <div class="row">
+            {% for documento in documentos %}
+            <div class="col-lg-6 col-xl-4">
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="document-type">{{ documento.tipo_documento }}</span>
+                            <span class="document-category">{{ documento.categoria }}</span>
+                        </div>
+                        <h5 class="mb-0">{{ documento.titulo }}</h5>
+                    </div>
+                    
+                    <div class="document-body">
+                        <div class="document-meta">
+                            <div class="mb-2">
+                                <i class="fas fa-user"></i>
+                                {% set author_found = false %}
+                                {% if 'Autores:' in documento.descripcion %}
+                                    {% for sentence in documento.descripcion.split('.') %}
+                                        {% if 'Autores:' in sentence and not author_found %}
+                                            {{ sentence.split('Autores:')[1].strip() }}
+                                            {% set author_found = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% elif 'Autora:' in documento.descripcion %}
+                                    {% for sentence in documento.descripcion.split('.') %}
+                                        {% if 'Autora:' in sentence and not author_found %}
+                                            {{ sentence.split('Autora:')[1].strip() }}
+                                            {% set author_found = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if not author_found %}
+                                    {{ documento.autor.get_nombre_completo() }}
+                                {% endif %}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-calendar"></i>
+                                {% if documento.fecha_publicacion %}
+                                    {{ documento.fecha_publicacion.strftime('%d/%m/%Y') }}
+                                {% else %}
+                                    {{ documento.fecha_subida.strftime('%d/%m/%Y') }}
+                                {% endif %}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-download"></i>
+                                {{ documento.descargas }} descargas
+                            </div>
+                            {% if documento.isbn %}
+                            <div class="mb-2">
+                                <i class="fas fa-barcode"></i>
+                                ISBN: {{ documento.isbn }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if documento.descripcion %}
+                        <p class="text-muted mb-3">{{ documento.descripcion[:150] }}{% if documento.descripcion|length > 150 %}...{% endif %}</p>
+                        {% endif %}
+                        
+                        {% if documento.palabras_clave %}
+                        <div class="keywords">
+                            {% for palabra in documento.palabras_clave.split(',') %}
+                            <span class="keyword-tag">{{ palabra.strip() }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <div class="mt-3">
+                            {% if documento.archivo_pdf or documento.url_externa %}
+                            <a href="{{ url_for('descargar_documento', documento_id=documento.id) }}" 
+                               class="btn btn-download" target="_blank">
+                                <i class="fas fa-download me-2"></i>
+                                {% if documento.archivo_pdf %}Descargar PDF{% else %}Ver Documento{% endif %}
+                            </a>
+                            {% else %}
+                            <span class="text-muted">
+                                <i class="fas fa-exclamation-circle me-1"></i>
+                                Sin archivo disponible
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-documents">
+            <i class="fas fa-books"></i>
+            <h3>No hay documentos disponibles</h3>
+            <p class="lead">
+                {% if buscar_actual or categoria_actual or tipo_actual %}
+                No se encontraron documentos que coincidan con los filtros seleccionados.
+                <br>
+                <a href="{{ url_for('repositorio') }}" class="btn btn-outline-primary mt-3">
+                    <i class="fas fa-times me-2"></i>
+                    Limpiar Filtros
+                </a>
+                {% else %}
+                El repositorio académico está esperando las primeras contribuciones de profesores y autoridades.
+                {% endif %}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-submit form when filters change
+document.addEventListener('DOMContentLoaded', function() {
+    const selects = document.querySelectorAll('select[name="categoria"], select[name="tipo"]');
+    selects.forEach(select => {
+        select.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+});
+</script>
+{% endblock %}

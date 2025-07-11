@@ -1,0 +1,301 @@
+{% extends "layout.html" %}
+
+{% block title %}Escuela Nautica - Ingeniería Marina{% endblock %}
+
+{% block content %}
+<!-- Sección de la Parte Inicial -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Escuela Náutica de Venezuela</h1>
+            <p class="hero-description fade-in">Formando profesionales marítimos de excelencia con los conocimientos técnicos para operar y mantener sistemas de propulsión, electricidad y automatización en embarcaciones modernas.</p>
+            <m. div class="hero-btn-group">
+                <a href="{{ url_for('admision')}}" class="btn btn-accent slide-up">Proceso de Admisión</a>
+                <a href="{{ url_for('registro')}}" class="btn btn-outline slide-up">Registro QR</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de características del programa -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Características del Programa</h2>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3 class="feature-title">Enfoque Práctico</h3>
+                    <p class="feature-text">Formación técnica especializada con simuladores de última generación y prácticas en embarcaciones reales.</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="feature-title">Reconocimiento Internacional</h3>
+                    <p class="feature-text">Titulación reconocida por la Organización Marítima Internacional (OMI) que permite trabajar en cualquier buque mercante del mundo.</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Tecnología Avanzada</h3>
+                    <p class="feature-text">Formación en los sistemas más modernos de propulsión, automatización y gestión energética en embarcaciones.</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">Formación Integral</h3>
+                    <p class="feature-text">Desarrollo académico, técnico y personal con énfasis en liderazgo, trabajo en equipo y toma de decisiones.</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="feature-title">Alianzas Estratégicas</h3>
+                    <p class="feature-text">Convenios con empresas navieras nacionales e internacionales para pasantías y oportunidades laborales.</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="feature-box animate-on-scroll" data-animation="fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Investigación</h3>
+                    <p class="feature-text">Participación en proyectos de investigación en tecnologías marítimas sostenibles y eficiencia energética.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divisor de ondas -->
+<div class="wave-divider"></div>
+
+<!-- Programas -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Plan de Estudios</h2>
+        <p class="section-description">Nuestro programa de Ingeniería Marítima está diseñado según los más altos estándares internacionales, combinando teoría, práctica y formación en valores profesionales.</p>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title m-0">Fase Básica</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Fundamentos de ingeniería, matemáticas, física, química y conocimientos básicos de navegación y sistemas marítimos.</p>
+                        <ul>
+                            <li>Matemáticas aplicadas</li>
+                            <li>Física y mecánica</li>
+                            <li>Química general</li>
+                            <li>Introducción a la ingeniería naval</li>
+                            <li>Dibujo técnico</li>
+                            <li>Informática básica</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title m-0">Fase Profesional</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Conocimientos específicos de ingeniería marina, sistemas de propulsión, electrónica y mantenimiento de embarcaciones.</p>
+                        <ul>
+                            <li>Sistemas de propulsión</li>
+                            <li>Electrotecnia marina</li>
+                            <li>Sistemas auxiliares</li>
+                            <li>Refrigeración y climatización</li>
+                            <li>Seguridad marítima</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title m-0">Posgrado</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Especialización en áreas específicas de la ingeniería marina y preparación para la inserción profesional.</p>
+                        <ul>
+                            <li>Construcción Naval</li>
+                            <li>Gestión, logística y seguridad portuaria y marítima</li>
+                            <li>Diseño de Infraestructura portuarias y marítimas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Empresas Navieras</h2>
+        <p class="section-description">Mantenemos comunicaciones activas con importantes empresas navieras que reciben regularmente a nuestros pasantes:</p>
+        <ul class="list-group">
+            <li class="list-group-item align-items-center d-flex justify-content-between">
+                <a href="https://seaengineeringsystems.com" target="_blank" class="naviera-logo-container">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/SEA engineering systems.jpg') }}" alt="SEA engineering systems" class="imagen_libro" style="max-height: 100px;">
+                </a>
+                <a href="https://springmarine.com" target="_blank" class="naviera-logo-container">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/spring marine.jpg') }}" alt="Spring Marine" class="imagen_libro" style="max-height: 150px;">
+                </a>
+                <a href="https://columbia-shipmanagement.com" target="_blank" class="naviera-logo-container">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/columbia-shipmanagement.jpg') }}" alt="Columbia Shipmanagement" class="imagen_libro" style="max-height: 100px;">
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Llamado para embarcarte en la experiencia -->
+<section class="section cta-section" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <h2 class="cta-title">¿Listo para embarcarte en esta experiencia?</h2>
+                <p class="cta-text">El mundo marítimo ofrece oportunidades globales y una carrera apasionante. Da el primer paso hacia tu futuro como ingeniero marino.</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <a href="{{ url_for('admision')}}" class="btn btn-accent">Conoce el Proceso de Admisión</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Últimas noticias -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Actividades</h2>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card news-card">
+                    <div class="card-img-container">
+                        <a href="{{ url_for('static', filename='recursos de plantillas/inicio/images/Estudiantes_Familias.jpeg')}}" target="_blank">
+                            <img src="{{ url_for('static', filename='recursos de plantillas/inicio/images/Estudiantes_Familias.jpeg')}}" alt="Estudiantes compartiendo con sus familias" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="news-date">
+                            <i class="far fa-calendar-alt me-2"></i> 5 de junio, 2025
+                        </div>
+                        <h3 class="card-title">Estudiantes de ingeniería marítima compartiendo con sus familias</h3>
+                        <p class="card-text">Con gran entusiasmo en el Centro de Simulación Cap/Alt. Héctor Cothua, los cadetes de curso náutico 2025 I expusieron su defensa de informe de pasantías con gran éxito, demostrando la técnica y profesionalidad adquiridas en las embarcaciones donde hicieron vida durante 9 meses.</p>
+                        <a href="{{ url_for('noticias')}}" class="btn btn-sm btn-outline-primary mt-2">Leer más</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card news-card">
+                    <div class="card-img-container">
+                        <a href="{{ url_for('static', filename='recursos de plantillas/inicio/images/Estudiantes_Ingenieria.jpeg')}}" target="_blank">
+                            <img src="{{ url_for('static', filename='recursos de plantillas/inicio/images/Estudiantes_Ingenieria.jpeg')}}" alt="Estudiantes de Ingeniería" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="news-date">
+                            <i class="far fa-calendar-alt me-2"></i> 5 de junio, 2025
+                        </div>
+                        <h3 class="card-title">Estudiantes de ingeniería marítima</h3>
+                        <p class="card-text">Con mucho éxito los estudiantes de Ingeniería Marítima de 5to año presentaron su trabajo de grado junto a sus familiares, logrando así pasar otro escalafón en la cantidad de triunfos que disfrutarán al ejercer esta carrera.</p>
+                        <a href="{{ url_for('noticias')}}" class="btn btn-sm btn-outline-primary mt-2">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('noticias')}}" class="btn btn-outline-primary">Ver todas las noticias</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Apartado de Testimonios -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Testimonios de Egresados</h2>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <div class="testimonial-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>Mi formación en la UMC me permitió desarrollarme profesionalmente en embarcaciones de todo el mundo. La combinación de teoría sólida y práctica intensiva fue fundamental para mi éxito en la industria marítima internacional.</p>
+                    <div class="testimonial-info">
+                        <div class="testimonial-img">
+                            <i class="fas fa-user-circle fa-3x"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Ing. Carlos Martínez</h4>
+                            <p>Jefe de Máquinas, Naviera Pacífico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <div class="testimonial-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>Los conocimientos avanzados en automatización y sistemas electrónicos que recibí en la UMC han sido cruciales para adaptarme rápidamente a las nuevas tecnologías que constantemente se implementan en los buques modernos.</p>
+                    <div class="testimonial-info">
+                        <div class="testimonial-img">
+                            <i class="fas fa-user-circle fa-3x"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Ing. Ana Rodríguez</h4>
+                            <p>Oficial de Máquinas, Cruceros Caribe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

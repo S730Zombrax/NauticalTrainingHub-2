@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+
+{% block title %}Iniciar Sesión - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header de Login -->
+    <section class="login-header bg-gradient-primary text-white py-5" style="
+        background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        text-align: center;
+        color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h1 class="hero-title">
+                        <i class="fas fa-sign-in-alt me-3"></i>
+                        Iniciar Sesión
+                    </h1>
+                    <p class="lead">
+                        Accede a tu cuenta de estudiante o profesor
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Login -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4 class="mb-0">
+                                <i class="fas fa-user-circle me-2"></i>
+                                Acceso al Sistema
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="POST" class="needs-validation" novalidate>
+                                <!-- Tipo de Usuario -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Tipo de Usuario *</label>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-check user-type-card">
+                                                <input class="form-check-input" type="radio" name="user_type" 
+                                                       id="tipo_estudiante" value="estudiante" required>
+                                                <label class="form-check-label" for="tipo_estudiante">
+                                                    <div class="text-center p-3">
+                                                        <i class="fas fa-user-graduate fa-2x text-primary mb-2"></i>
+                                                        <div>Estudiante</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check user-type-card">
+                                                <input class="form-check-input" type="radio" name="user_type" 
+                                                       id="tipo_profesor" value="profesor" required>
+                                                <label class="form-check-label" for="tipo_profesor">
+                                                    <div class="text-center p-3">
+                                                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2"></i>
+                                                        <div>Profesor</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2"></i>
+                                        Correo Electrónico *
+                                    </label>
+                                    <input type="email" class="form-control form-control-lg" 
+                                           id="email" name="email" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa un correo electrónico válido.
+                                    </div>
+                                </div>
+
+                                <!-- Contraseña -->
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">
+                                        <i class="fas fa-lock me-2"></i>
+                                        Contraseña *
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" 
+                                               id="password" name="password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, ingresa tu contraseña.
+                                    </div>
+                                </div>
+
+                                <!-- Botón de Login -->
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-sign-in-alt me-2"></i>
+                                        Iniciar Sesión
+                                    </button>
+                                </div>
+
+                                <!-- Enlaces de registro -->
+                                <div class="text-center">
+                                    <p class="mb-2">¿No tienes cuenta?</p>
+                                    <a style="color:rgb(0, 0, 0)" href="{{ url_for('registro_estudiante') }}" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="fas fa-user-plus me-1"></i>
+                                        <h8>Registro Estudiante</h8>
+                                    </a>
+                                    <a style="color:rgb(0, 0, 0)" href="{{ url_for('registro_profesor') }}" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="fas fa-user-tie me-1"></i>
+                                        <h7>Registro Profesor</h7>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.login-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.user-type-card {
+    height: 100%;
+}
+
+.user-type-card .form-check-input {
+    position: absolute;
+    opacity: 0;
+}
+
+.user-type-card .form-check-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.user-type-card .form-check-label:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.user-type-card .form-check-input:checked + .form-check-label {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+    });
+
+    // Form validation
+    const form = document.querySelector('.needs-validation');
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}

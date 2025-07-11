@@ -1,0 +1,438 @@
+{% extends "layout.html" %}
+
+{% block title %}Subir a ZARPE - {% endblock %}
+
+{% block extra_css %}
+<style>
+.upload-header {
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 0 3rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.upload-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.9) 0%, rgba(13, 71, 161, 0.8) 100%);
+    z-index: 1;
+}
+
+.upload-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.upload-form {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: -2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.form-header {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-body {
+    padding: 2rem;
+}
+
+.form-floating label {
+    color: var(--primary);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(255, 157, 0, 0.25);
+}
+
+.file-upload-area {
+    border: 2px dashed var(--primary-light);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    background: var(--bg-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.file-upload-area:hover {
+    border-color: var(--accent);
+    background: #fff8e1;
+}
+
+.file-upload-area.dragover {
+    border-color: var(--accent);
+    background: #fff8e1;
+    transform: scale(1.02);
+}
+
+.file-info {
+    background: var(--success);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: none;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: var(--text-dark);
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, var(--accent-dark) 0%, #cc7700 100%);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 157, 0, 0.4);
+}
+
+.info-card {
+    background: var(--bg-light);
+    border: 1px solid var(--primary-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card h5 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.info-card ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.info-card li {
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+}
+
+.char-counter {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+.required-field {
+    color: var(--danger);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="upload-header">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <div class="zarpe-logo me-3" style="width: 80px; height: auto;">
+                        <img src="{{ url_for('static', filename='zarpe_logo.png') }}" alt="ZARPE Logo" style="width: 100%; height: auto; filter: brightness(1.2);">
+                    </div>
+                    <div>
+                        <h1 class="display-4 fw-bold mb-3" style="color: white !important;">
+                            Subir a ZARPE
+                        </h1>
+                    </div>
+                </div>
+                <p class="lead mb-0">
+                    Contribuye al repositorio académico de la Universidad Marítima del Caribe
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Info Card -->
+                <div class="info-card">
+                    <h5><i class="fas fa-info-circle me-2"></i>Guía para Autores ZARPE</h5>
+                    <ul>
+                        <li>Los documentos deben ser de autoría propia o tener los derechos de distribución</li>
+                        <li>Formatos aceptados: PDF (recomendado), máximo 100MB</li>
+                        <li>Se recomienda incluir su código ORCID para identificación única de autor</li>
+                        <li>Los documentos recibirán un DOI para identificación permanente</li>
+                        <li>Compatible con Google Scholar y repositorios académicos internacionales</li>
+                        <li>Usa palabras clave separadas por comas para facilitar la búsqueda</li>
+                        <li>El documento será revisado antes de aparecer públicamente en ZARPE</li>
+                    </ul>
+                </div>
+
+                <!-- Upload Form -->
+                <div class="upload-form">
+                    <div class="form-header">
+                        <h3><i class="fas fa-document me-2"></i>Información del Documento</h3>
+                        <p class="mb-0">Completa todos los campos obligatorios marcados con <span class="required-field">*</span></p>
+                    </div>
+                    
+                    <div class="form-body">
+                        <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                            <div class="row g-4">
+                                <!-- Basic Information -->
+                                <div class="col-12">
+                                    <h5 class="border-bottom pb-2 mb-3">
+                                        <i class="fas fa-edit me-2 text-primary"></i>
+                                        Información Básica
+                                    </h5>
+                                </div>
+                                
+                                <div class="col-md-8">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="titulo" name="titulo" 
+                                               placeholder="Título del documento" required maxlength="200">
+                                        <label for="titulo">Título del Documento <span class="required-field">*</span></label>
+                                    </div>
+                                    <div class="char-counter">
+                                        <span id="titulo-count">0</span>/200 caracteres
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="tipo_documento" name="tipo_documento" required>
+                                            <option value="">Seleccionar tipo</option>
+                                            <option value="tesis">Tesis</option>
+                                            <option value="libro">Libro</option>
+                                            <option value="articulo">Artículo</option>
+                                            <option value="manual">Manual</option>
+                                            <option value="investigacion">Investigación</option>
+                                            <option value="ensayo">Ensayo</option>
+                                        </select>
+                                        <label for="tipo_documento">Tipo de Documento <span class="required-field">*</span></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="categoria" name="categoria" required>
+                                            <option value="">Seleccionar categoría ZARPE</option>
+                                            <optgroup label="Investigación">
+                                                <option value="Artículos">Artículos</option>
+                                                <option value="Informes Técnicos">Informes Técnicos</option>
+                                                <option value="E-Book">E-Book</option>
+                                            </optgroup>
+                                            <optgroup label="Revistas">
+                                                <option value="Doctum">Revista Doctum</option>
+                                            </optgroup>
+                                            <optgroup label="Pregrado">
+                                                <option value="Manuales">Manuales</option>
+                                                <option value="Guías Instruccionales">Guías de Procesos Instruccionales</option>
+                                            </optgroup>
+                                            <optgroup label="Postgrado">
+                                                <option value="Postgrado">Documentos de Postgrado</option>
+                                            </optgroup>
+                                        </select>
+                                        <label for="categoria">Categoría <span class="required-field">*</span></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="isbn" name="isbn" 
+                                               placeholder="ISBN (opcional)" maxlength="20">
+                                        <label for="isbn">ISBN (opcional)</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="fecha_publicacion" name="fecha_publicacion">
+                                        <label for="fecha_publicacion">Fecha de Publicación</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="descripcion" name="descripcion" 
+                                                  style="height: 120px" placeholder="Descripción del documento" maxlength="1000"></textarea>
+                                        <label for="descripcion">Descripción</label>
+                                    </div>
+                                    <div class="char-counter">
+                                        <span id="descripcion-count">0</span>/1000 caracteres
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="palabras_clave" name="palabras_clave" 
+                                               placeholder="Palabras clave separadas por comas" maxlength="500">
+                                        <label for="palabras_clave">Palabras Clave (separadas por comas)</label>
+                                    </div>
+                                    <small class="text-muted">Ejemplo: navegación, seguridad, buques, océano</small>
+                                    <div class="char-counter">
+                                        <span id="palabras-count">0</span>/500 caracteres
+                                    </div>
+                                </div>
+
+                                <!-- File Upload -->
+                                <div class="col-12">
+                                    <h5 class="border-bottom pb-2 mb-3">
+                                        <i class="fas fa-file-upload me-2 text-primary"></i>
+                                        Archivo o Enlace
+                                    </h5>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="form-label">Subir Archivo PDF</label>
+                                    <div class="file-upload-area" onclick="document.getElementById('archivo_pdf').click()">
+                                        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Haz clic o arrastra un archivo aquí</h5>
+                                        <p class="text-muted mb-0">PDF, máximo 100MB</p>
+                                        <input type="file" id="archivo_pdf" name="archivo_pdf" 
+                                               accept=".pdf" style="display: none;">
+                                    </div>
+                                    <div class="file-info" id="file-info">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        <span id="file-name"></span>
+                                        <button type="button" class="btn btn-sm btn-outline-light float-end" onclick="clearFile()">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="url" class="form-control" id="url_externa" name="url_externa" 
+                                               placeholder="https://ejemplo.com/documento.pdf" maxlength="500">
+                                        <label for="url_externa">O Enlace Externo</label>
+                                    </div>
+                                    <small class="text-muted">
+                                        Enlace a Google Drive, ResearchGate, etc.
+                                    </small>
+                                </div>
+
+                                <!-- Submit -->
+                                <div class="col-12 text-center pt-4">
+                                    <button type="submit" class="btn btn-submit btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        Subir Documento al Repositorio
+                                    </button>
+                                    <br>
+                                    <a href="{{ url_for('repositorio') }}" class="btn btn-outline-secondary mt-3">
+                                        <i class="fas fa-arrow-left me-2"></i>
+                                        Volver al Repositorio
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Character counters
+    const fields = ['titulo', 'descripcion', 'palabras_clave'];
+    fields.forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        const counter = document.getElementById(fieldName.replace('_', '-') + '-count');
+        
+        if (field && counter) {
+            field.addEventListener('input', function() {
+                counter.textContent = this.value.length;
+            });
+        }
+    });
+
+    // File upload handling
+    const fileInput = document.getElementById('archivo_pdf');
+    const uploadArea = document.querySelector('.file-upload-area');
+    const fileInfo = document.getElementById('file-info');
+    const fileName = document.getElementById('file-name');
+
+    fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            const file = this.files[0];
+            fileName.textContent = file.name + ' (' + formatFileSize(file.size) + ')';
+            fileInfo.style.display = 'block';
+            uploadArea.style.background = 'var(--success)';
+            uploadArea.style.color = 'white';
+        }
+    });
+
+    // Drag and drop
+    uploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        this.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length > 0 && files[0].type === 'application/pdf') {
+            fileInput.files = files;
+            fileInput.dispatchEvent(new Event('change'));
+        }
+    });
+
+    // Form validation
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+        const archivo = document.getElementById('archivo_pdf').files.length > 0;
+        const url = document.getElementById('url_externa').value.trim();
+        
+        if (!archivo && !url) {
+            e.preventDefault();
+            alert('Debes subir un archivo PDF o proporcionar un enlace externo.');
+            return false;
+        }
+    });
+});
+
+function clearFile() {
+    document.getElementById('archivo_pdf').value = '';
+    document.getElementById('file-info').style.display = 'none';
+    const uploadArea = document.querySelector('.file-upload-area');
+    uploadArea.style.background = 'var(--bg-light)';
+    uploadArea.style.color = 'inherit';
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+</script>
+{% endblock %}

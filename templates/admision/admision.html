@@ -1,0 +1,297 @@
+{% extends "layout.html" %}
+
+{% block title %}Proceso de Admisión - Escuela Nautica{% endblock %}
+
+{% block content %}
+<!-- Admission sección del hero -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container hero-content text-center">
+        <h1 class="hero-title">Proceso de admisión de la Escuela Nautica de Venezuela</h1>
+        <p class="hero-subtitle">Inicia tu camino para convertirte en un Ingeniero Maritimo de embergadura internacional en la Universidad Marítima del Caribe.</p>
+    </div>
+</section>
+
+<!-- Contenido Main -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="page-content">
+                    <h2 class="mb-4">Requisitos</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Documentación</h3>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item">
+                                    <i class="fas fa-id-card text-primary me-2"></i> 
+                                    Cédula de identidad (original y copia)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-graduation-cap text-primary me-2"></i> 
+                                    Título de Bachiller (original y copia)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt text-primary me-2"></i> 
+                                    Notas certificadas de bachillerato (original y copia)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-user-md text-primary me-2"></i> 
+                                    Certificado médico general (original)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-eye text-primary me-2"></i> 
+                                    Evaluación de la visión (daltonismo y agudeza visual)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-image text-primary me-2"></i> 
+                                    2 fotografías tamaño carnet (fondo blanco)
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-swimmer text-primary me-2"></i> 
+                                    Certificado de natación básica (25 metros)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                    <h2 class="mb-4">Condiciones físicas y medicas requeridas</h2>
+                    <p>La carrera de Ingeniería Marítima exige determinadas condiciones físicas y médicas por la naturaleza del trabajo marítimo:</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Aspecto</th>
+                                    <th>Requerimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Visión</td>
+                                    <td>20/20 (se permite corrección con lentes). Sin daltonismo.</td>
+                                </tr>
+                                <tr>
+                                    <td>Audición</td>
+                                    <td>Normal en ambos oídos.</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema cardiovascular</td>
+                                    <td>Sin patologías significativas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema respiratorio</td>
+                                    <td>Sin asma severa o enfermedades crónicas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Movilidad</td>
+                                    <td>Capacidad completa de movimiento y subir/bajar escaleras.</td>
+                                </tr>
+                                <tr>
+                                    <td>Psicológico</td>
+                                    <td>Estabilidad emocional, capacidad para trabajo bajo presión.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                    <div class="page-content">
+                        <h2 class="mb-4">Navieras</h2>
+                                <p>Mantenemos comunicaciones activas con importantes empresas navieras que reciben regularmente a nuestros pasantes:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item align-items-center d-flex justify-content-between">
+                                    <a href="https://seaengineeringsystems.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/SEA engineering systems.jpg') }}" alt="SEA engineering systems" class="imagen_libro" style="max-height: 100px;">
+                                    </a>
+                                    <a href="https://springmarine.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/spring marine.jpg') }}" alt="Spring Marine" class="imagen_libro" style="max-height: 150px;">
+                                    </a>
+                                    <a href="https://columbia-shipmanagement.com" target="_blank">
+                                        <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/pasantias/images/Columbia Shipmanagement.png') }}" alt="Columbia Shipmanagement" class="imagen_libro" style="max-height: 150px;">
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+            
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Calendar and Contact Info -->
+                <div class="page-content">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title m-0">Calendario de inicio de clases 2025-02</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">JUN</span>
+                                            <strong class="d-block">15</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Apertura de Solicitudes</h5>
+                                        <p class="text-muted mb-0">Inicio del periodo de admisión</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">JUL</span>
+                                            <strong class="d-block">30</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Cierre de Solicitudes</h5>
+                                        <p class="text-muted mb-0">Último día para aplicar</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">AGO</span>
+                                            <strong class="d-block">25</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Evaluación Médica</h5>
+                                        <p class="text-muted mb-0">Exámenes físicos y médicos</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">SEP</span>
+                                            <strong class="d-block">10</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Entrevistas</h5>
+                                        <p class="text-muted mb-0">Entrevistas personales</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">OCT</span>
+                                            <strong class="d-block">10</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Inicio de Clases</h5>
+                                        <p class="text-muted mb-0">Primer día del semestre</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title m-0">Contactos</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">Para cualquier consulta sobre el proceso de admisión:</p>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-envelope fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Email</h5>
+                                    <p class="mb-0">admisiones@umc.edu.ve</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-phone fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Teléfono</h5>
+                                    <p class="mb-0">+58 (212) 555-2468</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-clock fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Horario</h5>
+                                    <p class="mb-0">Lunes a Viernes: 8:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Ubicación</h5>
+                                    <p class="mb-0">Edificio Administrativo, Planta Baja</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">¿Estás listo para embarcarte en esta experiencia?</h3>
+                            <p>La carrera de Ingeniería Marítima te ofrece un futuro emocionante en el sector marítimo global.</p>
+                            <a href="{{ url_for('registro') }}" class="btn btn-primary w-100 mt-3">
+                                <i class="fas fa-user-plus me-2"></i> SOLICITAR ADMISIÓN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección OPSU -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title m-0">Proceso de admisión OPSU</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">Para completar tu proceso de admisión, también debes registrarte en el Sistema Nacional de Ingreso (OPSU):</p>
+                        
+                        <div class="d-flex mb-3">
+                            <div class="me-3 text-primary">
+                                <i class="fas fa-external-link-alt fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Sistema Nacional de Ingreso</h5>
+                                <p class="mb-0">Accede al portal oficial del OPSU para completar tu registro</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://sni.opsu.gob.ve/" target="_blank" class="btn btn-primary w-100 mt-3">
+                            <i class="fas fa-external-link-alt me-2"></i> ACCEDER AL OPSU
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

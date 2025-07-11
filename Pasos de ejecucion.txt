@@ -1,0 +1,5 @@
+Pasos de ejecucion:
+1. En la parte superior del archivo escribir CMD y dar enter, esto para abrir un una ventana negra que da acceso al archivo y su contenido
+2. Ejecutar el comando: pip install -r requirements.txt
+3. Luego ejecutar "python main.py" (sin las comillas)
+4. Ctrl + Click sobre alguno de las dos direcciones ip que te arroja la ventana negra

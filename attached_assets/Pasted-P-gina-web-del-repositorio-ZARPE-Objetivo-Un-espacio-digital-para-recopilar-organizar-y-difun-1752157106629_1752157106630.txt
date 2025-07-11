@@ -1,0 +1,123 @@
+Página web del repositorio ZARPE
+
+●	Objetivo
+Un espacio digital para recopilar, organizar y difundir la producción educativa (concerniente a lo académico, científico y técnico de la universidad).
+
+●	Secciones claves de la página
+Inicio con la Misión y Visión
+
+Misión
+Recopilar, preservar y dar difusión a la producción académica e intelectual del cuerpo docente de la UMC, con el fin de incentivar la investigación científica y obtener reconocimiento y visibilidad a la institución en el entorno educativo.
+
+Visión
+Convertirse en un referente, nacional e internacional, para la comunidad académica, facilitando el acceso a través de la plataforma digital, dando acceso público a la información.
+
+
+Frase con identidad (ej. “Toda travesía comienza con un ZARPE”)
+
+
+
+Acceso rápido a:
+Búsqueda
+Últimas publicaciones
+Categorías destacadas
+Revistas
+
+
+●	Navegar por el contenido
+Filtros o navegación por:
+
+●	Investigación
+Artículos 
+Informes Técnicos
+E-Book
+
+●	Revistas
+Doctum
+
+●	Autores UMC
+Profesores e Investigadores
+(semblanzas de los más leídos)
+
+
+●	Pregrado 
+Manuales 
+Guías de procesos instruccionales
+
+●	Postgrado
+
+
+Buscador
+Orden alfabético
+Año de publicación
+Palabras clave
+Búsqueda avanzada
+Campo de búsqueda con filtros (autor, título, tema, fecha, etc.)
+Resultados con vista previa y metadatos básicos
+
+●	¿Cómo subir y/o contribuir?
+Elaborar una Guía para autores (requisitos, formatos, licencias).
+Diseñar un Formulario de carga.
+Contacto del administrador
+
+●	Sección de Novedades o destacados
+Tesis sobresalientes del mes
+Producciones de impacto
+Publicaciones con temas de interés actual
+
+●	Contacto y ayuda
+Formulario o datos de contacto del equipo del repositorio
+
+●	Diseño responsivo, compatible con dispositivos móviles
+
+●	Funcionalidades clave
+Descarga directa en PDF
+Visualización en línea
+Citación automática (APA, IEEE, etc.)
+DOI o enlace permanente
+Compatible con motores de búsqueda académica (como Google Scholar u OpenAIRE)
+
+●	Extras opcionales
+“Bitácora de ZARPE”: sección de blog con noticias o historias de tesis inspiradoras.
+Integración con ORCID o perfiles académicos de los autores.
+Estadísticas de descargas y visitas (notificar al autor si ha sido citado, cuántas veces).
+
+Términos:
+●	DOI (Digital Object Identifier)
+Se propone incorporar el uso de DOI para los documentos depositados en ZARPE y así asignar a cada publicación (tesis, informes técnicos, artículos, etc.) un código único e inmutable, lo que facilita su localización, citación y preservación digital a largo plazo.
+
+Ventajas clave:
+El documento siempre será accesible, protege de riesgo de pérdida en caso de cambio de servidor o dominio.
+Mayor visibilidad, porque puede ubicarse fácilmente en sistemas como Google Scholar y otros repositorios académicos.
+Credibilidad y trazabilidad: hace ver a ZARPE como un repositorio institucional de alto estándar académico.
+
+●	ORCID (Open Researcher and Contributor ID)
+Se recomienda que los autores que carguen documentos en ZARPE incluyan su código ORCID como parte del metadato de autoría. (blogs.iadb.org)
+
+“ORCID es un sistema internacional que otorga a cada investigador un identificador único, lo que permite vincular de forma precisa sus contribuciones académicas a lo largo del tiempo, sin importar cambios de afiliación, nombres similares o variantes”.
+
+Se sugiere habilitar un campo para el ingreso del ORCID en el formulario de carga de documentos, junto con una breve orientación de cómo obtenerlo gratuitamente en https://orcid.org.
+
+●	Acerca de
+Qué es ZARPE y su propósito institucional.
+Normativa de publicación, preservación y acceso abierto.
+Contacto de soporte o coordinación académica.
+
+●	Pie de página (footer)
+Logos institucionales.
+Enlace a redes sociales o contacto.
+Aviso de privacidad y accesibilidad.
+
+
+●	Solicitudes al equipo de diseño:
+Que el sitio sea responsive (funcione bien en celulares, tabletas, etc.).
+Que tenga un diseño limpio, institucional y temático (usando el logo, colores, símbolos náuticos).
+Que permita integraciones futuras con ORCID, DOI y sistemas internos.
+Que sea fácil de navegar y accesible para todos los perfiles de usuario.
+
+
+
+
+
+
+

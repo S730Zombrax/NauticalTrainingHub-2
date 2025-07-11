@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %} Escuela Nautica de Venezuela- Ingeniería
+            Marítima{% endblock %}
+        </title>
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>"
+        />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Custom CSS -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/navbar.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/footer.css') }}"
+        />
+
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+        <!-- Banner del Ministerio -->
+        <div class="ministry-banner">
+            <div class="container-fluid">
+                <img src="{{ url_for('static', filename='ministry_banner.png') }}" alt="Ministerio del Poder Popular para la Educación Universitaria" class="ministry-logo">
+            </div>
+        </div>
+        
+        <!-- Navigacion -->
+        <nav class="navbar">
+            <div class="container navbar-container">
+                <a
+                    href="{{ url_for('index') }}"
+                    class="navbar-logo"
+                    style="display: flex; align-items: center"
+                >
+                    <img
+                        src="{{ url_for('static', filename='logo_umc.png') }}"
+                        alt="Logo UMC"
+                        style="height: 44px; margin-right: 10px"
+                    />
+                    <span>Escuela Nautica de Venezuela</span>
+                </a>
+
+                <div class="navbar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="navbar-menu">
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}" class="nav-link"
+                            >Inicio</a
+                        >
+                    </li>
+
+                    <!-- Admisión y Registro (Dropdown) -->
+                    <li class="nav-item dropdown">
+                        <a
+                            href="#"
+                            class="nav-link dropdown-toggle"
+                            id="admisionDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Admisión <i class="fas fa-angle-down ms-1"></i>
+                        </a>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="admisionDropdown"
+                        >
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('admision') }}"
+                                    >Proceso de Admisión</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('registro') }}"
+                                    >Registro QR</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Vida Académica (Dropdown) -->
+                    <li class="nav-item dropdown">
+                        <a
+                            href="#"
+                            class="nav-link dropdown-toggle"
+                            id="academicaDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Vida Académica
+                            <i class="fas fa-angle-down ms-1"></i>
+                        </a>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="academicaDropdown"
+                        >
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('historia') }}"
+                                    >Historia</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('vida_cadete') }}"
+                                    >Vida del Cadete</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('pasantias') }}"
+                                    >Pasantías</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('idiomas') }}"
+                                    >Programa de Idiomas</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Uniformes -->
+                    <li class="nav-item">
+                        <a href="{{ url_for('uniforme') }}" class="nav-link"
+                            >Uniforme</a
+                        >
+                    </li>
+
+                    <!-- Recursos (Dropdown) -->
+                    <li class="nav-item dropdown">
+                        <a
+                            href="#"
+                            class="nav-link dropdown-toggle"
+                            id="recursosDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Recursos <i class="fas fa-angle-down ms-1"></i>
+                        </a>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="recursosDropdown"
+                        >
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('biblioteca') }}"
+                                    >Biblioteca</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('classroom') }}"
+                                    >Classroom</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('games') }}"
+                                    >Game Simulator</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('docentes') }}"
+                                    >Evaluación Docente</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Noticias y Eventos (Dropdown) -->
+                    <li class="nav-item dropdown">
+                        <a
+                            href="#"
+                            class="nav-link dropdown-toggle"
+                            id="noticiasDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Noticias y Eventos
+                            <i class="fas fa-angle-down ms-1"></i>
+                        </a>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="noticiasDropdown"
+                        >
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('noticias') }}"
+                                    >Noticias</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('jornada') }}"
+                                    >Jornadas</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Contacto -->
+                    <li class="nav-item">
+                        <a href="{{ url_for('sugerencias') }}" class="nav-link"
+                            >Sugerencias</a
+                        >
+                    </li>
+
+                    <!-- Autoridades -->
+                    <li class="nav-item">
+                        <a
+                            href="{{ url_for('autoridades_env') }}"
+                            class="nav-link"
+                            >Autoridades</a
+                        >
+                    </li>
+                    <!-- Auth Menu Item -->
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="userDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <i class="fas fa-user-circle me-1"></i>
+                            {{ current_user.get_nombre_completo() }}
+                        </a>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="userDropdown"
+                        >
+                            {% if current_user.__class__.__name__ == 'Profesor'
+                            %}
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('panel_profesor') }}"
+                                >
+                                    <i class="fas fa-tachometer-alt me-2"></i
+                                    >Panel de Profesor
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('subir_video') }}"
+                                >
+                                    <i class="fas fa-video me-2"></i>Subir Video
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('subir_documento') }}"
+                                >
+                                    <i class="fas fa-file-upload me-2"></i>Subir
+                                    Documento
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            {% endif %}
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ url_for('logout') }}"
+                                >
+                                    <i class="fas fa-sign-out-alt me-2"></i
+                                    >Cerrar Sesión
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('login') }}" class="nav-link">
+                            <i class="fas fa-sign-in-alt me-1"></i>
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <!-- ZARPE Repositorio -->
+                    <li class="nav-item">
+                        <a href="{{ url_for('repositorio') }}" class="nav-link" style="color: #FFD700 !important;">
+                            ZARPE
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mensaje de error (if any) -->
+        {% if error %}
+        <div class="container mt-5 pt-5">
+            <div class="alert alert-danger text-center">
+                <h4>
+                    <i class="fas fa-exclamation-circle me-2"></i> {{ error }}
+                </h4>
+                <p>
+                    Vuelve a la
+                    <a href="{{ url_for('index') }}">página principal</a> e
+                    intenta de nuevo.
+                </p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="container mt-5 pt-5">
+            {% for category, message in messages %}
+            <div
+                class="alert alert-{{ category }} alert-dismissible fade show"
+                role="alert"
+            >
+                {{ message }}
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
+
+        <!-- Main Content -->
+        <main class="main-content">{% block content %}{% endblock %}</main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-container">
+                <div>
+                    <div class="footer-logo">UMC</div>
+                    <p class="footer-description">
+                        La Universidad Marítima del Caribe forma profesionales
+                        de excelencia para el sector marítimo nacional e
+                        internacional, comprometidos con el desarrollo
+                        sostenible.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <a href="{{ url_for('index') }}">Inicio</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{{ url_for('admision') }}">Admisión</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{{ url_for('pasantias') }}">Pasantías</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{{ url_for('noticias') }}">Noticias</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{{ url_for('biblioteca') }}">Biblioteca</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contacto</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Catia la Mar, La Guaira, Venezuela
+                        </li>
+                        <li class="footer-link">
+                            <i class="fas fa-phone me-2"></i>
+                            +58 (212) 555-1234
+                        </li>
+                        <li class="footer-link">
+                            <i class="fas fa-envelope me-2"></i>
+                            info@umc.edu.ve
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container footer-bottom">
+                <p>
+                    &copy; {{ now.year }} Escuela Nautica de Venezuela. Todos
+                    los derechos reservados.
+                </p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Main JavaScript -->
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/form-validation.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/menu-fix.js') }}"></script>
+
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

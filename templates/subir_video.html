@@ -1,0 +1,401 @@
+{% extends "layout.html" %}
+
+{% block title %}Subir Video - Universidad Marítima del Caribe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/docentes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header -->
+    <section class="upload-header bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-3">
+                        <a href="{{ url_for('panel_profesor') }}" class="btn btn-outline-light me-3">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <div>
+                            <h1 class="h2 mb-0">Subir Video de Clase</h1>
+                            <p class="mb-0 opacity-75">Comparte contenido educativo con tus estudiantes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-video fa-8x opacity-25"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Subida -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-upload me-2"></i>
+                                Información del Video
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                
+                                <!-- Información Básica -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Información Básica
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-8">
+                                        <label for="titulo" class="form-label">Título del Video *</label>
+                                        <input type="text" class="form-control" id="titulo" name="titulo" 
+                                               maxlength="200" required>
+                                        <div class="invalid-feedback">
+                                            Por favor, ingresa un título para el video.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="duracion_minutos" class="form-label">Duración (minutos)</label>
+                                        <input type="number" class="form-control" id="duracion_minutos" 
+                                               name="duracion_minutos" min="1" max="300">
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="descripcion" class="form-label">Descripción</label>
+                                    <textarea class="form-control" id="descripcion" name="descripcion" 
+                                              rows="4" maxlength="1000"
+                                              placeholder="Describe el contenido del video, objetivos de aprendizaje, etc."></textarea>
+                                    <div class="form-text">Máximo 1000 caracteres</div>
+                                </div>
+
+                                <!-- Clasificación Académica -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-tags me-2"></i>
+                                        Clasificación Académica
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-8">
+                                        <label for="materia" class="form-label">Materia *</label>
+                                        <select class="form-select" id="materia" name="materia" required>
+                                            <option value="">Selecciona la materia</option>
+                                            <option value="Ingeniería Naval">Ingeniería Naval</option>
+                                            <option value="Motores Marinos">Motores Marinos</option>
+                                            <option value="Navegación y Maniobra">Navegación y Maniobra</option>
+                                            <option value="Derecho Marítimo">Derecho Marítimo</option>
+                                            <option value="Sistemas de Propulsión">Sistemas de Propulsión</option>
+                                            <option value="Comunicaciones Marítimas">Comunicaciones Marítimas</option>
+                                            <option value="Seguridad Marítima">Seguridad Marítima</option>
+                                            <option value="Meteorología Marina">Meteorología Marina</option>
+                                            <option value="Estructuras Navales">Estructuras Navales</option>
+                                            <option value="Matemáticas Aplicadas">Matemáticas Aplicadas</option>
+                                            <option value="Física Naval">Física Naval</option>
+                                            <option value="Inglés Técnico">Inglés Técnico</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Selecciona la materia correspondiente.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="semestre" class="form-label">Semestre Dirigido</label>
+                                        <select class="form-select" id="semestre" name="semestre">
+                                            <option value="">Todos los semestres</option>
+                                            <option value="1">1er Semestre</option>
+                                            <option value="2">2do Semestre</option>
+                                            <option value="3">3er Semestre</option>
+                                            <option value="4">4to Semestre</option>
+                                            <option value="5">5to Semestre</option>
+                                            <option value="6">6to Semestre</option>
+                                            <option value="7">7mo Semestre</option>
+                                            <option value="8">8vo Semestre</option>
+                                            <option value="9">9no Semestre</option>
+                                            <option value="10">10mo Semestre</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Opciones de Video -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">
+                                        <i class="fas fa-video me-2"></i>
+                                        Archivo o Enlace del Video
+                                    </h5>
+                                    <hr class="mt-2">
+                                </div>
+
+                                <!-- Tipo de Video -->
+                                <div class="mb-4">
+                                    <label class="form-label">Tipo de Video *</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-check video-type-card">
+                                                <input class="form-check-input" type="radio" name="video_type" 
+                                                       id="tipo_archivo" value="archivo" required>
+                                                <label class="form-check-label" for="tipo_archivo">
+                                                    <div class="text-center p-3">
+                                                        <i class="fas fa-upload fa-2x text-primary mb-2"></i>
+                                                        <div>Subir Archivo</div>
+                                                        <small class="text-muted">MP4, AVI, MOV (máx. 100MB)</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check video-type-card">
+                                                <input class="form-check-input" type="radio" name="video_type" 
+                                                       id="tipo_url" value="url" required>
+                                                <label class="form-check-label" for="tipo_url">
+                                                    <div class="text-center p-3">
+                                                        <i class="fas fa-link fa-2x text-primary mb-2"></i>
+                                                        <div>Enlace Externo</div>
+                                                        <small class="text-muted">YouTube, Vimeo, etc.</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Subida de Archivo -->
+                                <div class="mb-4" id="archivo-section" style="display: none;">
+                                    <label for="archivo_video" class="form-label">Archivo de Video</label>
+                                    <input type="file" class="form-control" id="archivo_video" name="archivo_video" 
+                                           accept="video/*">
+                                    <div class="form-text">
+                                        Formatos soportados: MP4, AVI, MOV, WMV. Tamaño máximo: 100MB
+                                    </div>
+                                    <div class="upload-progress mt-2" style="display: none;">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                                 role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- URL Externa -->
+                                <div class="mb-4" id="url-section" style="display: none;">
+                                    <label for="url_video" class="form-label">URL del Video</label>
+                                    <input type="url" class="form-control" id="url_video" name="url_video" 
+                                           placeholder="https://www.youtube.com/watch?v=...">
+                                    <div class="form-text">
+                                        Enlace directo al video en YouTube, Vimeo u otras plataformas
+                                    </div>
+                                </div>
+
+                                <!-- Botones de Acción -->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                                    <a href="{{ url_for('panel_profesor') }}" class="btn btn-outline-secondary me-md-2">
+                                        <i class="fas fa-times me-2"></i>
+                                        Cancelar
+                                    </a>
+                                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                                        <i class="fas fa-upload me-2"></i>
+                                        Subir Video
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.upload-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.video-type-card {
+    height: 100%;
+}
+
+.video-type-card .form-check-input {
+    position: absolute;
+    opacity: 0;
+}
+
+.video-type-card .form-check-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.video-type-card .form-check-label:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.video-type-card .form-check-input:checked + .form-check-label {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.section-header h5 {
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.section-header hr {
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+#submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videoTypeRadios = document.querySelectorAll('input[name="video_type"]');
+    const archivoSection = document.getElementById('archivo-section');
+    const urlSection = document.getElementById('url-section');
+    const archivoInput = document.getElementById('archivo_video');
+    const urlInput = document.getElementById('url_video');
+    const form = document.querySelector('.needs-validation');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Toggle between file upload and URL input
+    videoTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'archivo') {
+                archivoSection.style.display = 'block';
+                urlSection.style.display = 'none';
+                archivoInput.required = true;
+                urlInput.required = false;
+                urlInput.value = '';
+            } else if (this.value === 'url') {
+                archivoSection.style.display = 'none';
+                urlSection.style.display = 'block';
+                archivoInput.required = false;
+                urlInput.required = true;
+                archivoInput.value = '';
+            }
+        });
+    });
+
+    // File upload progress simulation
+    archivoInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            const file = this.files[0];
+            const maxSize = 100 * 1024 * 1024; // 100MB
+
+            if (file.size > maxSize) {
+                alert('El archivo es demasiado grande. El tamaño máximo es 100MB.');
+                this.value = '';
+                return;
+            }
+
+            // Show upload progress (simulation)
+            const progressContainer = document.querySelector('.upload-progress');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            
+            progressContainer.style.display = 'block';
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        progressContainer.style.display = 'none';
+                    }, 1000);
+                }
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = Math.round(progress) + '%';
+            }, 200);
+        }
+    });
+
+    // Character counters
+    const textareas = document.querySelectorAll('textarea[maxlength], input[maxlength]');
+    textareas.forEach(textarea => {
+        const maxLength = parseInt(textarea.getAttribute('maxlength'));
+        let counter = textarea.nextElementSibling;
+        
+        if (!counter || !counter.classList.contains('form-text')) {
+            counter = document.createElement('div');
+            counter.className = 'form-text';
+            textarea.parentNode.insertBefore(counter, textarea.nextSibling);
+        }
+        
+        const updateCounter = () => {
+            const remaining = maxLength - textarea.value.length;
+            counter.textContent = `${remaining} caracteres restantes`;
+            
+            if (remaining < 50) {
+                counter.classList.add('text-warning');
+            } else {
+                counter.classList.remove('text-warning');
+            }
+            
+            if (remaining < 10) {
+                counter.classList.add('text-danger');
+                counter.classList.remove('text-warning');
+            } else {
+                counter.classList.remove('text-danger');
+            }
+        };
+        
+        updateCounter();
+        textarea.addEventListener('input', updateCounter);
+    });
+
+    // Form validation
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            // Disable submit button to prevent double submission
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Subiendo...';
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}

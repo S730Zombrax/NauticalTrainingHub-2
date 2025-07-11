@@ -1,0 +1,356 @@
+{% extends "layout.html" %}
+
+{% block title %}Noticias - Escuela Nautica{% endblock %}
+
+{% block content %}
+<!-- Sección de noticias -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Noticias y Eventos</h1>
+            <p class="hero-description fade-in">Mantente informado sobre las últimas actividades, logros y novedades de la carrera de Ingeniería Marítima.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Contenido principal-->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Noticias destacadas -->
+                <div class="card mb-5 shadow">
+                    <div class="img-placeholder" style="height: 350px;">
+                        <i class="fas fa-newspaper fa-4x"></i>
+                        <p>Nuevos simuladores de sala de máquinas</p>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">Destacado</span>
+                        <h2 class="card-title">La UMC adquiere simuladores de última generación para la formación en Ingeniería Marítima</h2>
+                        <p class="text-muted mb-3">Publicado: 15 de mayo, 2023 | Por: Departamento de Comunicaciones</p>
+                        <p class="card-text">La Universidad Marítima del Caribe ha adquirido un conjunto de simuladores de sala de máquinas de última generación, que permitirá a los estudiantes de Ingeniería Marítima formarse con tecnología de punta, similar a la que encontrarán en los buques más modernos de la flota mercante internacional.</p>
+                        <p class="card-text">Los nuevos simuladores, desarrollados por la empresa líder en tecnología marítima Kongsberg Maritime, permiten recrear con extrema fidelidad las condiciones de operación de diversos tipos de sistemas de propulsión, incluyendo motores diésel convencionales, sistemas de propulsión dual-fuel, y las más recientes tecnologías de propulsión híbrida y eléctrica.</p>
+                        <p class="card-text">"Esta adquisición representa un salto cualitativo en la formación de nuestros ingenieros marinos", declaró el Prof. Manuel Rodríguez, director de la Escuela de Ingeniería. "Los estudiantes podrán experimentar situaciones realistas de operación normal, procedimientos de emergencia y resolución de problemas técnicos en un entorno seguro antes de enfrentarse a equipos reales durante sus pasantías".</p>
+                        <p class="card-text">La instalación incluye 12 estaciones de trabajo para estudiantes y una estación principal para el instructor, quien puede programar diferentes escenarios de entrenamiento, incluyendo fallos de sistemas, condiciones meteorológicas adversas y situaciones de emergencia.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary" disabled>
+                                <i class="fas fa-images me-2"></i> Galería de imágenes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- News List -->
+                <h2 class="mb-4">Noticias Recientes</h2>
+                
+                <div class="card mb-4 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="img-placeholder h-100">
+                                <i class="fas fa-handshake fa-3x"></i>
+                                <p>Convenio con naviera internacional</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">Firmado nuevo convenio con naviera internacional Maersk Line</h3>
+                                <p class="text-muted mb-2">3 de abril, 2023</p>
+                                <p class="card-text">La Universidad Marítima del Caribe ha firmado un importante convenio de cooperación con la naviera Maersk Line, líder mundial en transporte marítimo de contenedores, que permitirá a nuestros estudiantes realizar pasantías en su moderna flota.</p>
+                                <p class="card-text">El acuerdo contempla la asignación de 10 plazas anuales para cadetes de Ingeniería Marítima en buques portacontenedores que operan en rutas internacionales...</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>Leer más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="img-placeholder h-100">
+                                <i class="fas fa-trophy fa-3x"></i>
+                                <p>Estudiantes ganan competencia</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">Estudiantes de Ingeniería Marítima ganan competencia internacional de eficiencia energética</h3>
+                                <p class="text-muted mb-2">20 de marzo, 2023</p>
+                                <p class="card-text">Un equipo de estudiantes de cuarto año de Ingeniería Marítima de la UMC obtuvo el primer lugar en la competencia internacional "Green Ship Design Challenge", organizada por la Universidad Técnica de Dinamarca.</p>
+                                <p class="card-text">El equipo, conformado por los estudiantes María González, Pedro Ramírez y Juan Mendoza, presentó un innovador diseño para optimizar el consumo energético en sistemas de propulsión dual-fuel...</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>Leer más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="img-placeholder h-100">
+                                <i class="fas fa-university fa-3x"></i>
+                                <p>Acreditación internacional</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">Programa de Ingeniería Marítima recibe renovación de acreditación internacional</h3>
+                                <p class="text-muted mb-2">15 de febrero, 2023</p>
+                                <p class="card-text">La carrera de Ingeniería Marítima de la Universidad Marítima del Caribe ha recibido la renovación de su acreditación internacional por parte del International Maritime Accreditation Board (IMAB) por un período de 5 años.</p>
+                                <p class="card-text">Este reconocimiento confirma que nuestro programa cumple con los más altos estándares de calidad educativa en el ámbito marítimo global y garantiza que nuestros egresados puedan ejercer su profesión en cualquier parte del mundo...</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>Leer más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="img-placeholder h-100">
+                                <i class="fas fa-laptop fa-3x"></i>
+                                <p>Nuevos cursos virtuales</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">Lanzamiento de plataforma de cursos virtuales para complementar formación técnica</h3>
+                                <p class="text-muted mb-2">5 de enero, 2023</p>
+                                <p class="card-text">La Escuela de Ingeniería Marítima ha lanzado una nueva plataforma de cursos virtuales que complementará la formación presencial de los estudiantes. La iniciativa incluye contenidos especializados en áreas como nuevas tecnologías de propulsión, sistemas de automatización y regulaciones ambientales marítimas.</p>
+                                <p class="card-text">Los cursos han sido desarrollados en colaboración con profesionales de la industria y serán reconocidos como créditos electivos dentro del plan de estudios...</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>Leer más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-5 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="img-placeholder h-100">
+                                <i class="fas fa-book fa-3x"></i>
+                                <p>Actualización curricular</p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">Actualización del plan de estudios incorpora nuevas tecnologías sostenibles</h3>
+                                <p class="text-muted mb-2">10 de diciembre, 2022</p>
+                                <p class="card-text">El Consejo Universitario ha aprobado la actualización del plan de estudios de Ingeniería Marítima, que incorpora nuevas asignaturas relacionadas con tecnologías sostenibles, como sistemas de propulsión de bajo impacto ambiental, gestión de emisiones y eficiencia energética.</p>
+                                <p class="card-text">La renovación curricular, que entrará en vigencia a partir del próximo período académico, responde a las nuevas exigencias de la industria marítima global y a los compromisos ambientales establecidos por la Organización Marítima Internacional (OMI)...</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>Leer más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Paginación de noticias">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Sidebar content -->
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Search -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Buscar Noticias</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar noticias...">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h4 class="m-0">Categorías</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Académicas</a>
+                                    <span class="badge bg-primary rounded-pill">12</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Eventos</a>
+                                    <span class="badge bg-primary rounded-pill">8</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Tecnología</a>
+                                    <span class="badge bg-primary rounded-pill">6</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Convenios</a>
+                                    <span class="badge bg-primary rounded-pill">5</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Reconocimientos</a>
+                                    <span class="badge bg-primary rounded-pill">4</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="#" class="text-decoration-none">Investigación</a>
+                                    <span class="badge bg-primary rounded-pill">3</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Events -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-accent text-dark">
+                            <h4 class="m-0">Próximos Eventos</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">JUN</span>
+                                            <strong class="d-block">15</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Jornada de Orientación Profesional</h5>
+                                        <p class="text-muted mb-0"><i class="fas fa-map-marker-alt me-1"></i> Auditorio Principal</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">JUL</span>
+                                            <strong class="d-block">22</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Ceremonia de Ascenso de Cadetes</h5>
+                                        <p class="text-muted mb-0"><i class="fas fa-map-marker-alt me-1"></i> Plaza de Armas</p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex">
+                                    <div class="me-3 text-center">
+                                        <div class="bg-primary text-white rounded p-2 mb-1">
+                                            <span class="d-block">AGO</span>
+                                            <strong class="d-block">10</strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Simposio Internacional de Ingeniería Marítima</h5>
+                                        <p class="text-muted mb-0"><i class="fas fa-map-marker-alt me-1"></i> Centro de Convenciones</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="p-3 text-center">
+                                <button class="btn btn-sm btn-outline-primary" disabled>
+                                    <i class="fas fa-calendar-alt me-2"></i> Ver Calendario Completo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Boletín Informativo</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Suscríbete para recibir las últimas noticias y eventos de la carrera de Ingeniería Marítima:</p>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agree-terms" required>
+                                    <label class="form-check-label" for="agree-terms">
+                                        Acepto recibir comunicaciones por correo electrónico
+                                    </label>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary" disabled>
+                                        <i class="fas fa-paper-plane me-2"></i> Suscribirme
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Alumni -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Nuestros Egresados en las Noticias</h2>
+        <p class="section-description">Los profesionales formados en nuestra institución destacan en la industria marítima global.</p>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#" class="text-decoration-none">Egresada de la UMC nombrada Primera Oficial en buque de investigación oceanográfica</a></h4>
+                        <p class="text-muted mb-3">Publicado: 10 de abril, 2023</p>
+                        <p class="card-text">Alejandra Martínez, graduada en 2018 de Ingeniería Marítima, ha sido nombrada Primera Oficial de Máquinas del buque oceanográfico "Explorer", operado por la National Oceanic and Atmospheric Administration (NOAA) de Estados Unidos.</p>
+                        <p class="card-text">Martínez es la primera mujer venezolana en ocupar este cargo en un buque de investigación internacional, destacando por sus conocimientos en sistemas de propulsión eléctrica...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#" class="text-decoration-none">Ingeniero egresado de la UMC lidera proyecto de eficiencia energética en naviera europea</a></h4>
+                        <p class="text-muted mb-3">Publicado: 22 de marzo, 2023</p>
+                        <p class="card-text">Carlos Rodríguez, graduado de Ingeniería Marítima en 2015, ha sido designado como líder del proyecto "Green Shipping Initiative" de la naviera Stena Line, enfocado en reducir las emisiones de carbono de su flota de ferries.</p>
+                        <p class="card-text">El proyecto, con un presupuesto de 15 millones de euros, implementará tecnologías innovadoras para optimizar el consumo de combustible y reducir el impacto ambiental...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="hero">
+    <div class="container hero-content text-center">
+        <h1 class="hero-title">Comparte tu Historia</h1>
+        <p class="hero-subtitle">¿Eres egresado de Ingeniería Marítima? Cuéntanos sobre tus logros profesionales para inspirar a las nuevas generaciones.</p>
+        <button class="btn btn-accent btn-lg" disabled>
+            <i class="fas fa-edit me-2"></i> Enviar mi historia
+        </button>
+    </div>
+</section>
+{% endblock %}

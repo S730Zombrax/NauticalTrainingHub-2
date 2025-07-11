@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+
+{% block title %}Registro de Profesor - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <section class="register-header bg-gradient-primary text-white py-5" style="
+        background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        text-align: center;
+        color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h1 class="hero-title">
+                        <i class="fas fa-chalkboard-teacher me-3"></i>
+                        Registro de Profesor
+                    </h1>
+                    <p class="lead">
+                        Únete al cuerpo docente de la Universidad Marítima del Caribe
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">Información del Profesor</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="POST" class="needs-validation" novalidate>
+                                
+                                <!-- Información Personal -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">Información Personal</h5>
+                                    <hr>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre" class="form-label">Nombre *</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="apellido" class="form-label">Apellido *</label>
+                                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="cedula" class="form-label">Cédula *</label>
+                                        <input type="text" class="form-control" id="cedula" name="cedula" 
+                                               placeholder="V-12345678" data-type="cedula" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Institucional *</label>
+                                    <input type="email" class="form-control" id="email" name="email" 
+                                           placeholder="nombre@umc.edu.ve" required>
+                                </div>
+
+                                <!-- Información Académica -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">Información Académica</h5>
+                                    <hr>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="departamento" class="form-label">Departamento *</label>
+                                        <select class="form-select" id="departamento" name="departamento" required>
+                                            <option value="">Selecciona departamento</option>
+                                            <option value="Ciencias Marítimas">Ciencias Marítimas</option>
+                                            <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+                                            <option value="Ciencias Náuticas">Ciencias Náuticas</option>
+                                            <option value="Ciencias Jurídicas">Ciencias Jurídicas</option>
+                                            <option value="Tecnología Naval">Tecnología Naval</option>
+                                            <option value="Ciencias Básicas">Ciencias Básicas</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="experiencia_anos" class="form-label">Años de Experiencia</label>
+                                        <input type="number" class="form-control" id="experiencia_anos" 
+                                               name="experiencia_anos" min="0" max="50">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="titulo_academico" class="form-label">Título Académico</label>
+                                    <input type="text" class="form-control" id="titulo_academico" 
+                                           name="titulo_academico" placeholder="Ej: Dr. en Ingeniería Naval">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="materias" class="form-label">Materias que Imparte *</label>
+                                    <textarea class="form-control" id="materias" name="materias" rows="3" 
+                                              placeholder="Separa las materias con comas. Ej: Ingeniería Naval, Estructuras Navales" 
+                                              required></textarea>
+                                    <div class="form-text">Separa múltiples materias con comas</div>
+                                </div>
+
+                                <!-- Acceso al Sistema -->
+                                <div class="section-header mb-4">
+                                    <h5 class="text-primary">Acceso al Sistema</h5>
+                                    <hr>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Contraseña *</label>
+                                    <input type="password" class="form-control" id="password" name="password" 
+                                           minlength="8" required>
+                                    <div class="form-text">Mínimo 8 caracteres</div>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-user-plus me-2"></i>
+                                        Registrarse como Profesor
+                                    </button>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <p>¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.register-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.section-header h5 {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.section-header hr {
+    height: 2px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    opacity: 1;
+}
+</style>
+
+<script src="{{ url_for('static', filename='js/form-validation.js') }}"></script>
+{% endblock %}

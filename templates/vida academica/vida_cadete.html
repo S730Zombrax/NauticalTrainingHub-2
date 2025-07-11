@@ -1,0 +1,502 @@
+{% extends "layout.html" %}
+
+{% block title %}Vida del Cadete - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<!-- Sección de Héroes de la Vida de Cadetes -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Vida del Cadete Nautico</h1>
+            <p class="hero-description fade-in">Descubre cómo es la experiencia de formarse como Ingeniero Maritima en la Universidad Marítima del Caribe.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contenido principal -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Faena del cadete nautico</h2>
+
+                <p class="lead mb-4">La formación de un ingeniero Maritimo combina rigurosidad académica, disciplina militar y preparación práctica para la vida a bordo. Conoce cómo es un día típico en nuestra institución.</p>
+
+                <div class="card mb-5 shadow">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title m-0">Rutina</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Hora</th>
+                                        <th>Actividad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>07:00</td>
+                                        <td>Lista y Parte General</td>
+                                    </tr>
+                                    <tr>
+                                        <td>08:00</td>
+                                        <td>Actividades Académicas</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:00</td>
+                                        <td>Desayuno en el Comedor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:30</td>
+                                        <td>Actividades Académicas</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12:00</td>
+                                        <td>Almuerzo en el Comedor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13:00</td>
+                                        <td>Lista y Parte Vespertino</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13:20</td>
+                                        <td>Actividades Académicas</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15:00</td>
+                                        <td>Actividades de acuerdo de la Agrupación asignada</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17:15</td>
+                                        <td>Formación Honores y Retirada</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Nota:</strong> Este horario puede variar durante fines de semana, períodos de exámenes y actividades especiales.
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mb-4">Tradiciones y Ceremonias</h2>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-water fa-3x"></i>
+                                <p>Ceremonia de Bautizo</p>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Bautizo Marino</h3>
+                                <p class="card-text">Esta ancestral tradición marítima marca el inicio de la vida como cadete. Los estudiantes de primer ingreso participan en una ceremonia simbólica donde son "bautizados" con agua de mar, sellando su compromiso con la profesión marítima.</p>
+                                <p class="card-text">La ceremonia incluye juramentos, retos físicos y la entrega del pin distintivo de cadete, simbolizando su aceptación en la comunidad marítima.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-award fa-3x"></i>
+                                <p>Ceremonia de Ascenso</p>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Ascensos e Imposición de Galones</h3>
+                                <p class="card-text">Al finalizar cada año académico, los cadetes que han cumplido satisfactoriamente con sus obligaciones académicas y disciplinarias reciben sus nuevos distintivos de rango en una solemne ceremonia.</p>
+                                <p class="card-text">Los galones son impuestos por oficiales de marina, familiares o padrinos académicos, representando el avance en su carrera y las mayores responsabilidades que asumen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-graduation-cap fa-3x"></i>
+                                <p>Ceremonia de Graduación</p>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Graduación y Juramento Profesional</h3>
+                                <p class="card-text">La culminación de la formación académica se celebra con una ceremonia formal donde los graduandos reciben su diploma, insignias profesionales y realizan el juramento que los compromete con la ética y excelencia en el ejercicio de la ingeniería marina.</p>
+                                <p class="card-text">La ceremonia incluye el tradicional lanzamiento de gorras al aire, simbolizando el final de la etapa de formación y el inicio de su vida profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-flag fa-3x"></i>
+                                <p>Día de la Marina Mercante</p>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Celebración del Día de la Marina Mercante</h3>
+                                <p class="card-text">Cada 24 de septiembre se conmemora el Día de la Marina Mercante Venezolana con un desfile naval, competencias deportivas entre escuadrones y una ceremonia de reconocimiento a marinos mercantes destacados.</p>
+                                <p class="card-text">Esta celebración refuerza el sentido de pertenencia a la comunidad marítima nacional e internacional, conectando a los cadetes con la rica historia naval del país.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="libros">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow">
+                                <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/vida del cadete/images/Tradiciones Navales.png') }}" class="card-img-top" alt="Tradiciones navales">
+                                <a href="{{ url_for('static', filename='recursos de plantillas/vida academica/vida del cadete/documents/Tradiciones Navales.pdf') }}" class="btn btn-primary m-3" target="_blank">
+                                    <i class="fas fa-file-pdf me-2"></i> Descargar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mb-4">Fotografías de la Vida del Cadete</h2>
+
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-users fa-3x"></i>
+                                <p>Formación Matutina</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Formación Matutina</h5>
+                                <p class="card-text text-muted">Abril 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                                <p>Clase de Sistemas de Propulsión</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Clase de Sistemas de Propulsión</h5>
+                                <p class="card-text text-muted">Mayo 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-water fa-3x"></i>
+                                <p>Ceremonia de Bautizo</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Ceremonia de Bautizo</h5>
+                                <p class="card-text text-muted">Octubre 2022</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-medal fa-3x"></i>
+                                <p>Imposición de Galones</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Imposición de Galones</h5>
+                                <p class="card-text text-muted">Julio 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-ship fa-3x"></i>
+                                <p>Prácticas en Simulador</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Prácticas en Simulador</h5>
+                                <p class="card-text text-muted">Junio 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 200px;">
+                                <i class="fas fa-graduation-cap fa-3x"></i>
+                                <p>Graduación Promoción 2022</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Graduación Promoción 2022</h5>
+                                <p class="card-text text-muted">Diciembre 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary" disabled>
+                        <i class="fas fa-images me-2"></i> Ver Más Fotografías
+                    </button>
+                </div>
+
+                <h2 class="mb-4">Videos de Actividades</h2>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 250px;">
+                                <i class="fas fa-video fa-3x"></i>
+                                <p>Video Simulacro de Emergencia</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Simulacro de Emergencia en Sala de Máquinas</h5>
+                                <p class="card-text">Los cadetes participan en un ejercicio realista de control de incendios y emergencias.</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>
+                                    <i class="fas fa-play me-2"></i> Reproducir Video
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow">
+                            <div class="img-placeholder" style="height: 250px;">
+                                <i class="fas fa-video fa-3x"></i>
+                                <p>Video Competencias Deportivas</p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Competencias Deportivas Intercadetes</h5>
+                                <p class="card-text">Resumen de las olimpiadas internas donde compiten los diferentes escuadrones.</p>
+                                <button class="btn btn-sm btn-outline-primary" disabled>
+                                    <i class="fas fa-play me-2"></i> Reproducir Video
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Contenido de la barra lateral -->
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Cuadro de honor -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Cuadro de Honor</h4>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="text-center mb-3">Mejores Promedios 2023</h4>
+
+                            <div class="text-center mb-4">
+                                <div class="img-placeholder rounded-circle mx-auto mb-3" style="width: 100px; height: 100px;">
+                                    <i class="fas fa-user-graduate fa-3x"></i>
+                                </div>
+                                <h5 class="mb-1">Carlos Rodríguez Martínez</h5>
+                                <p class="text-muted">Promedio: 19.75/20</p>
+                                <div class="badge bg-primary mb-2">Primer Lugar</div>
+                                <p>5to Año de Ingeniería Marina</p>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="text-center mb-3">Excelencia Académica</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>María Fernanda Torres</strong>
+                                        <div class="text-muted small">4to Año - 19.63/20</div>
+                                    </div>
+                                    <span class="badge bg-secondary">2do Lugar</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Alejandro Gómez</strong>
+                                        <div class="text-muted small">5to Año - 19.42/20</div>
+                                    </div>
+                                    <span class="badge bg-secondary">3er Lugar</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Laura Mendoza</strong>
+                                        <div class="text-muted small">3er Año - 19.15/20</div>
+                                    </div>
+                                    <span class="badge bg-secondary">4to Lugar</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Pedro Ramírez</strong>
+                                        <div class="text-muted small">4to Año - 18.98/20</div>
+                                    </div>
+                                    <span class="badge bg-secondary">5to Lugar</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+             <!-- Organizaciones estudiantiles -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h4 class="m-0">Agrupaciones Estudiantiles</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h4 class="border-bottom pb-2">Consejo de Cadetes</h4>
+                                <p>Órgano representativo que sirve de enlace entre el cuerpo estudiantil y las autoridades universitarias. Organiza actividades y vela por el bienestar de los cadetes.</p>
+                                <div class="d-grid">
+                                    <button class="btn btn-sm btn-outline-secondary" disabled>
+                                        <i class="fas fa-users me-2"></i> Conocer más
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="border-bottom pb-2">Club Náutico</h4>
+                                <p>Promueve actividades relacionadas con deportes acuáticos, navegación a vela y conservación del medio ambiente marino.</p>
+                                <div class="d-grid">
+                                    <button class="btn btn-sm btn-outline-secondary" disabled>
+                                        <i class="fas fa-sailboat me-2"></i> Conocer más
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="border-bottom pb-2">Grupo de Investigación Marina</h4>
+                                <p>Desarrolla proyectos de investigación en tecnologías marítimas, eficiencia energética y reducción de emisiones en buques.</p>
+                                <div class="d-grid">
+                                    <button class="btn btn-sm btn-outline-secondary" disabled>
+                                        <i class="fas fa-microscope me-2"></i> Conocer más
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="border-bottom pb-2">Coro y Banda Naval</h4>
+                                <p>Agrupación musical que representa a la universidad en eventos oficiales y mantiene vivas las tradiciones musicales marítimas.</p>
+                                <div class="d-grid">
+                                    <button class="btn btn-sm btn-outline-secondary" disabled>
+                                        <i class="fas fa-music me-2"></i> Conocer más
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonios de cadetes-->
+                    <div class="card shadow">
+                        <div class="card-header bg-accent text-dark">
+                            <h4 class="m-0">Testimonios de Cadetes</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="p-3 border-bottom">
+                                <div class="img-placeholder rounded-circle mb-3 mx-auto" style="width: 80px; height: 80px;">
+                                    <i class="fas fa-user fa-2x"></i>
+                                </div>
+                                <blockquote class="blockquote text-center">
+                                    <p>"La vida como cadete es exigente pero gratificante. La disciplina y conocimiento que adquirimos aquí nos prepara no solo para nuestra carrera profesional, sino para la vida."</p>
+                                    <footer class="blockquote-footer">Ana Márquez, <cite>3er Año de Ingeniería Marina</cite></footer>
+                                </blockquote>
+                            </div>
+                            <div class="p-3">
+                                <div class="img-placeholder rounded-circle mb-3 mx-auto" style="width: 80px; height: 80px;">
+                                    <i class="fas fa-user fa-2x"></i>
+                                </div>
+                                <blockquote class="blockquote text-center">
+                                    <p>"Lo que más valoro es el compañerismo que se desarrolla. Vivimos, estudiamos y enfrentamos desafíos juntos, formando lazos que duran toda la vida profesional."</p>
+                                    <footer class="blockquote-footer">Miguel Sánchez, <cite>4to Año de Ingeniería Marina</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Historias de exalumnos -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Historias de Éxito de Nuestros Egresados</h2>
+        <p class="section-description">Conoce cómo nuestros ex-cadetes han desarrollado exitosas carreras en la marina mercante internacional.</p>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder" style="height: 200px;">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                        <p>Capitán Roberto Méndez</p>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Capitán Roberto Méndez</h4>
+                        <p class="text-muted">Graduado en 2010</p>
+                        <p class="card-text">Actualmente es Jefe de Máquinas en un buque LNG de última generación para una naviera japonesa. Ha navegado por los cinco continentes y es especialista en sistemas de propulsión de bajo impacto ambiental.</p>
+                        <p class="card-text"><strong>Consejo para cadetes:</strong> "Aprovechen cada oportunidad de práctica en los simuladores. Lo que parece una simple simulación puede ser exactamente lo que enfrentarán en alta mar."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder" style="height: 200px;">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                        <p>Ing. Mariela Contreras</p>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Ing. Mariela Contreras</h4>
+                        <p class="text-muted">Graduada en 2012</p>
+                        <p class="card-text">Pionera en el campo de la eficiencia energética marítima, actualmente trabaja como consultora para la Organización Marítima Internacional (OMI) en proyectos de reducción de emisiones en la flota mercante global.</p>
+                        <p class="card-text"><strong>Consejo para cadetes:</strong> "El dominio del inglés marcó la diferencia en mi carrera internacional. Dediquen tiempo extra a perfeccionarlo."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="img-placeholder" style="height: 200px;">
+                        <i class="fas fa-user-tie fa-3x"></i>
+                        <p>Ing. Daniel Rojas</p>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Ing. Daniel Rojas</h4>
+                        <p class="text-muted">Graduado en 2008</p>
+                        <p class="card-text">Después de 10 años como oficial de máquinas en buques mercantes, fundó una empresa especializada en mantenimiento avanzado de sistemas de propulsión que opera en varios puertos del Caribe.</p>
+                        <p class="card-text"><strong>Consejo para cadetes:</strong> "La disciplina que aprendí como cadete ha sido la base de mi éxito empresarial. Los hábitos formados en la universidad determinan su futuro profesional."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" disabled>
+                <i class="fas fa-book me-2"></i> Ver Más Historias de Éxito
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Llamado a la acción para la experiencia-->
+ <section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">¿Estás listo para la experiencia?</h1>
+            <p class="hero-description fade-in">Únete a nuestra comunidad de futuros ingenieros marinos y forma parte de una tradición de excelencia.</p>
+            <a href="{{ url_for('admision') }}" class="btn btn-accent btn-lg">
+            <i class="fas fa-anchor me-2"></i> Proceso de Admisión
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

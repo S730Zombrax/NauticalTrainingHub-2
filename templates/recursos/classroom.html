@@ -1,0 +1,258 @@
+{% extends "layout.html" %}
+
+{% block title %}Classroom - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Classroom UMC</h1>
+            <p class="hero-description fade-in">Plataforma de aprendizaje virtual para los estudiantes de Ingeniería Marina</p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar de Navegación -->
+            <div class="col-lg-3 mb-4">
+                <div class="card classroom-sidebar">
+                    <div class="card-header">
+                        <h4 class="m-0"><i class="fas fa-graduation-cap me-2"></i>Cursos</h4>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-ship me-2"></i> Clases Generales
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-cogs me-2"></i> Automatización Naval
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-bolt me-2"></i> Electrotecnia Marina
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-tools me-2"></i> Mantenimiento Predictivo
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-shield-alt me-2"></i> Seguridad Marítima
+                        </a>
+                    </div>
+
+                    <div class="card-header mt-3">
+                        <h4 class="m-0"><i class="fas fa-calendar-alt me-2"></i> Próximas Actividades</h4>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex justify-content-between">
+                                <span>Examen Propulsión</span>
+                                <small class="text-muted">15 Jun</small>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex justify-content-between">
+                                <span>Práctica Simulador</span>
+                                <small class="text-muted">18 Jun</small>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex justify-content-between">
+                                <span>Entrega Proyecto</span>
+                                <small class="text-muted">22 Jun</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Principal -->
+             <!-- ...existing code... -->
+<div class="col-lg-9">
+    <!-- Aquí va el bloque del video -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4 class="m-0"><i class="fas fa-upload me-2"></i> Video Clase de Maquinistas</h4>
+        </div>
+        <hr>
+        <h5 class="mt-3">{{ video_title }}</h5>
+        <video width="100%" height="auto" controls>
+            <source src="{{ url_for('static', filename='recursos de plantillas/recursos/classroom/videos/videoclass0.mp4') }}" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+    </div>
+    <!-- El resto del contenido principal -->
+    <div class="classroom-header mb-4">
+        <!-- ...existing code... -->
+            <div class="col-lg-9">
+                <div class="classroom-header mb-4">
+                    <h2 class="mb-3">Sistemas de Propulsión - Semana 8</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Mis Cursos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sistemas de Propulsión</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <!-- Materiales de Clase -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="m-0"><i class="fas fa-book me-2"></i> Materiales de Clase</h4>
+                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-download me-1"></i> Descargar Todo</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="classroom-material">
+                                    <div class="material-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="material-info">
+                                        <h5>Unidad 8 - Propulsores</h5>
+                                        <small class="text-muted">PDF - 2.4 MB</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Descargar</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="classroom-material">
+                                    <div class="material-icon">
+                                        <i class="fas fa-file-video"></i>
+                                    </div>
+                                    <div class="material-info">
+                                        <h5>Video Clase 8</h5>
+                                        <small class="text-muted">MP4 - 45 min</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Ver</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="classroom-material">
+                                    <div class="material-icon">
+                                        <i class="fas fa-file-excel"></i>
+                                    </div>
+                                    <div class="material-info">
+                                        <h5>Ejercicios Prácticos</h5>
+                                        <small class="text-muted">XLSX - 1.1 MB</small>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Descargar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tareas Pendientes -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="m-0"><i class="fas fa-tasks me-2"></i> Tareas Pendientes</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="classroom-task">
+                            <div class="task-info">
+                                <div class="task-icon">
+                                    <i class="fas fa-file-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5>Análisis de Sistemas de Propulsión</h5>
+                                    <p class="mb-1">Entrega: 15 de Junio, 2025</p>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65% Completado</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary">Continuar</a>
+                        </div>
+
+                        <div class="classroom-task">
+                            <div class="task-info">
+                                <div class="task-icon">
+                                    <i class="fas fa-video text-info"></i>
+                                </div>
+                                <div>
+                                    <h5>Simulación de Fallas</h5>
+                                    <p class="mb-1">Entrega: 18 de Junio, 2025</p>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30% Completado</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary">Comenzar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anuncios -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="m-0"><i class="fas fa-bullhorn me-2"></i> Anuncios</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="classroom-announcement">
+                            <div class="announcement-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="announcement-content">
+                                <h5>Cambio en Práctica de Laboratorio</h5>
+                                <p class="mb-1">Prof. Carlos Mendoza - 5 Jun, 2025</p>
+                                <p>Debido a mantenimiento programado, la práctica de laboratorio de esta semana se moverá al viernes 14 de junio en el mismo horario. Favor confirmar asistencia.</p>
+                            </div>
+                        </div>
+
+                        <div class="classroom-announcement">
+                            <div class="announcement-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="announcement-content">
+                                <h5>Material Adicional</h5>
+                                <p class="mb-1">Prof. Ana Rodríguez - 3 Jun, 2025</p>
+                                <p>He subido material adicional sobre los últimos desarrollos en propulsores azimutales. No es obligatorio pero recomendado para quienes deseen profundizar.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Ver Material</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foro de Discusión -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="m-0"><i class="fas fa-comments me-2"></i> Foro de Discusión</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="classroom-forum-post">
+                            <div class="post-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-header">
+                                    <h5>Duda sobre ejercicio 8.3</h5>
+                                    <small class="text-muted">Publicado por: Luis Pérez - 4 Jun, 2025</small>
+                                </div>
+                                <p>Buenas tardes, tengo una duda sobre el ejercicio 3 de la página 45 del material. No entiendo cómo aplicar la fórmula en el segundo caso planteado. ¿Alguien podría explicarlo?</p>
+                                <div class="post-actions">
+                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-reply me-1"></i> Responder</button>
+                                    <span class="text-muted ms-3"><i class="fas fa-comment me-1"></i> 3 respuestas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-primary"><i class="fas fa-plus me-1"></i> Nueva Publicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

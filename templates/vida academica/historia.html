@@ -1,0 +1,336 @@
+{% extends "layout.html" %}
+
+{% block title %}Historia - Escuela Nautica{% endblock %}
+
+{% block content %}
+<!-- History Hero Section -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Historia de la Marina Mercante de Venezuela</h1>
+            <p class="hero-description fade-in">Nuestra tradición y evolución en la formación de profesionales marítimos de excelencia.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Linea de tiempo Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="mb-4">CRONOLOGIA DE LA ESCUELA NAUTICA DE VENEZUELA</h2>
+                
+                <!-- Linea de tiempo -->
+                <div class="position-relative mb-5">
+                    <!--  Linea -->
+                    <div class="position-absolute top-0 bottom-0" style="width: 4px; background-color: var(--primary); left: 24px;"></div>
+                    
+                    <!-- Items -->
+                    <div class="timeline-item mb-5 ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">10 de Mayo de 1802 - La propuesta</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>El segundo Cónsul del Real Consulado De Caracas FRANCISCO JAVIER DE LONGA. Propone a la junta Directiva la posibilidad de instaurar una Escuela Nautica.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1802.png') }}" alt="Escuela Nautica 1802" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item mb-5 ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">10 de Noviembre de 1809 - Planteamiento</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>El Cap. G Vicente Emparan junto con el CMTE del Apostadero de Marina de Puerto Cabello, plantean al consulado construir la Escuela Nautica.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1809.png') }}" alt="1809" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item mb-5 ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">5 de Septiembre de 1810 - Permiso de Construccion de la Escuela Nautica</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Los pilotos del apostadero Juan Trujillo y Pedro Iglesias piden permiso a la Junta Suprema de Caracas para construir en La Guaira la Escuela Nautica.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1810.png') }}" alt="1810" class="img-fluid" style="max-width: 35%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item mb-5 ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">14 de Enero de 1811</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>El Consulado aprobó el plan presentado por Córdoba y Carranza.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1811.png') }}" alt="Escuela Nautica 1811" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                                <p>5 días despues La Junta Suprema de Caracas ratifico el plan. Para mayo el consulado determino que la instalación de la Escuela finalizaría en junio de dicho año.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item mb-5 ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">14 de Junio de 1811 - Gaceta Oficial</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Se publica en Gaceta Oficial el Plan de Estudios para el establecimiento de la Escuela Nautica bajo la Dirección del Alférez de Fragata D.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/gaceta 1811.png') }}" alt="Gaceta Oficial 1811" class="img-fluid" style="max-width: 50%; height: auto;">
+                                </div>
+                                <p>Donde el 1 de Julio de 1811 se abre en la GUAYRA la Escuela Náutica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">1946 - Decreto para la creacion de la Escuela Nautica de Venezuela</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Se emano el decreto por la junta revolucionaria de Gobierno para la creación de la Escuela Náutica de Venezuela.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1946.png') }}" alt="Escuela Nautica 1946" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">17 marzo de 1955 - Traslado de la Escuela Nautica de Venezuela</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Se traslada dicha Institución a su actual ubicación (Catia La Mar) Dirigida por CAP./ALT. Jesús Reyes.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1955.png') }}" alt="Escuela Nautica 1955" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">1975 - Creación de la Escuela de Estudios Superiores de la Marina Mercante</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>El Director de la Escuela CAP./ALT. Alejandro Marín López crea la Escuela de Estudios Superiores de la Marina Mercante, siendo el CAP./ALT. José Moros Parada el primer Director.</p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/1975.png') }}" alt="Escuela de Estudios Superiores 1975" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                                <p>En 1983 Se Eleva dicha Escuela a Instituto Universitario de la Marina Mercante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item ms-5 position-relative">
+                        <div class="position-absolute" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; left: -77px; top: 0;">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h4 class="m-0">7 Julio de 2000 - Actualidad</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>El gobierno del Presidente Hugo Chávez Nuestra Alma Mater alcanza categóricamente el nivel de Universidad Nacional Experimental Marítima del Caribe.<p>
+                                <div class="img-placeholder mb-3">
+                                    <img src="{{ url_for('static', filename='recursos de plantillas/vida academica/historia/images/2000.png') }}" alt="UMC 2000" class="img-fluid" style="max-width: 30%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Sidebar content -->
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Legado y herencia -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="m-0">Legado y Tradición</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>A lo largo de su historia, la carrera de Ingeniería Marina en la UMC ha formado a más de:</p>
+                            <div class="text-center my-4">
+                                <div class="d-flex justify-content-around">
+                                    <div class="text-center">
+                                        <span style="font-size: 3rem; font-weight: bold; color: var(--primary);">3,500+</span>
+                                        <p>Ingenieros Marinos</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span style="font-size: 3rem; font-weight: bold; color: var(--primary);">85+</span>
+                                        <p>Países de Servicio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Nuestros egresados sirven en las principales flotas mercantes del mundo, representando con orgullo la excelencia de la formación marítima venezolana.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pioneras -->
+                    <div class="card mb-4 shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h4 class="m-0">Pioneros y Figuras Destacadas</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3 p-3 border-bottom">
+                                <h3>Capitán Ramón Velásquez</h3>
+                                <p class="text-muted">Fundador de la Escuela Náutica (1936)</p>
+                                <p>Estableció las bases de la formación náutica profesional en Venezuela.</p>
+                            </div>
+                            <div class="mb-3 p-3 border-bottom">
+                                <h3>Ing. Carlos Lander</h3>
+                                <p class="text-muted">Director de la Escuela de Oficiales de Máquinas (1960-1972)</p>
+                                <p>Modernizó el currículo e introdujo estándares internacionales en la formación técnica.</p>
+                            </div>
+                            <div class="mb-3 p-3 border-bottom">
+                                <h3>Dra. María Rodríguez</h3>
+                                <p class="text-muted">Primera rectora de la UMC (2000-2008)</p>
+                                <p>Lideró la transición de escuela a universidad y estableció convenios internacionales clave.</p>
+                            </div>
+                            <div class="p-3">
+                                <h3>Capitán José Antonio Fernández</h3>
+                                <p class="text-muted">Decano de Ingeniería (2010-2018)</p>
+                                <p>Impulsó la incorporación de tecnologías sostenibles en el currículo de Ingeniería Marina.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documentos historicos -->
+                    <div class="card shadow">
+                        <div class="card-header bg-accent text-dark">
+                            <h4 class="m-0">Archivo Histórico</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Explora nuestros documentos históricos digitalizados:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reseña historica de la Escuela Nautica (1811).pdf') }}" onclick="return true;">Reseña historica de la Escuela Nautica (1811)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Gazeta Oficial 14-06-1811.pdf') }}" onclick="return true;">Publicación del plan de estudio de la Escuela Nautica en La Guaira (1811)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Gazeta Oficial 10-08-1946.pdf') }}" onclick="return true;">Decreto de fundación de la Escuela Náutica de Venezuela (1946)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Gazeta Oficial 09-03-1982.pdf') }}" onclick="return true;">Decreto de fundación del Instituto Universitario de la Marina Mercante (1982)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Gazeta Oficial 07-07-2000.pdf') }}" onclick="return true;">Decreto presidencial de creación de la UMC (2000)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt me-2 text-primary"></i>
+                                    <a href="#" onclick="return false;">Reconocimiento internacional de la OMI (2010)</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-camera me-2 text-primary"></i>
+                                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/200 años de Estudios Nauticos en Venezuela.pdf') }}" onclick="return true;">200 años de Estudios Nauticos en Venezuela</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-camera me-2 text-primary"></i>
+                                    <a href="#" onclick="return false;">Galería fotográfica histórica</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ url_for('biblioteca') }}" class="fas fa-book-open me-2">
+                                        Visitar Archivo Completo
+                                    </a>
+                                </button>
+                                <p class="text-muted small mt-2">* Próximamente en nuestra biblioteca digital</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Legacy Video Section (Placeholder) -->
+<section class="section bg-light">
+    <div class="container text-center">
+        <h2 class="section-title">Nuestra Historia en Video</h2>
+        <p class="section-description">Un recorrido visual por la evolución de la Ingeniería Marina en la Universidad Marítima del Caribe.</p>
+        
+        <div class="coming-soon mb-5">
+            <div class="coming-soon-icon">
+                <i class="fas fa-film"></i>
+            </div>
+            <h3 class="coming-soon-title">Video Documental en Producción</h3>
+            <p class="coming-soon-text">Estamos trabajando en un documental que recoge testimonios de pioneros, egresados destacados y la evolución de nuestras instalaciones a lo largo de los años.</p>
+            <p class="mt-3">¡Vuelve pronto para ver nuestra historia en movimiento!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+ <section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Sé parte de nuestra historia</h1>
+            <p class="hero-description fade-in">Únete a una tradición de excelencia de más de 80 años formando a los mejores profesionales marítimos.</p>
+            <a href="{{ url_for('admision') }}" class="btn btn-accent btn-lg">
+            <i class="fas fa-graduation-cap me-2"></i> Proceso de Admisión
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}Registro de Estudiante - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <section class="register-header bg-gradient-primary text-white py-5" style="
+        background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        text-align: center;
+        color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h1 class="hero-title">
+                        <i class="fas fa-user-graduate me-3"></i>
+                        Registro de Estudiante
+                    </h1>
+                    <p class="lead">
+                        Únete a la Universidad Marítima del Caribe
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">Información del Estudiante</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <form method="POST" class="needs-validation" novalidate>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre" class="form-label">Nombre *</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="apellido" class="form-label">Apellido *</label>
+                                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="cedula" class="form-label">Cédula *</label>
+                                    <input type="text" class="form-control" id="cedula" name="cedula" 
+                                           placeholder="V-12345678" data-type="cedula" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="semestre" class="form-label">Semestre *</label>
+                                        <select class="form-select" id="semestre" name="semestre" required>
+                                            <option value="">Selecciona</option>
+                                            {% for i in range(1, 11) %}
+                                            <option value="{{ i }}">{{ i }}° Semestre</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Contraseña *</label>
+                                    <input type="password" class="form-control" id="password" name="password" 
+                                           minlength="6" required>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        Registrarse
+                                    </button>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <p>¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.register-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+</style>
+{% endblock %}

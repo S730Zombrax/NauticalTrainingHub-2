@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block title %}Escuela Nautica de Venezuela - Ingeniería Marina{% endblock %}
+
+{% block content %}
+
+<div class="Cuerpo">
+    <section class="hero" style="
+        background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        text-align: center;
+        color: white;">
+        <div class="container hero-content text-center">
+            <h2 class="hero-title">Biblioteca Virtual</h2>
+            <p class="hero-subtitle">Accede a recursos académicos, publicaciones y documentos especializados en ingeniería naval y ciencias marítimas</p>
+        </div>
+    </section>
+
+    <section class="section_second">
+        <div class="seccion_secondtitulo">
+            <h4 class="secondtitulo">Reglamentos</h4>
+        </div>
+    </section>
+</div>
+
+        <!-- Bloque de libros-->
+        <div class="libros">
+            <div class="linea_libros">
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento General UMC.jpeg') }}" alt="regamento_general" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento General UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>            
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento Estudiantil de la UMC.jpeg') }}" alt="reglamento_estudiantil" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento Estudiantil de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/REGLAMENTO DE LA ACTITUD PARA EL SERVICIO NAUTICO.jpeg') }}" alt="reglamento_servicionautico" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Proyecto REGLAMENTO DE LA ACTITUD PARA EL SERVICIO NAUTICO.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento Interno de la UMC.jpg') }}" alt="reglamento_interno"  class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento Interno de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>  
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento de Ingreso para Cursar Estudios de Pregrado en la UMC.jpeg') }}" alt="reglamento_estudiosPREG" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento de Ingreso para Cursar Estudios de Pregrado en la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento Academico para Pasantias y Tutorias de la UMC.jpg') }}" alt="reglamento_pasantias" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento Academico para Pasantias y Tutorias de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+            </div>  
+            
+            <div class="linea_libros">
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento del Programa de Beneficios Socioeconomicos para Estudiantes de Pregrado de la umc.jpg') }}" alt="reglamento_beneficios" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento del Programa de Beneficios Socioeconomicos para Estudiantes de Pregrado de la umc.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Reglamento para Actos de Otorgamiento de Titulos, Grados, Diplomas y Certificados de la UMC.jpg') }}" alt="reglamento_titulos" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Reglamento para Actos de Otorgamiento de Titulos, Grados, Diplomas y Certificados de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>  
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/CARTILLA NAUTICA.jpeg') }}" alt="cartilla_nautica" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/CARTILLA NAUTICA.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Codigo de Honor Nautico del Cadete Nautico.jpeg') }}" alt="codigo_honor" class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Codigo de Honor Nautico del Cadete Nautico.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+
+                <div class="bloque_libro">
+                    <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Codigo de Etica y Conducta de la UMC.jpg') }}" alt="codigo_etica"  class="imagen_libro">
+                    <a href="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/documents/Codigo de Etica y Conducta de la UMC.pdf') }}" class="boton_libro" target="_blank">Leer</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloque de convenios -->
+
+        <div class="convenios">
+            <div class="revistas">
+                <div class="bloque_revista">
+                    <div class="imagen_revista">
+                        <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Convenio Internacional para la Seguridad de la Vida Humana en el Mar.jpg') }}" alt="Imagen 2" class="img_revista">
+                    </div>
+                    <div class="revistas_titulos">
+                        <p>Convenio Internacional para la Seguridad de la Vida Humana en el Mar</p>
+                        <a href="https://www.imo.org/es/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea-(SOLAS)%2C-1974.aspx" target="_blank">
+                            <button class="boton_revista">Leer</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bloque_revista">
+                    <div class="imagen_revista">
+                        <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/La Convención Internacional en Estándares de Formación, Certificación y Vigilancia para la Gente de Mar.jpg') }}" alt="Imagen 2" class="img_revista">
+                    </div>
+                    <div class="revistas_titulos">
+                        <p>La Convención Internacional en Estándares de Formación, Certificación y Vigilancia para la Gente de Mar</p>
+                        <a href="https://www.imo.org/es/About/Conventions/Paginas/International-Convention-on-Standards-of-Training,-Certification-and-Watchkeeping-for-Seafarers-(STCW).aspx" target="_blank">
+                            <button class="boton_revista">Leer</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bloque_revista">
+                    <div class="imagen_revista">
+                        <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/Convenio Internacional para Prevenir la Contaminación por los Buque.jpg') }}" alt="Imagen 2" class="img_revista">
+                    </div>
+                    <div class="revistas_titulos">
+                        <p>Convenio Internacional para Prevenir la Contaminación por los Buque</p>
+                        <a href="https://www.imo.org/es/About/Conventions/Pages/International-Convention-for-the-Prevention-of-Pollution-from-Ships-(MARPOL).aspx" target="_blank">
+                            <button class="boton_revista">Leer</button>
+                        </a>
+                    </div>
+                </div> 
+            </div>        
+        </div>
+
+        <!-- Bloque de historia -->
+
+        <div class="bloque_historia">
+            <div class="imagen_historia">
+                <img src="{{ url_for('static', filename='recursos de plantillas/recursos/biblioteca/images/img15.png') }}" alt="biblioteca" class="img_revista">
+            </div>
+            <div class="texto_historia">
+                <p class="parrafo">
+                    <b><i>
+                    En el vasto horizonte de la vida, la educación se alza como el faro inmutable que, con su luz serena,
+                     disipa las brumas de la ignorancia. Es la brújula ancestral que, en manos del marinero del saber, traza rutas invisibles
+                     sobre las aguas infinitas del conocimiento. Cada lección aprendida es una estrella que guía su travesía, cada desafío superado,
+                      una ola domada. Así, con el corazón anclado en la sabiduría y la mirada fija en el perpetuo aprender, el espíritu marino navega los océanos del destino, tejiendo su propia leyenda entre las corrientes del tiempo.
+                    </i></b>
+                </p>
+            </div>
+        </div>           
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,321 @@
+{% extends "layout.html" %}
+
+{% block title %}Registro QR - Universidad Marítima del Caribe{% endblock %}
+
+{% block content %}
+<!-- Registration Header -->
+<section class="hero" style="
+    background-image: url('{{ url_for('static', filename='oscuro.gif')}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: white;">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Registro de Ficha QR</h1>
+            <p class="hero-description fade-in">Completa este formulario para generar tu código QR personal que contendrá información sobre tus cursos OMI, calificaciones, datos personales y perfil psicológico.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Registration Form Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Formulario de Registro</h3>
+                        
+                        <form id="registration-form" class="needs-validation" novalidate>
+                            <!-- Personal Information -->
+                            <h4 class="mb-3 text-primary">Información Personal</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="first-name" class="form-label">Nombres</label>
+                                        <input type="text" class="form-control" id="first-name" required>
+                                        <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="last-name" class="form-label">Apellidos</label>
+                                        <input type="text" class="form-control" id="last-name" required>
+                                        <div class="invalid-feedback">Por favor ingresa tu apellido.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="cedula" class="form-label">Cédula de Identidad</label>
+                                        <input type="text" class="form-control" id="cedula" data-type="cedula" pattern="[VE]-\d{7,8}" data-error-pattern="Formato: V-1234567 o E-1234567" required>
+                                        <div class="invalid-feedback">Formato inválido. Usa V-1234567 o E-1234567.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
+                                        <input type="date" class="form-control" id="birthdate" required>
+                                        <div class="invalid-feedback">Por favor ingresa tu fecha de nacimiento.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                        <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                        <div class="invalid-feedback">Por favor ingresa un número telefónico válido.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Information -->
+                            <h4 class="mb-3 text-primary">Información Académica</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="student-id" class="form-label">Número de Estudiante</label>
+                                        <input type="text" class="form-control" id="student-id" required>
+                                        <div class="invalid-feedback">Por favor ingresa tu número de estudiante.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="semester" class="form-label">Semestre Actual</label>
+                                        <select class="form-control" id="semester" required>
+                                            <option value="">Selecciona un semestre</option>
+                                            <option value="1">Primer Semestre</option>
+                                            <option value="2">Segundo Semestre</option>
+                                            <option value="3">Tercer Semestre</option>
+                                            <option value="4">Cuarto Semestre</option>
+                                            <option value="5">Quinto Semestre</option>
+                                            <option value="6">Sexto Semestre</option>
+                                            <option value="7">Séptimo Semestre</option>
+                                            <option value="8">Octavo Semestre</option>
+                                            <option value="9">Noveno Semestre</option>
+                                            <option value="10">Décimo Semestre</option>
+                                        </select>
+                                        <div class="invalid-feedback">Por favor selecciona tu semestre actual.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="omi-courses" class="form-label">Cursos OMI Completados</label>
+                                        <select class="form-control" id="omi-courses" multiple>
+                                            <option value="basic-safety">Seguridad Básica</option>
+                                            <option value="advanced-firefighting">Lucha Contra Incendios Avanzada</option>
+                                            <option value="survival-craft">Embarcaciones de Supervivencia</option>
+                                            <option value="medical-care">Cuidados Médicos</option>
+                                            <option value="gmdss">GMDSS - Sistema Mundial de Socorro</option>
+                                            <option value="radar-navigation">Navegación por Radar</option>
+                                        </select>
+                                        <div class="form-text">Mantén presionado Ctrl (o Cmd en Mac) para seleccionar múltiples cursos.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Profile Photo -->
+                            <h4 class="mb-3 text-primary">Fotografía del Perfil</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="profile-photo" class="form-label">Subir Fotografía</label>
+                                        <input type="file" class="form-control" id="profile-photo" accept="image/*">
+                                        <div class="form-text">Formato .jpg o .png, tamaño máximo 2MB. Fondo blanco, uniforme formal.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="photo-preview" class="img-placeholder">
+                                        <i class="fas fa-user-circle fa-3x"></i>
+                                        <p>Vista previa de la fotografía</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Psychological Profile (simplified) -->
+                            <h4 class="mb-3 text-primary">Perfil Psicológico</h4>
+                            <div class="row mb-4">
+                                <div class="col-12 mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label d-block">Tipo de Personalidad</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="personality" id="personality1" value="introvert">
+                                            <label class="form-check-label" for="personality1">Introvertido</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="personality" id="personality2" value="extrovert">
+                                            <label class="form-check-label" for="personality2">Extrovertido</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="personality" id="personality3" value="ambivert">
+                                            <label class="form-check-label" for="personality3">Ambivertido</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="stress-management" class="form-label">Manejo del Estrés (1-5)</label>
+                                        <input type="range" class="form-range" min="1" max="5" id="stress-management">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="teamwork" class="form-label">Trabajo en Equipo (1-5)</label>
+                                        <input type="range" class="form-range" min="1" max="5" id="teamwork">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="psychological-notes" class="form-label">Observaciones Psicológicas</label>
+                                        <textarea class="form-control" id="psychological-notes" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Submit -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="accept-terms" required>
+                                    <label class="form-check-label" for="accept-terms">
+                                        Acepto que la información proporcionada es verídica y autorizo su uso para fines académicos.
+                                    </label>
+                                    <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Generar Código QR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="m-0">Tu Código QR</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="qr-preview" class="text-center p-4">
+                            <i class="fas fa-qrcode fa-5x text-secondary"></i>
+                            <p class="mt-3">Completa el formulario para generar tu código QR personal.</p>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <h5><i class="fas fa-info-circle"></i> ¿Para qué sirve?</h5>
+                            <p>Tu código QR personal contendrá acceso a:</p>
+                            <ul>
+                                <li>Certificados de cursos OMI</li>
+                                <li>Información académica y calificaciones</li>
+                                <li>Datos de contacto para emergencias</li>
+                                <li>Perfil psicológico básico para pasantías</li>
+                            </ul>
+                            <p>Podrás compartirlo con profesores, coordinadores y empresas navieras para pasantías.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="m-0">Próximamente</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Estas funcionalidades estarán disponibles pronto:</p>
+                        <ul>
+                            <li>Verificación automática de datos</li>
+                            <li>Sincronización con control de estudios</li>
+                            <li>Expediente médico digital</li>
+                            <li>Historial de embarques y pasantías</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección informativa -->
+<section class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">Beneficios del Registro QR</h2>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-file-certificate"></i>
+                </div>
+                <h3 class="feature-title">Certificaciones Digitales</h3>
+                <p class="feature-text">Accede a tus certificaciones OMI y documentos académicos desde cualquier lugar.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="feature-title">Perfil Profesional</h3>
+                <p class="feature-text">Comparte tu información académica y profesional rápidamente con potenciales empleadores.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="feature-title">Seguridad de Datos</h3>
+                <p class="feature-text">Tu información está protegida y solo tú decides con quién compartirla.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form submission handler (for demo purposes)
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Validate form
+                if (!validateForm(registrationForm)) {
+                    return;
+                }
+                
+                // Create QR code preview (simulated)
+                const qrPreview = document.getElementById('qr-preview');
+                const studentId = document.getElementById('student-id').value;
+                const fullName = document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value;
+                
+                qrPreview.innerHTML = `
+                    <div class="text-center">
+                        <i class="fas fa-qrcode fa-5x text-primary"></i>
+                        <div class="mt-3 p-2 bg-light rounded">
+                            <strong>${fullName}</strong><br>
+                            ID: ${studentId}
+                        </div>
+                        <p class="mt-3 text-success"><i class="fas fa-check-circle"></i> QR generado correctamente</p>
+                        <p class="text-muted small">Este código permite acceso a tu información académica.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2" disabled>
+                            <i class="fas fa-download"></i> Descargar QR
+                        </button>
+                    </div>
+                `;
+                
+                // Show success message
+                showNotification('Registro completado. Tu código QR ha sido generado.', 'success');
+            });
+        }
+    });
+</script>
+{% endblock %}
