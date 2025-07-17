@@ -580,6 +580,87 @@
         </div>
     </div>
 </section>
+
+<!-- Chatbot de Fraseología Marítima con IA -->
+<section class="section py-5" style="background: linear-gradient(135deg, #0066cc 0%, #004499 100%);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center text-white mb-5">
+                    <h2 class="mb-3">
+                        <i class="fas fa-robot me-3"></i>
+                        Asistente IA de Fraseología Marítima
+                    </h2>
+                    <p class="lead">Traductor inteligente especializado en terminología marítima y naval</p>
+                    <p>Obtén traducciones de palabras y frases náuticas a todos los idiomas, además de listas de vocabulario marítimo básico</p>
+                </div>
+                
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-comments me-2"></i>
+                            Chat con Asistente Marítimo
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Chat Container -->
+                        <div id="chatContainer" class="mb-4" style="height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; background-color: #f8f9fa;">
+                            <div class="text-center text-muted">
+                                <i class="fas fa-ship fa-2x mb-3"></i>
+                                <p>¡Hola! Soy tu asistente especializado en fraseología marítima.</p>
+                                <p>Puedes preguntarme:</p>
+                                <ul class="text-start list-unstyled">
+                                    <li>• Traducciones de términos náuticos</li>
+                                    <li>• Vocabulario marítimo básico</li>
+                                    <li>• Frases de comunicación portuaria</li>
+                                    <li>• Terminología de ingeniería naval</li>
+                                </ul>
+                                <small class="text-muted">Ejemplos: "Traduce 'sala de máquinas' al inglés" o "Dame una lista de vocabulario náutico básico"</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Message Input -->
+                        <div class="input-group">
+                            <input type="text" id="messageInput" class="form-control form-control-lg" 
+                                   placeholder="Escribe tu consulta sobre fraseología marítima..." 
+                                   maxlength="500">
+                            <button class="btn btn-primary btn-lg" type="button" id="sendButton">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar
+                            </button>
+                        </div>
+                        
+                        <!-- Quick Actions -->
+                        <div class="mt-3">
+                            <p class="small text-muted mb-2">Consultas rápidas:</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-outline-secondary btn-sm quick-btn" data-message="Dame una lista de vocabulario marítimo básico en inglés">
+                                    Vocabulario básico
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm quick-btn" data-message="Traduce términos de navegación al inglés">
+                                    Términos de navegación
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm quick-btn" data-message="Frases de emergencia en buques">
+                                    Frases de emergencia
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm quick-btn" data-message="Comunicación radio marítima">
+                                    Radio marítima
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center text-white mt-4">
+                    <small>
+                        <i class="fas fa-shield-alt me-1"></i>
+                        Potenciado por Gemini AI - Especializado en terminología marítima internacional
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Llamada de la acción -->
  <section class="hero">
     <div class="container">
@@ -591,4 +672,8 @@
             </a>
         </div>
     </div>
+</section>
+
+<!-- Maritime Chatbot JavaScript -->
+<script src="{{ url_for('static', filename='js/maritime-chatbot.js') }}"></script>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}ZARPE - Repositorio Académico UMC - {% endblock %}
+{% block title %}ZARPE - Revista de Investigación Marítima - {% endblock %}
 
 {% block extra_css %}
 <style>
@@ -202,7 +202,7 @@
                             ZARPE
                         </h1>
                         <h2 class="h4 mb-3" style="color: white !important;">
-                            Repositorio Académico UMC
+                            Zona de Acceso Rápido y Producción Educativa
                         </h2>
                     </div>
                 </div>
@@ -311,7 +311,7 @@
             </div>
             <div class="col-md-3">
                 <div class="stats-card">
-                    <span class="stats-number">{{ documentos|sum(attribute='descargas') }}</span>
+                    <span class="stats-number">{% set total_descargas = 0 %}{% for doc in documentos %}{% set total_descargas = total_descargas + (doc.descargas or 0) %}{% endfor %}{{ total_descargas }}</span>
                     <span class="stats-label">Descargas</span>
                 </div>
             </div>
@@ -393,7 +393,7 @@
                             </div>
                             <div class="mb-2">
                                 <i class="fas fa-download"></i>
-                                {{ documento.descargas }} descargas
+                                {{ documento.descargas or 0 }} descargas
                             </div>
                             {% if documento.isbn %}
                             <div class="mb-2">
@@ -417,7 +417,7 @@
                         
                         <div class="mt-3">
                             {% if documento.archivo_pdf or documento.url_externa %}
-                            <a href="{{ url_for('descargar_documento', documento_id=documento.id) }}" 
+                            <a href="{{ url_for('static', filename='articulo1.pdf') }}" 
                                class="btn btn-download" target="_blank">
                                 <i class="fas fa-download me-2"></i>
                                 {% if documento.archivo_pdf %}Descargar PDF{% else %}Ver Documento{% endif %}

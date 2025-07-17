@@ -2,7 +2,10 @@ import os
 import logging
 import datetime
 import uuid
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+import json
+import urllib.request
+import urllib.parse
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -19,11 +22,161 @@ class Base(DeclarativeBase):
 
 # Create Flask app and database
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET")
+app.secret_key = os.environ.get("SESSION_SECRET") or "dev-secret-key-change-in-production"
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  # needed for url_for to generate with https
 
+# Gemini API configuration
+GEMINI_API_KEY = "AIzaSyCa-GNMY5ESWwLzAdaJKX9MEgoWU-UREkI"
+
+# Maritime vocabulary and phrases database for fallback
+MARITIME_VOCABULARY = {
+    "basic_terms": {
+        "español": ["puerto", "ancla", "cubierta", "motor", "navegación", "timón", "proa", "popa", "estribor", "babor"],
+        "english": ["port", "anchor", "deck", "engine", "navigation", "rudder", "bow", "stern", "starboard", "port"],
+        "chinese": ["港口", "锚", "甲板", "引擎", "导航", "舵", "船头", "船尾", "右舷", "左舷"],
+        "greek": ["λιμάνι", "άγκυρα", "κατάστρωμα", "μηχανή", "πλοήγηση", "πηδάλιο", "πλώρη", "πρύμνη", "δεξιά", "αριστερά"]
+    },
+    "emergency_phrases": {
+        "español": ["emergencia", "fuga de combustible", "incendio", "abandono de buque", "hombre al agua"],
+        "english": ["emergency", "fuel leak", "fire", "abandon ship", "man overboard"],
+        "chinese": ["紧急情况", "燃料泄漏", "火灾", "弃船", "有人落水"],
+        "greek": ["επείγουσα ανάγκη", "διαρροή καυσίμου", "φωτιά", "εγκατάλειψη πλοίου", "άνθρωπος στη θάλασσα"]
+    }
+}
+
+# Gemini API function for maritime phraseology
+def call_gemini_api(user_message):
+    """
+    Call Gemini API for maritime phraseology translations and vocabulary with fallback
+    """
+    try:
+        # System prompt specifically for maritime phraseology
+        system_prompt = (
+            "Eres un asistente especializado en fraseología marítima para la Escuela Náutica de Venezuela. "
+            "Tu experiencia incluye:\n\n"
+            "1. Traducir términos y frases marítimas a/desde cualquier idioma\n"
+            "2. Proporcionar listas de vocabulario marítimo básico\n"
+            "3. Explicar terminología náutica usada en operaciones de marina mercante\n"
+            "4. Ayudar con estándares de comunicación marítima internacional\n\n"
+            "Siempre responde en español a menos que específicamente se pida traducir a otro idioma. "
+            "Enfócate en terminología marítima práctica usada en:\n"
+            "- Operaciones de buques y navegación\n"
+            "- Comunicaciones portuarias\n"
+            "- Procedimientos de seguridad\n"
+            "- Ingeniería marítima\n"
+            "- Regulaciones marítimas internacionales\n\n"
+            "Si te piden una lista de vocabulario básico, proporciona 20-30 términos marítimos esenciales con traducciones."
+        )
+        
+        # Prepare the request data
+        data = {
+            "contents": [{
+                "parts": [{
+                    "text": f"Contexto del sistema: {system_prompt}\n\nPregunta del usuario: {user_message}"
+                }]
+            }],
+            "generationConfig": {
+                "temperature": 0.7,
+                "topP": 0.8,
+                "topK": 40,
+                "maxOutputTokens": 1000
+            }
+        }
+        
+        # Make the HTTP request
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+        
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(data).encode('utf-8'),
+            headers={
+                'Content-Type': 'application/json'
+            }
+        )
+        
+        with urllib.request.urlopen(req, timeout=10) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            
+        # Extract the response text
+        if 'candidates' in result and len(result['candidates']) > 0:
+            if 'content' in result['candidates'][0] and 'parts' in result['candidates'][0]['content']:
+                return result['candidates'][0]['content']['parts'][0]['text']
+        
+        return get_fallback_response(user_message)
+        
+    except Exception as e:
+        logging.error(f"Error calling Gemini API: {e}")
+        return get_fallback_response(user_message)
+
+def get_fallback_response(user_message):
+    """
+    Provide fallback responses for common maritime phraseology queries
+    """
+    message_lower = user_message.lower()
+    
+    if "vocabulario" in message_lower or "lista" in message_lower or "básico" in message_lower:
+        return """**Vocabulario Marítimo Básico**
+
+| Español | Inglés | Chino | Griego |
+|---------|--------|-------|--------|
+| Puerto | Port | 港口 | Λιμάνι |
+| Ancla | Anchor | 锚 | Άγκυρα |
+| Cubierta | Deck | 甲板 | Κατάστρωμα |
+| Motor | Engine | 引擎 | Μηχανή |
+| Navegación | Navigation | 导航 | Πλοήγηση |
+| Timón | Rudder | 舵 | Πηδάλιο |
+| Proa | Bow | 船头 | Πλώρη |
+| Popa | Stern | 船尾 | Πρύμνη |
+| Estribor | Starboard | 右舷 | Δεξιά |
+| Babor | Port | 左舷 | Αριστερά |
+
+Nota: Actualmente en modo offline. Para traducciones más específicas, contacta al departamento de idiomas."""
+
+    elif "emergencia" in message_lower:
+        return """**Frases de Emergencia Marítimas**
+
+| Español | Inglés | Contexto |
+|---------|--------|----------|
+| Emergencia | Emergency | Situación crítica |
+| Fuga de combustible | Fuel leak | Problema técnico |
+| Incendio | Fire | Emergencia de seguridad |
+| Abandono de buque | Abandon ship | Evacuación |
+| Hombre al agua | Man overboard | Rescate |
+
+Nota: Estoy en modo offline. Para obtener respuestas más detalladas con IA, por favor intenta más tarde."""
+
+    elif "traduce" in message_lower or "traducir" in message_lower:
+        return """Para traducciones específicas, puedo ayudarte con estos términos básicos:
+
+**Términos de Navegación:**
+- Rumbo → Course (inglés), 航向 (chino)
+- Velocidad → Speed (inglés), 速度 (chino)
+- Latitud → Latitude (inglés), 纬度 (chino)
+- Longitud → Longitude (inglés), 经度 (chino)
+
+**Comunicación:**
+- Radio → Radio (inglés), 无线电 (chino)
+- Mensaje → Message (inglés), 消息 (chino)
+- Capitán → Captain (inglés), 船长 (chino)
+
+Nota: Actualmente en modo básico. La IA avanzada volverá pronto."""
+
+    else:
+        return """¡Hola! Soy tu asistente de fraseología marítima. Actualmente estoy en modo básico, pero puedo ayudarte con:
+
+• **Vocabulario básico** - Di "vocabulario básico"
+• **Frases de emergencia** - Di "frases de emergencia"  
+• **Traducciones simples** - Di "traduce [término]"
+
+**Ejemplos:**
+- "Dame vocabulario básico"
+- "Frases de emergencia"
+- "Traduce sala de máquinas"
+
+La IA completa volverá pronto para consultas más avanzadas."""
+
 # Database configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL") or "sqlite:///nautical_training.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_recycle": 300,
@@ -718,6 +871,28 @@ def docentes():
     flash('La evaluación docente ahora es privada. Los profesores proporcionan códigos QR individuales.', 'info')
     return redirect(url_for('index'))
 
+# Maritime phraseology chatbot API endpoint
+@app.route('/api/maritime-chat', methods=['POST'])
+def maritime_chat():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'No se recibieron datos'}), 400
+            
+        user_message = data.get('message', '')
+        
+        if not user_message or not str(user_message).strip():
+            return jsonify({'error': 'Mensaje vacío'}), 400
+        
+        # Call Gemini API for maritime phraseology
+        response = call_gemini_api(str(user_message).strip())
+        
+        return jsonify({'response': response})
+        
+    except Exception as e:
+        logging.error(f"Error in maritime chat endpoint: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
 # Error handlers
 @app.errorhandler(404)
 def page_not_found(e):
@@ -726,3 +901,11 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e):
     return render_template('layout.html', error="500 - Error del servidor"), 500
+
+# Create database tables
+with app.app_context():
+    try:
+        db.create_all()
+        print("Database tables created successfully!")
+    except Exception as e:
+        print(f"Error creating database tables: {e}")
