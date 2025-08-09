@@ -4,6 +4,7 @@ import datetime
 import uuid
 import json
 import urllib.request
+import PyPDF2
 import urllib.parse
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -183,7 +184,7 @@ app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_pre_ping": True,
 }
 # File upload configuration
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = 'static/repositorio/documents/'
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max file size
 
 # Initialize database
@@ -371,7 +372,7 @@ def idiomas():
 
 @app.route('/uniforme')
 def uniforme():
-    return render_template('uniforme/uniforme.html')
+    return render_template('recursos/uniforme.html')
 
 @app.route('/vida-cadete')
 def vida_cadete():
@@ -411,6 +412,168 @@ def sugerencias():
 def biblioteca():
     return render_template('recursos/biblioteca.html')
 
+def extraer_metadatos_pdf(nombre_archivo):
+    ruta_pdf = os.path.join(app.root_path, 'static', 'repositorio', 'documents', nombre_archivo)
+    if not os.path.exists(ruta_pdf):
+        return None
+    try:
+        with open(ruta_pdf, 'rb') as f:
+            reader = PyPDF2.PdfReader(f)
+            info = reader.metadata
+            num_paginas = len(reader.pages)
+            return {
+                'titulo': info.title,
+                'autor': info.author,
+                'num_paginas': num_paginas,
+                'productor': info.producer,
+                'asunto': info.subject,
+                'creado': info.creation_date
+            }
+    except Exception as e:
+        print(f"Error extrayendo metadatos: {e}")
+        return None
+
+def verificar_pdfs_registrados():
+    pdf_dir = os.path.join(app.root_path, 'static', 'repositorio', 'documents')
+    archivos_pdf = [f for f in os.listdir(pdf_dir) if f.lower().endswith('.pdf')]
+    registrados = []
+    no_registrados = []
+
+    for nombre_archivo in archivos_pdf:
+        existe = DocumentoRepositorio.query.filter_by(archivo_pdf=nombre_archivo).first()
+        if existe:
+            registrados.append(nombre_archivo)
+        else:
+            no_registrados.append(nombre_archivo)
+
+    print("PDFs registrados en la base de datos:")
+    for r in registrados:
+        print(f" - {r}")
+    print("\nPDFs NO registrados en la base de datos:")
+    for nr in no_registrados:
+        print(f" - {nr}")
+
+def generar_cedula_unica():
+    numero = 1
+    while True:
+        cedula = f"V-{str(numero).zfill(8)}"
+        existe = Profesor.query.filter_by(cedula=cedula).first()
+        if not existe:
+            return cedula
+        numero += 1
+
+def registrar_pdfs_preexistentes():
+    pdf_dir = os.path.join(app.root_path, 'static', 'repositorio', 'documents')
+    archivos_pdf = [f for f in os.listdir(pdf_dir) if f.lower().endswith('.pdf')]
+    nuevos_registros = 0
+
+    for nombre_archivo in archivos_pdf:
+        existe = DocumentoRepositorio.query.filter_by(archivo_pdf=nombre_archivo).first()
+        if not existe:
+            metadatos = extraer_metadatos_pdf(nombre_archivo)
+            
+            # Extraer autores (pueden estar separados por coma o punto y coma)
+            autores = []
+            if metadatos and metadatos.get('autor'):
+                autores_raw = metadatos['autor']
+                if ';' in autores_raw:
+                    autores = [a.strip() for a in autores_raw.split(';')]
+                elif ',' in autores_raw:
+                    autores = [a.strip() for a in autores_raw.split(',')]
+                else:
+                    autores = [autores_raw.strip()]
+            else:
+                autores = ['Autor Desconocido']
+
+            # Registrar cada autor si no existe y usar el primero como autor principal
+            autor_ids = []
+            for autor_nombre in autores:
+                autor = Profesor.query.filter(
+                    db.or_(
+                        Profesor.nombre.ilike(f"%{autor_nombre}%"),
+                        Profesor.apellido.ilike(f"%{autor_nombre}%")
+                    )
+                ).first()
+                if not autor:
+                    cedula_generada = generar_cedula_unica()
+                    autor = Profesor(
+                        cedula=cedula_generada,
+                        nombre=autor_nombre,
+                        apellido='',
+                        email=f"autor_{uuid.uuid4().hex}@umc.edu.ve",
+                        departamento='Desconocido',
+                        materias='',
+                        password_hash=generate_password_hash('temporal'),
+                        activo=True
+                    )
+                    db.session.add(autor)
+                    db.session.flush()
+                autor_ids.append(autor.id)
+            autor_id = autor_ids[0] if autor_ids else 1  # Usa el primero como principal
+
+            # Tipo de documento automático
+            tipo_documento = 'articulo'
+            titulo_lower = (metadatos['titulo'].lower() if metadatos and metadatos.get('titulo') else '') 
+            nombre_lower = nombre_archivo.lower()
+            if 'tesis' in titulo_lower or nombre_lower.startswith('tesis'):
+                tipo_documento = 'tesis'
+            elif 'libro' in titulo_lower or nombre_lower.startswith('libro'):
+                tipo_documento = 'libro'
+            elif 'manual' in titulo_lower or nombre_lower.startswith('manual'):
+                tipo_documento = 'manual'
+
+            # Categoría automática
+            categoria = 'General'
+            asunto = metadatos.get('asunto') if metadatos else ''
+            if asunto:
+                categoria = asunto
+            elif 'ingenieria' in nombre_lower:
+                categoria = 'Ingeniería Marítima'
+            elif 'navegacion' in nombre_lower:
+                categoria = 'Navegación'
+            elif 'seguridad' in nombre_lower:
+                categoria = 'Seguridad Marítima'
+
+            # ISBN y palabras clave
+            isbn = metadatos.get('isbn') if metadatos and metadatos.get('isbn') else None
+            palabras_clave = None
+            if metadatos:
+                if metadatos.get('palabras_clave'):
+                    palabras_clave = metadatos['palabras_clave']
+                elif hasattr(metadatos, 'keywords') and metadatos.keywords:
+                    palabras_clave = metadatos.keywords
+
+            # Fecha de publicación
+            fecha_publicacion = None
+            if metadatos and metadatos.get('creado'):
+                try:
+                    # PyPDF2 suele devolver la fecha en formato 'D:YYYYMMDDHHmmSS'
+                    fecha_raw = str(metadatos['creado'])
+                    if fecha_raw.startswith('D:'):
+                        fecha_raw = fecha_raw[2:]
+                    fecha_publicacion = datetime.datetime.strptime(fecha_raw[:8], '%Y%m%d').date()
+                except Exception:
+                    fecha_publicacion = None
+
+            nuevo_doc = DocumentoRepositorio(
+                titulo=metadatos['titulo'] if metadatos and metadatos.get('titulo') else nombre_archivo,
+                descripcion='Documento importado automáticamente.',
+                autor_id=autor_id,
+                tipo_documento=tipo_documento,
+                categoria=categoria,
+                archivo_pdf=nombre_archivo,
+                activo=True,
+                fecha_subida=datetime.datetime.utcnow(),
+                isbn=isbn,
+                palabras_clave=palabras_clave,
+                fecha_publicacion=fecha_publicacion
+            )
+            db.session.add(nuevo_doc)
+            nuevos_registros += 1
+
+    db.session.commit()
+    print(f"Se registraron {nuevos_registros} nuevos documentos PDF.")
+
 @app.route('/zarpe')
 @app.route('/repositorio')
 def repositorio():
@@ -436,13 +599,37 @@ def repositorio():
         )
     
     documentos = query.order_by(DocumentoRepositorio.fecha_subida.desc()).all()
-    
+    documentos_con_metadatos = []
+    for doc in documentos:
+        metadatos = None
+        autores = []
+        if doc.archivo_pdf:
+            metadatos = extraer_metadatos_pdf(doc.archivo_pdf)
+            # Extraer autores del PDF
+            if metadatos and metadatos.get('autor'):
+                autores_raw = metadatos['autor']
+                if ';' in autores_raw:
+                    autores = [a.strip() for a in autores_raw.split(';')]
+                elif ',' in autores_raw:
+                    autores = [a.strip() for a in autores_raw.split(',')]
+                else:
+                    autores = [autores_raw.strip()]
+            else:
+                # Si no hay autores en metadatos, usa el autor de la base de datos
+                autores = [doc.autor.get_nombre_completo()]
+        else:
+            autores = [doc.autor.get_nombre_completo()]
+        documentos_con_metadatos.append({
+            'documento': doc,
+            'metadatos': metadatos,
+            'autores': autores
+        })
     # Get categories and types for filters
     categorias = db.session.query(DocumentoRepositorio.categoria).filter_by(activo=True).distinct().all()
     tipos = db.session.query(DocumentoRepositorio.tipo_documento).filter_by(activo=True).distinct().all()
     
-    return render_template('recursos/repositorio.html', 
-                         documentos=documentos,
+    return render_template('repositorio/zarpe.html', 
+                         documentos=documentos_con_metadatos,
                          categorias=[c[0] for c in categorias],
                          tipos=[t[0] for t in tipos],
                          categoria_actual=categoria,
@@ -480,6 +667,7 @@ def subir_documento():
                 filename = secure_filename(file.filename)
                 # Generate unique filename
                 unique_filename = f"{uuid.uuid4()}_{filename}"
+                os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
                 file.save(filepath)
                 archivo_pdf = unique_filename
@@ -508,7 +696,7 @@ def subir_documento():
         flash('Documento subido exitosamente al repositorio.', 'success')
         return redirect(url_for('repositorio'))
     
-    return render_template('recursos/subir_documento.html')
+    return render_template('repositorio/subir_documento.html')
 
 @app.route('/repositorio/descargar/<int:documento_id>')
 def descargar_documento(documento_id):
@@ -523,12 +711,14 @@ def descargar_documento(documento_id):
     db.session.commit()
     
     if documento.archivo_pdf:
-        # Check if file is in static folder (for pre-uploaded articles) or uploads folder
-        if documento.archivo_pdf in ['articulo1.pdf', 'articulo2.pdf', 'articulo3.pdf', 'articulo4.pdf']:
-            return redirect(url_for('static', filename=documento.archivo_pdf))
+        # Ruta absoluta del archivo en el servidor
+        file_path = os.path.join(app.root_path, 'static', 'repositorio', 'documents', documento.archivo_pdf)
+        if os.path.exists(file_path):
+            # Si existe, redirige al archivo en static
+            return redirect(url_for('static', filename=f'repositorio/documents/{documento.archivo_pdf}'))
         else:
-            # Serve file from uploads folder for user-uploaded documents
-            return redirect(url_for('static', filename=f'uploads/{documento.archivo_pdf}'))
+            flash('El archivo PDF no existe en el repositorio.', 'error')
+            return redirect(url_for('repositorio'))
     elif documento.url_externa:
         # Redirect to external URL
         return redirect(documento.url_externa)
